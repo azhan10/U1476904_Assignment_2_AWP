@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Film Title:</strong>
+  <%= @film.filmtitle %>
+</p>
+
+<p>
+  <strong>Film Description:</strong>
+  <%= @film.filmdescription %>
+</p>
+
+<p>
+  <strong>Film Director:</strong>
+  <%= @film.filmdirector %>
+</p>
+
+<p>
+  <strong>Film Rating:</strong>
+  <%= @film.filmrating %>
+</p>
+
+<p>
+  <strong>Film Star Name:</strong>
+  <%= @film.filmstarname %>
+</p>
+
+
+<h2>Reviews</h2>
+<%= render @film.reviews %>
+
+
+<h2>Add a review:</h2>
+<%= render 'reviews/form' %>
+
+<%= link_to 'Back', films_path %>
