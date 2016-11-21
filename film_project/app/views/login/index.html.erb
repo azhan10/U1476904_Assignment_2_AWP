@@ -1,1 +1,45 @@
 Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+
+<h2>Rented Films</h2>
+<table>
+  <tr>
+    <th>Film Title</th>
+    <th>Film Duration</th>
+    <th>Rental Status</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.filmtitle %></td>
+      <td><%= rental.filmduration %></td>
+      <td><%= rental.rentalstatus %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "View All Rent", '/rentals' %>
+
+
+</br>
+</br>
+</br>
+
+<h2>Purchased Films</h2>
+
+<table>
+  <tr>
+    <th>Film Title</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @buys.each do |buy| %>
+    <tr>
+      <td><%= buy.filmtitle %></td>
+      <td><%= link_to 'Show', buy_path(buy) %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to "View All Purchased Films", '/buys' %>

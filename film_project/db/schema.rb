@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121083347) do
+ActiveRecord::Schema.define(version: 20161121213627) do
+
+  create_table "buys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text     "filmtitle",   limit: 65535
+    t.text     "filmprice",   limit: 65535
+    t.text     "paymenttype", limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "films", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "filmtitle"
@@ -20,6 +29,15 @@ ActiveRecord::Schema.define(version: 20161121083347) do
     t.string   "filmstarname"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "rentals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "filmtitle"
+    t.text     "filmduration", limit: 65535
+    t.text     "rentalstatus", limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
