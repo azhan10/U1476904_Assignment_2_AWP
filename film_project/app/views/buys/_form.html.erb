@@ -1,0 +1,43 @@
+Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<%= form_for @buy do |f| %>
+ 
+  <% if @buy.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@buy.errors.count, "error") %> prohibited
+        this buy from being saved:
+      </h2>
+      <ul>
+        <% @buy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+  <%= f.label :filmtitle, :value => 'Select your film?' %><br>
+    <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true %>
+  </p>
+ 
+  <p>
+    <%= f.label :filmprice, :value => 'Film Price' %><br>
+    <%= f.text_field :filmprice, :value => '£5.00', :readonly => true %>
+  </p>
+
+  <p>
+    <%= f.label :paymenttype, :value => 'Select your payment type?'  %><br>
+    <%= f.select :paymenttype, ['Credit/Debit Card', 'Cash', 'Cheque']%>
+  </p>
+
+
+  <p style="display:none;">
+    <%= f.label :user_id %><br>
+    <%= f.text_area :user_id, :value => current_user.id %>
+  </p>
+ 
+  <p>
+    <%= f.submit :value => 'Buy Film '%>
+  </p>
+ 
+<% end %>
