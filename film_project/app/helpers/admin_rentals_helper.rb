@@ -1,0 +1,2 @@
+module AdminRentalsHelper
+end

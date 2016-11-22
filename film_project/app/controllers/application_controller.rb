@@ -9,4 +9,15 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+
+
+
+  def admin_user
+    @admin_user ||= Admin.find(session[:admin_id]) if session[:admin_id]
+  end
+  helper_method :admin_user
+
+  def authorizeAdmin
+    redirect_to '/adminlogin' unless admin_user
+  end
 end
