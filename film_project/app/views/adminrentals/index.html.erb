@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Film Title</th>
+    <th>Film Duration</th>
+    <th>Rental Status</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.filmtitle %></td>
+      <td><%= rental.filmduration %></td>
+      <td><%= rental.rentalstatus %></td>
+      <td><%= link_to 'Show', adminrental_path(rental) %></td>
+      <td><%= link_to 'Edit', edit_adminrental_path(rental) %></td>
+      <td><%= link_to 'Destroy', adminrental_path(rental),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

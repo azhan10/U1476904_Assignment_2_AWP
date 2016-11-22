@@ -1,8 +1,8 @@
-<h1>User Signup</h1>
+<h1>Admin Sign In</h1>
 
-<%= link_to 'User Login', '/login' %>
+<%= link_to 'Admin Login', '/adminlogin' %>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for :admin, url: '/admins' do |f| %>
 
   Name: <%= f.text_field :name %>
   Email: <%= f.text_field :email %>
