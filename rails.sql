@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2016 at 11:46 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: Nov 22, 2016 at 10:01 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `rails`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `name` text,
+  `email` text,
+  `password_digest` text,
+  `salt` text NOT NULL,
+  `firstname` text NOT NULL,
+  `secondname` text NOT NULL,
+  `address` text NOT NULL,
+  `postcode` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
+(2, 'azhh', 'azhh', '$2a$10$hEmDvVRkft.6pGJoJ2UVzu4/W1sm9RKiK9w1mcCwBeeDG4N417St2', 'test', 'joji', 'oij', 'oijo', '0', '2016-11-22 19:22:06', '2016-11-22 19:22:06');
 
 -- --------------------------------------------------------
 
@@ -39,6 +66,29 @@ CREATE TABLE `ar_internal_metadata` (
 
 INSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES
 ('environment', 'development', '2016-11-20 17:18:28', '2016-11-20 17:18:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buys`
+--
+
+CREATE TABLE `buys` (
+  `id` int(11) NOT NULL,
+  `filmtitle` text,
+  `filmprice` text,
+  `paymenttype` text,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buys`
+--
+
+INSERT INTO `buys` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'The Descendants', '£5.00', 'Cash', 1, '2016-11-22 12:15:38', '2016-11-22 12:15:38');
 
 -- --------------------------------------------------------
 
@@ -267,6 +317,23 @@ INSERT INTO `films` (`id`, `filmtitle`, `filmdescription`, `filmdirector`, `film
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rentals`
+--
+
+CREATE TABLE `rentals` (
+  `id` int(11) NOT NULL,
+  `filmtitle` varchar(255) DEFAULT NULL,
+  `filmduration` text,
+  `rentalstatus` text,
+  `user_id` int(11) DEFAULT NULL,
+  `username` text,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reviews`
 --
 
@@ -315,7 +382,10 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20161120210853'),
 ('20161120214734'),
 ('20161120215340'),
-('20161121083347');
+('20161121083347'),
+('20161121194955'),
+('20161121213627'),
+('20161121222619');
 
 -- --------------------------------------------------------
 
@@ -328,6 +398,11 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password_digest` varchar(255) DEFAULT NULL,
+  `salt` text NOT NULL,
+  `firstname` text NOT NULL,
+  `secondname` text NOT NULL,
+  `address` text NOT NULL,
+  `postcode` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -336,15 +411,28 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES
-(1, 'azhan', 'azhan', '$2a$10$XKoMuBtbhOgxC0VYIhFuWujs0e5qkarsm210p4FT/zNsaibr11RxC', '2016-11-21 08:51:22', '2016-11-21 08:51:22'),
-(2, 'azhan', 'azhan', '$2a$10$EXFlNh/phljPmjLQWq5RTeP8Q7O5L1rPVjMCVgcUBKwKG6cnKzr1i', '2016-11-21 08:52:05', '2016-11-21 08:52:05'),
-(3, 'azhan', 'azhan', '$2a$10$WVcVB5ez0sNeC/dKYhFoIuWXAkNDVVE5FyUEZt8TdzkN5OaD2zlfu', '2016-11-21 08:53:34', '2016-11-21 08:53:34'),
-(4, 'azhan', 'rashid.azhan@hotmail.co.uk', '$2a$10$4rD0qlBQByub8c6WeaDnuuMXiCevVGerwE8NKOYG1WAa0NRydHz1.', '2016-11-21 08:54:01', '2016-11-21 08:54:01');
+INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
+(1, 'azhan', 'azhan', '$2a$10$XKoMuBtbhOgxC0VYIhFuWujs0e5qkarsm210p4FT/zNsaibr11RxC', '', '', '', '', '', '2016-11-21 08:51:22', '2016-11-21 08:51:22'),
+(2, 'azhan', 'azhan', '$2a$10$EXFlNh/phljPmjLQWq5RTeP8Q7O5L1rPVjMCVgcUBKwKG6cnKzr1i', '', '', '', '', '', '2016-11-21 08:52:05', '2016-11-21 08:52:05'),
+(3, 'azhan', 'azhan', '$2a$10$WVcVB5ez0sNeC/dKYhFoIuWXAkNDVVE5FyUEZt8TdzkN5OaD2zlfu', '', '', '', '', '', '2016-11-21 08:53:34', '2016-11-21 08:53:34'),
+(4, 'azhan', 'rashid.azhan@hotmail.co.uk', '$2a$10$4rD0qlBQByub8c6WeaDnuuMXiCevVGerwE8NKOYG1WAa0NRydHz1.', '', '', '', '', '', '2016-11-21 08:54:01', '2016-11-21 08:54:01'),
+(5, 'azhan', 'rashid.azhan@', '$2a$10$JiPOikKpKw.ko5d5RzRIu.jQfv4eExNp6gkDebHlunyUE87YQqA5e', 'test', '', '', '', '', '2016-11-22 13:50:56', '2016-11-22 13:56:00'),
+(6, 'test', 'jopj', '$2a$10$P9IlyLRm5QSnRi6luMJkCehszl4jkHt7Amk6xVIwFUK8xALqFVMKa', 'test', 'pjpjpo', 'jpojjpo', 'jpojj', 'poj', '2016-11-22 14:10:31', '2016-11-22 14:16:06'),
+(7, 'king', 'king', '$2a$10$Ku.co1UwTvJBoQLvLEfYCObOld1Q7sRLQO1uLshiz7vkBdm1WN.xS', 'test', 'azhan', 'rashid', 'oijhopijhjpoj', 'pojpojpoj', '2016-11-22 14:45:27', '2016-11-22 14:45:27'),
+(8, 'high', 'high', '$2a$10$3rZfi0igFfJ/Cu7112wOf.KyVusL0ILzs.4olii7PPfDLJeSU9wFq', 'high', 'kbghgoo', 'ihgiohh', 'ohohoih', 'oho', '2016-11-22 14:57:20', '2016-11-22 14:57:20'),
+(9, 'lok', 'lok', '$2a$10$FXRDunDqfL2oLtlVkXzlHe3fpnsNixkRxoqk07QOdBWNcLpngGQaS', 'lok', 'lok', 'lok', 'lok', 'lok', '2016-11-22 14:58:49', '2016-11-22 14:58:49'),
+(10, 'hugh', 'hugh', '$2a$10$3FHDHkokfMF37ldjc0mbUeiVwlQplG0j2a07Kdy2Ar1mxoHjwNEQS', 'fff', 'ljljjj', 'pojpjp', 'pojpoj', 'poj', '2016-11-22 18:48:39', '2016-11-22 18:48:39'),
+(11, 'uy', 'hhhh', '$2a$10$Mp2.atqf.ZJfOkdIp8FSz.LpBpu8.l0qg.sSioQs8g95mjtjAOe7e', 'nlnlkn', 'nlknlkn', 'lnklknlkn', 'lknlknlk', 'nln', '2016-11-22 18:52:47', '2016-11-22 18:52:47');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `ar_internal_metadata`
@@ -353,9 +441,21 @@ ALTER TABLE `ar_internal_metadata`
   ADD PRIMARY KEY (`key`);
 
 --
+-- Indexes for table `buys`
+--
+ALTER TABLE `buys`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `films`
 --
 ALTER TABLE `films`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rentals`
+--
+ALTER TABLE `rentals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,10 +482,25 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `buys`
+--
+ALTER TABLE `buys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `films`
 --
 ALTER TABLE `films`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+--
+-- AUTO_INCREMENT for table `rentals`
+--
+ALTER TABLE `rentals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
@@ -395,7 +510,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --

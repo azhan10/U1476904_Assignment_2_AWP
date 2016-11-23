@@ -2,12 +2,29 @@
 
 <%= link_to 'User Login', '/login' %>
 
+ <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+ 
+    <ul>
+    <%= @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for :user, url: '/users' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  User Name: <%= f.text_field :name %> </br>
+  Email: <%= f.text_field :email %> </br>
+  Password: <%= f.password_field :password_digest %> </br>
+  Password Retype: <%= f.password_field :salt %> </br>
+  First Name: <%= f. text_field :firstname %> </br>
+  Second Name: <%= f.text_field :secondname %> </br>
+  Address: <%= f.text_area :address %> </br>
+  Post Code: <%= f.text_field :postcode %> </br>
   <%= f.submit "Submit" %>
 
 <% end %>

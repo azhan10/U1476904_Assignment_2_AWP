@@ -17,14 +17,20 @@ class AdminrentalsController < ApplicationController
   		if @rental.update(rental_params)
     		redirect_to '/adminrentals'
   		else
-    render 'edit'
-  end
+    		render 'edit'
+  		end
 	end
 
 	def destroy
   		@rental = Rental.find(params[:id])
   		@rental.destroy
 	  	redirect_to '/adminrentals'
+	end
+
+	def create
+	end
+
+	def new
 	end
 
 

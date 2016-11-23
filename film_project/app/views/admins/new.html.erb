@@ -2,12 +2,28 @@
 
 <%= link_to 'Admin Login', '/adminlogin' %>
 
+<% if @admin.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@admin.errors.count, "error") %></h2>
+ 
+    <ul>
+    <%= @admin.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for :admin, url: '/admins' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  Name: <%= f.text_field :name %> </br>
+  Email: <%= f.text_field :email %> </br>
+  Password: <%= f.password_field :password %> </br>
+  Password Retype: <%= f.password_field :salt %> </br>
+  First Name: <%= f. text_field :firstname %> </br>
+  Second Name: <%= f.text_field :secondname %> </br>
+  Address: <%= f.text_area :address %> </br>
+  Post Code: <%= f.text_field :postcode %> </br>
   <%= f.submit "Submit" %>
 
 <% end %>

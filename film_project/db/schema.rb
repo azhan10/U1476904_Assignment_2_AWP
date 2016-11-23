@@ -16,6 +16,11 @@ ActiveRecord::Schema.define(version: 20161121222619) do
     t.text     "name",            limit: 65535
     t.text     "email",           limit: 65535
     t.text     "password_digest", limit: 65535
+    t.text     "salt"
+    t.text     "firstname"
+    t.text     "secondname"
+    t.text     "address"
+    t.text     "postcode"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -44,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161121222619) do
     t.text     "filmduration", limit: 65535
     t.text     "rentalstatus", limit: 65535
     t.integer  "user_id"
+    t.text     "username",     limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -62,6 +68,11 @@ ActiveRecord::Schema.define(version: 20161121222619) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.text     "salt"
+    t.text     "firstname"
+    t.text     "secondname"
+    t.text     "address"
+    t.text     "postcode"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

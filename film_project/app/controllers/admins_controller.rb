@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   def new
+    @admin = Admin.new
   end
 	def create
     admin = Admin.new(admin_params)
@@ -7,13 +8,16 @@ class AdminsController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to '/adminCool'
     else
-      redirect_to '/adminsignup'
+      @admin = Admin.new
+      @admin.valid? 
+      @admin.errors.messages
+      render 'new'
     end
   end
 
 private
 
   def admin_params
-    params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+    params.require(:admin).permit(:name, :email, :password, :salt, :firstname, :secondname, :address, :postcode)
   end
 end

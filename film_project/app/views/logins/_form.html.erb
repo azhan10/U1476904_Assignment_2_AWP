@@ -1,0 +1,64 @@
+<%= form_for @user, :url => { :action => :update, :type => @type, :this => @user } do |f| %>
+ 
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  
+    <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+    <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password_digest, :value => 'New Password' %><br>
+    <%= f.text_field :password_digest, :value => '', :placeholder => 'New Password' %>
+  </p>
+
+  <p>
+    <%= f.label :salt, :value => 'Retype New Password' %><br>
+    <%= f.text_field :salt, :value => '', :placeholder => 'New Password' %>
+  </p>
+
+  <p>
+    <%= f.label :firstname, :value => 'First Name' %><br>
+    <%= f.text_field :firstname,  :readonly => true %>
+  </p>
+
+  <p>
+    <%= f.label :secondname, :value => 'Second Name' %><br>
+    <%= f.text_field :secondname,  :readonly => true %>
+  </p>
+
+  <p>
+    <%= f.label :address, :value => 'Address' %><br>
+    <%= f.text_field :address, :readonly => true, :placeholder => 'New Password' %>
+  </p>
+
+  <p>
+    <%= f.label :postcode, :value => 'Post Code' %><br>
+    <%= f.text_field :postcode,  :readonly => true, :placeholder => 'New Password' %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+
+<%= link_to "Back", '/cool' %>

@@ -19,6 +19,86 @@ Signed in as <%= admin_user.name %> | <%= link_to "Admin Logout", '/adminlogout'
 
 
 </table>
-
-
 <%= link_to "View All Rental", '/adminrentals' %>
+
+
+<h2>Account Details</h2>
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Second Name</th>
+    <th>Address</th>
+    <th>Post Code</th>
+    <th>Account Created</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @currentuser.each do |holder| %>
+    <tr>
+      <td><%= holder.name %></td>
+      <td><%= holder.email %></td>
+      <td><%= holder.firstname %></td>
+      <td><%= holder.secondname %></td>
+      <td><%= holder.address %></td>
+      <td><%= holder.postcode %></td>
+      <td><%= holder.created_at %></td>
+      <td><%= link_to 'Edit', edit_admins_login_path(holder.id)  %></td>
+      <td><%= link_to 'Destroy', admins_login_path(holder.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Current Users</h2>
+
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Account Created</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @adminusers.each do |adminuser| %>
+    <tr>
+      <td><%= adminuser.name %></td>
+      <td><%= adminuser.email %></td>
+      <td><%= adminuser.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "View All Users", '/adminuser' %>
+
+
+<h2>Films</h2>
+
+
+<%= link_to 'Rent a new film', new_adminfilm_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Filmtitle</th>
+      <th>Filmdescription</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @films.each do |film| %>
+      <tr>
+        <td><%= film.filmtitle %></td>
+        <td><%= film.filmdescription %></td>
+        <td><%= link_to 'Show', adminfilm_path(film.id)  %></td>
+        <td><%= link_to 'Edit', edit_adminfilm_path(film.id)  %></td>
+        <td><%= link_to 'Destroy', adminfilm_path(film.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @films %>
