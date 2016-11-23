@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :buys
   resources :admin
   resources :adminrentals
+  resources :adminfilms
+  resources :logins
+  resources :admins_login
+
 
   get '/adminCool' => 'admins_login#index'  
 
@@ -26,7 +30,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  get '/cool' => 'login#index'  
+  get '/cool' => 'logins#index'  
 
   
 

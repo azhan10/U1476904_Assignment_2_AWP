@@ -15,6 +15,9 @@ class RentalsController < ApplicationController
   if @rental.save
     redirect_to '/rentals'
   else
+  	@rental = Rental.new
+      @rental.valid? 
+      @rental.errors.messages
     render 'new'
   end
 	end
@@ -30,6 +33,9 @@ class RentalsController < ApplicationController
   if @rental.update(rental_params)
     redirect_to '/rentals'
   else
+  	@rental = Rental.new
+      @rental.valid? 
+      @rental.errors.messages
     render 'edit'
   end
 	end

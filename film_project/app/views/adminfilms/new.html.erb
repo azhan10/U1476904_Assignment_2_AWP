@@ -1,0 +1,48 @@
+<%= form_for @adminfilm, :url => { :action => :create, :type => @type, :this => @adminfilm } do |f| %>
+ 
+  <% if @adminfilm.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@adminfilm.errors.count, "error") %> prohibited
+        this film from being saved:
+      </h2>
+      <ul>
+        <% @adminfilm.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :filmtitle %><br>
+    <%= f.text_area :filmtitle %>
+  </p>
+
+  <p>
+    <%= f.label :filmdescription %><br>
+    <%= f.text_area :filmdescription %>
+  </p>
+
+
+  <p>
+    <%= f.label :filmdirector %><br>
+    <%= f.text_area :filmdirector %>
+  </p>
+
+  <p>
+    <%= f.label :filmrating %><br>
+    <%= f.text_area :filmrating %>
+  </p>
+
+  <p>
+    <%= f.label :filmstarname %><br>
+    <%= f.text_area :filmstarname %>
+  </p>
+
+  
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
