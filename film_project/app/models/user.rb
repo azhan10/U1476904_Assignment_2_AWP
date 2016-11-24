@@ -1,14 +1,20 @@
 class User < ApplicationRecord
-	validates :name,  presence: true, length: { minimum: 5 }
-     validates :email,  presence: true
-     validates :password_digest,  presence: true, length: { minimum: 7 }
-     validates :salt,  presence: true, length: { minimum: 7 }
-     validates :firstname,  presence: true
-     validates :secondname,  presence: true
-     validates :address,  presence: true
-     validates :postcode,  presence: true
-
-     validates :name, uniqueness: true
-     validates :email, uniqueness: true
 	 has_secure_password
+end
+
+
+class Newuser < User
+     validates_presence_of :name,  presence: true, length: { minimum: 5 }, uniqueness: true
+     validates_presence_of :email,  presence: true, uniqueness: true
+     #validates_presence_of :password, length: { minimum: 7 }
+     validates_presence_of :salt,  presence: true, length: { minimum: 7 }
+     validates_presence_of :firstname,  presence: true
+     validates_presence_of :secondname,  presence: true
+     validates_presence_of :address,  presence: true
+     validates_presence_of :postcode,  presence: true
+end
+
+class Olduser < User
+     validates_presence_of :email,  presence: true
+     #validates_presence_of :password, length: { minimum: 7 }
 end

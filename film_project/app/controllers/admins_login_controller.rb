@@ -20,16 +20,37 @@ class AdminsLoginController < ApplicationController
 	
 	def update
 		@currentuser = Admin.find(params[:id])
-  		if @currentuser.update(currentAdmin_params)
-    		redirect_to '/adminCool'
-  		else
-    		render 'edit'
-  		end
+		if params[:password].blank?
+			flash[:error] = "Password is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		elsif  params[:salt].blank?
+			flash[:error] = "Retype Password is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		elsif  params[:firstname].blank?
+			flash[:error] = "First name is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		elsif  params[:secondname].blank?
+			flash[:error] = "Second name is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		elsif  params[:address].blank?
+			flash[:error] = "Address is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		elsif  params[:postcode].blank?
+			flash[:error] = "Post code is not mentioned"
+			redirect_to edit_admins_login_path(@currentuser)
+		else
+			if @currentuser.update(currentAdmin_params)
+				redirect_to '/adminCool'
+			else
+				flash[:error] = "Something went wrong"
+   				render 'edit'
+			end
+		end
+		
 	end
 
 	private
 		def currentAdmin_params
-			@currentuser.password = params[:admin][:password_digest]
-    		params.require(:admin).permit(:name, :email, @currentuser.password, :salt,  :firstname, :secondname, :address, :postcode)
+    		params.require(:admin).permit(:name, :email, :password, :salt,  :firstname, :secondname, :address, :postcode)
   		end
 end

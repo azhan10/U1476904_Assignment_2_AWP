@@ -19,16 +19,36 @@ class LoginsController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-  		if @user.update(account_params)
-    		redirect_to '/cool'
-  		else
-    		render 'edit'
+		if params[:password].blank?
+			flash[:error] = "Password is not mentioned"
+			redirect_to edit_login_path(@user)
+		elsif  params[:salt].blank?
+			flash[:error] = "Retype Password is not mentioned"
+			redirect_to edit_login_path(@user)
+		elsif  params[:firstname].blank?
+			flash[:error] = "First name is not mentioned"
+			redirect_to edit_login_path(@user)
+		elsif  params[:secondname].blank?
+			flash[:error] = "Second name is not mentioned"
+			redirect_to edit_login_path(@user)
+		elsif  params[:address].blank?
+			flash[:error] = "Address is not mentioned"
+			redirect_to edit_login_path(@user)
+		elsif  params[:postcode].blank?
+			flash[:error] = "Post code is not mentioned"
+			redirect_to edit_login_path(@user)
+		else
+  			if @user.update(account_params)
+    			redirect_to '/cool'
+  			else
+  				flash[:error] = "Something went wrong"
+    			render 'edit'
+  			end
   		end
 	end
 
 	private
 		def account_params
-			@user.password = params[:user][:password_digest]
-    		params.require(:user).permit(:name, :email, @user.password, :salt, :firstname, :secondname, :address, :postcode)
+    		params.require(:user).permit(:name, :email, :password, :salt, :firstname, :secondname, :address, :postcode)
   		end
 end

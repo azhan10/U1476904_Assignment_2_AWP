@@ -1,6 +1,7 @@
 class AdminsSessionsController < ApplicationController
 	  def new
-  end
+      @admin = Admin.new
+    end
 
   def create
     admin = Admin.find_by_email(params[:email])
@@ -10,7 +11,10 @@ class AdminsSessionsController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to '/adminCool'
     else
-      redirect_to '/adminlogin'
+      @admin = Oldadmin.new
+      @admin.valid? 
+      @admin.errors.messages
+      render 'new'
     end
   end
 

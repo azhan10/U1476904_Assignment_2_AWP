@@ -31,7 +31,6 @@ class AdminfilmsController < ApplicationController
 
 	def create
 		@adminfilm = Film.new(adminfilm_params)
- 
   		if @adminfilm.save
    		 redirect_to '/adminCool'
  		else

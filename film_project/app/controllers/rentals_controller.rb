@@ -11,15 +11,11 @@ class RentalsController < ApplicationController
 
 	def create
 		@rental = Rental.new(rental_params)
- 
-  if @rental.save
-    redirect_to '/rentals'
-  else
-  	@rental = Rental.new
-      @rental.valid? 
-      @rental.errors.messages
-    render 'new'
-  end
+    if @rental.save
+      redirect_to '/rentals'
+    else
+      render 'new'
+    end
 	end
 
 	def edit
@@ -29,21 +25,17 @@ class RentalsController < ApplicationController
 
 	def update
 		@rental = Rental.find(params[:id])
- 
-  if @rental.update(rental_params)
-    redirect_to '/rentals'
-  else
-  	@rental = Rental.new
-      @rental.valid? 
-      @rental.errors.messages
-    render 'edit'
-  end
+    if @rental.update(rental_params)
+        redirect_to '/rentals'
+      else
+        render 'edit'
+      end
 	end
 
 
 	def show
-@rental = Rental.find(params[:id])
-end
+    @rental = Rental.find(params[:id])
+  end
 
 
 	def destroy

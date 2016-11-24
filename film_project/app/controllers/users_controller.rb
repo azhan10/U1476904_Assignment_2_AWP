@@ -9,9 +9,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/cool'
     else
-      user = User.new
-      user.valid? 
-      user.errors.messages
+      @user = Newuser.new
+      @user.valid? 
+      @user.errors.messages
       render 'new'
     end
   end
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password_digest, :salt, :firstname, :secondname, :address, :postcode)
+    params.require(:user).permit(:name, :email, :password, :salt, :firstname, :secondname, :address, :postcode)
   end
 end

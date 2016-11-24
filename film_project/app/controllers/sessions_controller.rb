@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @user = User.new
   end
 
   def create
@@ -11,7 +12,10 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/cool'
     else
-      redirect_to '/login'
+      @user = Olduser.new
+      @user.valid? 
+      @user.errors.messages
+      render 'new'
     end
   end
 

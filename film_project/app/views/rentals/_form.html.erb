@@ -1,12 +1,9 @@
 Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<%= form_for @rental do |f| %>
- 
+
   <% if @rental.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@rental.errors.count, "error") %> prohibited
-        this rental from being saved:
-      </h2>
+        <%= pluralize(@rental.errors.count, "error") %></h2>
       <ul>
         <% @rental.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -14,9 +11,13 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
       </ul>
     </div>
   <% end %>
+
+
+<%= form_for @rental do |f| %>
+ 
  
   
-  <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true %>
+  <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true, :name => 'film' %>
  
   
 

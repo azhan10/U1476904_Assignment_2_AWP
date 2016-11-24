@@ -1,15 +1,39 @@
+
+  <% if @film.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@film.errors.count, "error") %></h2>
+      <ul>
+        <% @film.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_for([@film, @film.reviews.build]) do |f| %>
+
+<% if flash[:notice] -%>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>
+
+<%= f.error_messages %>
+  
+
   <p>
     <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= f.text_field :commenter, :placeholder => 'Your name' %>
   </p>
   <p>
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :placeholder => 'Your comment' %>
   </p>
   <p>
     <%= f.label :rating %><br>
-    <%= f.text_area :rating %>
+    <%= f.select :rating, ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'] %>
   </p>
   <p>
     <%= f.submit %>
