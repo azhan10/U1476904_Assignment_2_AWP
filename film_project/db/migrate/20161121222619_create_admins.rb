@@ -4,6 +4,11 @@ class CreateAdmins < ActiveRecord::Migration[5.0]
     	t.text :name
     	t.text :email
     	t.text :password_digest
+    	t.text     :salt
+    t.text     :firstname
+    t.text     :secondname
+    t.text     :address
+    t.text     :postcode
       t.timestamps
     end
   end

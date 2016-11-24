@@ -4,3 +4,8 @@ class Rental < ApplicationRecord
      validates :rentalstatus,  presence: true
      validates :user_id,  presence: true
 end
+
+
+@rental = Rental.new
+@rental.valid? 
+@rental.errors.messages

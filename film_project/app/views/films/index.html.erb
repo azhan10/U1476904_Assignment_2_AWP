@@ -16,12 +16,11 @@
       <tr>
         <td><%= film.filmtitle %></td>
         <td><%= film.filmdescription %></td>
-        <td><%= link_to 'Show', film %></td>
+        <td><%= link_to 'Show', film_path(film) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Film', new_film_path %>
+<%= will_paginate @films %>

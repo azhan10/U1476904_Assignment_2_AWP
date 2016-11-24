@@ -57,6 +57,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    dynamic_form (1.1.4)
     errors (0.0.2)
       json
       multi_json
@@ -88,7 +89,7 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
-    puma (3.6.1)
+    puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -168,6 +169,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
+  dynamic_form
   errors
   jbuilder (~> 2.5)
   jquery-rails

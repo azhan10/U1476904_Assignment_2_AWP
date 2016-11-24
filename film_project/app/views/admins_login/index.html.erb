@@ -44,7 +44,7 @@ Signed in as <%= admin_user.name %> | <%= link_to "Admin Logout", '/adminlogout'
       <td><%= holder.address %></td>
       <td><%= holder.postcode %></td>
       <td><%= holder.created_at %></td>
-      <td><%= link_to 'Edit', edit_admins_login_path(holder.id)  %></td>
+      <td><%= link_to 'Edit', edit_admins_login_path(holder)  %></td>
       <td><%= link_to 'Destroy', admins_login_path(holder.id),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
@@ -77,7 +77,7 @@ Signed in as <%= admin_user.name %> | <%= link_to "Admin Logout", '/adminlogout'
 <h2>Films</h2>
 
 
-<%= link_to 'Rent a new film', new_adminfilm_path %>
+<%= link_to 'Add new film', new_adminfilm_path %>
 <table>
   <thead>
     <tr>

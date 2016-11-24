@@ -1,6 +1,6 @@
 <%= form_for @adminfilm, :url => { :action => :update, :type => @type, :this => @adminfilm } do |f| %>
- 
-  <% if @adminfilm.errors.any? %>
+
+ <% if @adminfilm.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@adminfilm.errors.count, "error") %> prohibited

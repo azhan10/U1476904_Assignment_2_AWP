@@ -1,19 +1,13 @@
 <%= form_for @user, :url => { :action => :update, :type => @type, :this => @user } do |f| %>
  
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this user from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
+ <%= f.error_messages %>
+
+<% if flash[:notice] -%>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>
   
     <p>
     <%= f.label :name %><br>
@@ -26,33 +20,33 @@
   </p>
 
   <p>
-    <%= f.label :password_digest, :value => 'New Password' %><br>
-    <%= f.text_field :password_digest, :value => '', :placeholder => 'New Password' %>
+    <%= f.label :password, :value => 'New Password' %><br>
+    <%= f.text_field :password, :value => '', :placeholder => 'New password', :name => 'password' %>
   </p>
 
   <p>
     <%= f.label :salt, :value => 'Retype New Password' %><br>
-    <%= f.text_field :salt, :value => '', :placeholder => 'New Password' %>
+    <%= f.text_field :salt, :value => '', :placeholder => 'Retype new password', :name => 'salt' %>
   </p>
 
   <p>
     <%= f.label :firstname, :value => 'First Name' %><br>
-    <%= f.text_field :firstname,  :readonly => true %>
+    <%= f.text_field :firstname, :name => 'firstname', :placeholder => 'First name'  %>
   </p>
 
   <p>
     <%= f.label :secondname, :value => 'Second Name' %><br>
-    <%= f.text_field :secondname,  :readonly => true %>
+    <%= f.text_field :secondname, :name => 'secondname', :placeholder => 'Second name'  %>
   </p>
 
   <p>
     <%= f.label :address, :value => 'Address' %><br>
-    <%= f.text_field :address, :readonly => true, :placeholder => 'New Password' %>
+    <%= f.text_field :address, :placeholder => 'Address', :name => 'address' %>
   </p>
 
   <p>
     <%= f.label :postcode, :value => 'Post Code' %><br>
-    <%= f.text_field :postcode,  :readonly => true, :placeholder => 'New Password' %>
+    <%= f.text_field :postcode, :placeholder => 'Post Code', :name => 'postcode' %>
   </p>
  
   <p>

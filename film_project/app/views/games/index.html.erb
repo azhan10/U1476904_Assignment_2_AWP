@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game Title</th>
+      <th>Game Description</th>
+      <th>Game Rating</th>
+      <th>Game Genre</th>
+      <th>Platform</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.gametitle %></td>
+        <td><%= game.gameDescription %></td>
+        <td><%= game.gamerating %></td>
+        <td><%= game.gamegenre %></td>
+        <td><%= game.platform %></td>
+        <td><%= link_to 'Show', game_path(game) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @films %>

@@ -8,7 +8,7 @@ class AdminsController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to '/adminCool'
     else
-      @admin = Admin.new
+      @admin = Newadmin.new
       @admin.valid? 
       @admin.errors.messages
       render 'new'

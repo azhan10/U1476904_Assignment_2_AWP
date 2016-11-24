@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :adminfilms
   resources :logins
   resources :admins_login
+  resources :games
 
 
   get '/adminCool' => 'admins_login#index'  

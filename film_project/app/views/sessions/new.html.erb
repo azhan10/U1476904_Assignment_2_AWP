@@ -2,6 +2,18 @@
 
 <%= link_to 'User Signup', '/signup' %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+ 
+    <ul>
+    <%= @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_tag '/login' do %>
 
   Email: <%= text_field_tag :email %>
