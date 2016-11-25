@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 10:01 PM
+-- Generation Time: Nov 24, 2016 at 01:01 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -317,6 +317,30 @@ INSERT INTO `films` (`id`, `filmtitle`, `filmdescription`, `filmdirector`, `film
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `games`
+--
+
+CREATE TABLE `games` (
+  `id` int(11) NOT NULL,
+  `gametitle` text,
+  `gameDescription` text,
+  `gamerating` text,
+  `gamegenre` text,
+  `platform` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `games`
+--
+
+INSERT INTO `games` (`id`, `gametitle`, `gameDescription`, `gamerating`, `gamegenre`, `platform`, `created_at`, `updated_at`) VALUES
+(1, 'WWE 2K17', 'Welcome to Suplex City, courtesy of cover Superstar Brock Lesnar! WWE 2K17 arrives as the reigning and defending flagship WWE video game franchise champion! WWE 2K17 features stunning graphics, ultra-authentic gameplay and a massive roster of WWE and NXT’s popular Superstars and Legends.', 'Suitable for people aged 16 and over.', 'Sport', 'PS4, Xbox One', '2016-11-23 00:00:00', '2016-11-23 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rentals`
 --
 
@@ -355,7 +379,12 @@ INSERT INTO `reviews` (`id`, `commenter`, `body`, `rating`, `film_id`, `created_
 (1, 'pokjpkp', 'kpokpok', 'pokpko', 1, '2016-11-20 19:40:41', '2016-11-20 19:40:41'),
 (2, 'oijhoj', 'ojpojoj', 'pjojpo', 1, '2016-11-20 19:44:36', '2016-11-20 19:44:36'),
 (3, 'pojpj', 'pjpjpj', 'pjpjp', 1, '2016-11-20 23:20:02', '2016-11-20 23:20:02'),
-(4, 'oihoih', 'ohohoih', 'oihoih', 1, '2016-11-20 23:45:15', '2016-11-20 23:45:15');
+(4, 'oihoih', 'ohohoih', 'oihoih', 1, '2016-11-20 23:45:15', '2016-11-20 23:45:15'),
+(5, 'oijhoip', 'jpoj', '1 Star', 9, '2016-11-23 22:37:59', '2016-11-23 22:37:59'),
+(6, 'asd', 'asd', '1 Star', 9, '2016-11-23 22:43:01', '2016-11-23 22:43:01'),
+(7, '', '', '1 Star', 9, '2016-11-23 22:57:13', '2016-11-23 22:57:13'),
+(8, 'Your Name', 'asd', '1 Star', 2, '2016-11-23 23:39:15', '2016-11-23 23:39:15'),
+(9, 'jp', 'jpopoj', '1 Star', 2, '2016-11-23 23:40:21', '2016-11-23 23:40:21');
 
 -- --------------------------------------------------------
 
@@ -385,7 +414,8 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20161121083347'),
 ('20161121194955'),
 ('20161121213627'),
-('20161121222619');
+('20161121222619'),
+('20161123234153');
 
 -- --------------------------------------------------------
 
@@ -453,6 +483,12 @@ ALTER TABLE `films`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `games`
+--
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rentals`
 --
 ALTER TABLE `rentals`
@@ -485,7 +521,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `buys`
 --
@@ -497,6 +533,11 @@ ALTER TABLE `buys`
 ALTER TABLE `films`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 --
+-- AUTO_INCREMENT for table `games`
+--
+ALTER TABLE `games`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
@@ -505,12 +546,12 @@ ALTER TABLE `rentals`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --

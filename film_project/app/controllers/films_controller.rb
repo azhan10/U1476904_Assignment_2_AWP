@@ -5,13 +5,11 @@ class FilmsController < ApplicationController
   # GET /films.json
   def index
     @films = Film.all.paginate(page: params[:page], per_page: 30)
-    @reviews = Review.new
   end
 
   # GET /films/1
   # GET /films/1.json
   def show
-    @reviews = Review.new
   end
 
   # GET /films/new
