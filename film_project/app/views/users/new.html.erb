@@ -1,6 +1,8 @@
 <h1>User Signup</h1>
 
 <%= link_to 'User Login', '/login', class:'btn btn-info', style: 'color:white' %>
+<br/>
+<br/>
 
  <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -14,7 +16,7 @@
   </div>
 <% end %>
 
-
+<div class="jumbotron ">
 <%= form_for :user, url: '/users' do |f| %>
 
   User Name: <%= f.text_field :name, class:'form-control' %> </br>
@@ -28,3 +30,5 @@
   <%= f.submit "Register", class:'btn btn-primary' %>
 
 <% end %>
+
+</div>

@@ -13,9 +13,11 @@ class SessionsController < ApplicationController
       redirect_to '/cool'
     else
       @user = Olduser.new
-      @user.valid? 
-      @user.errors.messages
-      render 'new'
+      if @user.valid? == false 
+        @user.errors.messages
+        flash[:error] = "Login detials is incorrect"
+        redirect_to :back
+      end
     end
   end
 

@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-
+<div class="jumbotron ">
 <%= form_for @rental do |f| %>
  
   <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
@@ -38,3 +38,4 @@
   </p>
  
 <% end %>
+</div>

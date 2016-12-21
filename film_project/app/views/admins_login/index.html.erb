@@ -9,6 +9,11 @@
   </div>
 </div>
 
+
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Rental List</h2></div>
+<div class="panel-body">
 <table class="table">
   <tr>
     <th>Film Title</th>
@@ -27,10 +32,19 @@
 
 
 </table>
+<div class="text-center">
 <%= link_to "View All Rental", '/adminrentals', class: 'btn btn-info', style: 'color:white' %>
+</div>
 
+</div>
+</div>
 
-<h2>Account Details</h2>
+<hr/>
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Account Details</h2></div>
+
+<div class="panel-body">
 <table class="table">
   <tr>
     <th>User Name</th>
@@ -60,7 +74,16 @@
   <% end %>
 </table>
 
-<h2>Current Users</h2>
+</div>
+</div>
+
+
+<hr/>
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Current Users</h2></div>
+
+<div class="panel-body">
 
 <table class="table">
   <tr>
@@ -78,11 +101,19 @@
     </tr>
   <% end %>
 </table>
-
+<div class="text-center">
 <%= link_to "View All Users", '/adminuser', class: 'btn btn-info', style: 'color:white' %>
+</div>
 
+</div>
+</div>
 
-<h2>Films</h2>
+<hr/>
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Films Information</h2></div>
+
+<div class="panel-body">
 
 
 <%= link_to 'Add new film', new_adminfilm_path, class: 'btn btn-success', style: 'color:white' %>
@@ -113,9 +144,16 @@
 <%= will_paginate @films %>
 </div>
 
+</div>
+</div>
 
-<h2>Games</h2>
+<hr/>
 
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Games Information</h2></div>
+
+<div class="panel-body">
 
 <%= link_to 'Add new game', new_admingame_path, class: 'btn btn-success', style: 'color:white' %>
 <table class="table">
@@ -143,4 +181,7 @@
 </table>
 <div class="text-center">
 <%= will_paginate @games %>
+</div>
+
+</div>
 </div>

@@ -9,6 +9,8 @@
   </div>
 </div>
 
+<div class="jumbotron ">
+
 <%= form_for @currentuser, :url => { :action => :update, :type => @type, :currentuser => @user } do |f| %>
 
 <%= f.error_messages %>
@@ -65,5 +67,6 @@
   </p>
  
 <% end %>
-
+</div>
 <%= link_to "Back", '/adminCool', class: 'btn btn-info', style: 'color:white' %>
+

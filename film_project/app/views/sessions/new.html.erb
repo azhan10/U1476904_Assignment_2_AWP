@@ -17,6 +17,12 @@
 <%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
 <%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
 
+<% if flash[:error] -%>
+  <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
+<% end -%>
+
+<div class="jumbotron ">
+
 <%= form_tag '/login' do %>
 
  <h3> Email: <%= text_field_tag :email, nil, class:'form-control' %></h3>
@@ -24,3 +30,4 @@
   <%= submit_tag "Submit", :class => 'btn btn-success' %>
 
 <% end %>
+</div>

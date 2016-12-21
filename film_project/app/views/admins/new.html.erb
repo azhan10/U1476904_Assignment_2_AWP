@@ -14,6 +14,8 @@
   </div>
 <% end %>
 
+<div class="jumbotron ">
+
 <%= form_for :admin, url: '/admins' do |f| %>
 
   <h3>Name: <%= f.text_field :name, class:'form-control' %></h3>
@@ -27,3 +29,4 @@
   <%= f.submit "Submit", :class => 'btn btn-success' %>
 
 <% end %>
+</div>
