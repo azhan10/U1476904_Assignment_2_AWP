@@ -8,6 +8,8 @@
   </div>
 </div>
 
+<div class="jumbotron ">
+
 <%= form_for @adminfilm, :url => { :action => :update, :type => @type, :this => @adminfilm } do |f| %>
 
  <% if @adminfilm.errors.any? %>
@@ -56,5 +58,6 @@
   </p>
  
 <% end %>
+</div>
 
 <%= link_to 'Back', '/adminCool', class: 'btn btn-info', style: 'color:white' %>

@@ -23,6 +23,7 @@ class Editadmin < Admin
 end
 
 class Oldadmin < Admin
+     validates_presence_of :password,  presence: true
      validates_presence_of :email,  presence: true
      #validates_presence_of :password, length: { minimum: 7 }
 end

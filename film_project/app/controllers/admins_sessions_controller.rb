@@ -12,9 +12,11 @@ class AdminsSessionsController < ApplicationController
       redirect_to '/adminCool'
     else
       @admin = Oldadmin.new
-      @admin.valid? 
-      @admin.errors.messages
-      render 'new'
+      if @admin.valid? == false
+        @admin.errors.messages
+        flash[:error] = "Login detials is incorrect"
+        redirect_to :back
+      end
     end
   end
 

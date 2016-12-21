@@ -8,6 +8,7 @@
   </div>
 </div>
 
+<div class="jumbotron ">
 
 <%= form_for @rental, :url => { :action => :update, :type => @type, :this => @rental } do |f| %>
  
@@ -48,4 +49,7 @@
   </p>
  
 <% end %>
+
+</div>
+
 <%= link_to 'Cancel', '/adminrentals', class: 'btn btn-info', style: 'color:white' %>
