@@ -1,6 +1,6 @@
 <h1>Admin Sign In</h1>
 
-<%= link_to 'Admin Login', '/adminlogin' %>
+<%= link_to 'Admin Login', '/adminlogin', :class => 'btn btn-info', style: 'color:white' %>
 
 <% if @admin.errors.any? %>
   <div id="error_explanation">
@@ -16,14 +16,14 @@
 
 <%= form_for :admin, url: '/admins' do |f| %>
 
-  Name: <%= f.text_field :name %> </br>
-  Email: <%= f.text_field :email %> </br>
-  Password: <%= f.password_field :password %> </br>
-  Password Retype: <%= f.password_field :salt %> </br>
-  First Name: <%= f. text_field :firstname %> </br>
-  Second Name: <%= f.text_field :secondname %> </br>
-  Address: <%= f.text_area :address %> </br>
-  Post Code: <%= f.text_field :postcode %> </br>
-  <%= f.submit "Submit" %>
+  <h3>Name: <%= f.text_field :name, class:'form-control' %></h3>
+  <h3>Email: <%= f.text_field :email, class:'form-control' %> </h3>
+  <h3>Password: <%= f.password_field :password, class:'form-control' %></h3>
+ <h3> Password Retype: <%= f.password_field :salt, class:'form-control' %> </h3>
+ <h3> First Name: <%= f. text_field :firstname, class:'form-control' %></h3> 
+ <h3> Second Name: <%= f.text_field :secondname, class:'form-control' %> </h3>
+ <h3> Address: <%= f.text_area :address, class:'form-control' %> </h3>
+ <h3> Post Code: <%= f.text_field :postcode, class:'form-control' %> </h3>
+  <%= f.submit "Submit", :class => 'btn btn-success' %>
 
 <% end %>

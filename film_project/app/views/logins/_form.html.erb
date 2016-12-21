@@ -1,58 +1,66 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+
 <%= form_for @user, :url => { :action => :update, :type => @type, :this => @user } do |f| %>
  
  <%= f.error_messages %>
 
-<% if flash[:notice] -%>
-  <p class="notice"><%= flash[:notice] %></p>
-<% end -%>
 <% if flash[:error] -%>
-  <p class="error"><%= flash[:error] %></p>
+  <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>
   
     <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control', readonly: true %>
   </p>
 
     <p>
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control', readonly: true %>
   </p>
 
-  <p>
+  <p >
     <%= f.label :password, :value => 'New Password' %><br>
-    <%= f.text_field :password, :value => '', :placeholder => 'New password', :name => 'password' %>
+    <%= f.password_field :password, :value => '', :placeholder => 'New password', class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :salt, :value => 'Retype New Password' %><br>
-    <%= f.text_field :salt, :value => '', :placeholder => 'Retype new password', :name => 'salt' %>
+    <%= f.password_field :salt, :value => '', :placeholder => 'Retype new password', class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :firstname, :value => 'First Name' %><br>
-    <%= f.text_field :firstname, :name => 'firstname', :placeholder => 'First name'  %>
+    <%= f.text_field :firstname, :placeholder => 'First name', class: 'form-control'  %>
   </p>
 
   <p>
     <%= f.label :secondname, :value => 'Second Name' %><br>
-    <%= f.text_field :secondname, :name => 'secondname', :placeholder => 'Second name'  %>
+    <%= f.text_field :secondname, :placeholder => 'Second name', class: 'form-control'  %>
   </p>
 
   <p>
     <%= f.label :address, :value => 'Address' %><br>
-    <%= f.text_field :address, :placeholder => 'Address', :name => 'address' %>
+    <%= f.text_field :address, :placeholder => 'Address', class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :postcode, :value => 'Post Code' %><br>
-    <%= f.text_field :postcode, :placeholder => 'Post Code', :name => 'postcode' %>
+    <%= f.text_field :postcode, :placeholder => 'Post Code', class: 'form-control' %>
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Update Account', class: 'btn btn-primary', style: 'color:white' %>
   </p>
  
 <% end %>
 
-<%= link_to "Back", '/cool' %>
+<%= link_to "Back", '/cool', class: 'btn btn-info', style: 'color:white' %>

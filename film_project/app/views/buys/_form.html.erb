@@ -1,4 +1,12 @@
-Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 <%= form_for @buy do |f| %>
  
   <% if @buy.errors.any? %>
@@ -17,17 +25,19 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
  
   <p>
   <%= f.label :filmtitle, :value => 'Select your film?' %><br>
-    <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true %>
+   
+
+    <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
   </p>
  
   <p>
     <%= f.label :filmprice, :value => 'Film Price' %><br>
-    <%= f.text_field :filmprice, :value => '£5.00', :readonly => true %>
+    <%= f.text_field :filmprice, :value => '£5.00', :readonly => true, class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :paymenttype, :value => 'Select your payment type?'  %><br>
-    <%= f.select :paymenttype, ['Credit/Debit Card', 'Cash', 'Cheque']%>
+    <%= f.select(:paymenttype, ['Credit/Debit Card', 'Cash', 'Cheque'], {}, { :class => 'form-control' }) %>
   </p>
 
 
@@ -37,7 +47,7 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
   </p>
  
   <p>
-    <%= f.submit :value => 'Buy Film '%>
+    <%= f.submit 'Buy Film', class: 'btn btn-primary', style: 'color:white' %>
   </p>
  
 <% end %>

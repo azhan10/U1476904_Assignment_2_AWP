@@ -1,4 +1,19 @@
-<p> filmtitle:  <%= @rental.filmtitle %></p>
-      <p> film duration:  <%= @rental.filmduration %></p>
-      <p>rental status:  <%= @rental.rentalstatus %></p>
-<p>rental status:  <%= @rental.rentalstatus %></p>
+
+
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+
+<h3><strong> filmtitle:</strong>  <%= @rental.filmtitle %></h3>
+      <h3><strong> film duration: </strong> <%= @rental.filmduration %></h3>
+      <h3><strong>rental status:</strong>  <%= @rental.rentalstatus %></h3>
+<h3><strong>rental status:</strong>  <%= @rental.rentalstatus %></h3>
+
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>

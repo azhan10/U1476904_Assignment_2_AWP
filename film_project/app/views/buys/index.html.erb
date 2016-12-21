@@ -1,18 +1,29 @@
-Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 </br>
-<%= link_to 'Buy a new film', new_buy_path %>
-<table>
+<%= link_to 'Buy a new film', new_buy_path, class: 'btn btn-primary', :style => 'color:white' %>
+</br></br>
+<table class="table">
   <tr>
     <th>Film Title</th>
+     <th>Film Price</th>
     <th colspan="3"></th>
   </tr>
  
   <% @buys.each do |buy| %>
     <tr>
       <td><%= buy.filmtitle %></td>
-      <td><%= link_to 'Show', buy_path(buy) %></td>
+      <td><%= buy.filmprice %></td>
+      <td><%= link_to 'Show', buy_path(buy), class: 'btn btn-success', :style => 'color:white' %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to "Home Page", '/cool' %>
+<%= link_to "Home Page", '/cool', class: 'btn btn-info', :style => 'color:white' %>

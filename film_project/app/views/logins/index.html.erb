@@ -1,78 +1,124 @@
-<h1>User Log In Page</h1>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 
-Signed in as <%= current_user.name %> | <%= link_to "User Logout", '/logout' %>
+<h2 class="text-center">Rented Films</h2>
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Film Title</p>
+    
+  </div>
+  <div class="col-xs-7">
+    <p class="text-center" style="font-size: 22px">Film Description</p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center" style="font-size: 22px">Rental Status</p>
+  </div>
+</div>
 
-<h2>Rented Films</h2>
-<table>
-  <tr>
-    <th>Film Title</th>
-    <th>Film Duration</th>
-    <th>Rental Status</th>
-    <th colspan="3"></th>
-  </tr>
- 
-  <% @rentals.each do |rental| %>
-    <tr>
-      <td><%= rental.filmtitle %></td>
-      <td><%= rental.filmduration %></td>
-      <td><%= rental.rentalstatus %></td>
-    </tr>
-  <% end %>
-</table>
+<% @rentals.each do |rental| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <p class="text-center"><%= rental.filmtitle %></p>
+    
+  </div>
+  <div class="col-xs-7">
+    <p class="text-center"><%= rental.filmduration %></p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center"><%= rental.rentalstatus %></p>
+  </div>
+  </div><hr/>
+<% end %>
 
-<%= link_to "View All Rent", '/rentals' %>
+<%= link_to "View All Rent", '/rentals', class: 'btn btn-info', style: "color:white" %>
 
-
-</br>
-</br>
-</br>
-
-<h2>Purchased Films</h2>
-
-<table>
-  <tr>
-    <th>Film Title</th>
-    <th colspan="3"></th>
-  </tr>
- 
-  <% @buys.each do |buy| %>
-    <tr>
-      <td><%= buy.filmtitle %></td>
-      <td><%= link_to 'Show', buy_path(buy) %></td>
-    </tr>
-  <% end %>
-</table>
+</br></br>
 
 
-<%= link_to "View All Purchased Films", '/buys' %>
+<h2 class="text-center">Purchased Films</h2>
+
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Film Title</p>
+  </div>
+  
+</div>
+
+<%  @buys.each do |buy| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 18px"> <%= buy.filmtitle %></p>
+  </div>
+  <div class="col-xs-7">
+   <%= link_to 'Show', buy_path(buy), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  <div class="col-xs-2"></div>
+  </div><hr/>
+<% end %>
 
 
-<h2>Account Details</h2>
-<table>
-  <tr>
-    <th>User Name</th>
-    <th>Email</th>
-    <th>First Name</th>
-    <th>Second Name</th>
-    <th>Address</th>
-    <th>Post Code</th>
-    <th>Account Created</th>
-    <th colspan="3"></th>
-  </tr>
- 
+<%= link_to "View All Purchased Films", '/buys', class: 'btn btn-info', style: "color:white" %>
+
+</br></br>
+
+<h2 class="text-center">Account Details</h2>
+
+
   <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.firstname %></td>
-      <td><%= user.secondname %></td>
-      <td><%= user.address %></td>
-      <td><%= user.postcode %></td>
-      <td><%= user.created_at %></td>
-      <td><%= link_to 'Edit', edit_login_path(user.id)  %></td>
-      <td><%= link_to 'Destroy', login_path(user.id),
+      <h3>User Name: <%= user.name %></h3>
+      <h3>Email: <%= user.email %></h3>
+      <h3>First Name:<%= user.firstname %></h3>
+      <h3>Second Name:<%= user.secondname %></h3>
+      <h3>Address:<%= user.address %></h3>
+      <h3>Post Code: <%= user.postcode %></h3>
+      <h3>Date Created: <%= user.created_at %></h3>
+      <h3><%= link_to 'Edit', edit_login_path(user.id), class: 'btn btn-success', style: 'color:white'  %> 
+      <%= link_to 'Destroy', login_path(user.id),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white'  %>
+                
+      </h3>
+      
+   
   <% end %>
-</table>
+
+
+
+<hr/>
+
+</br></br>
+
+<h2 class="text-center">Purchased Games</h2>
+
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Game Title</p>
+    
+  </div>
+  <div class="col-xs-4">
+    <p class="text-center" style="font-size: 22px">Platform</p>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+<%  @buyGames.each do |buyGame| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <p class="text-center"><%= buyGame.gametitle %></p>
+  </div>
+  <div class="col-xs-4">
+  <p class="text-center"> <%= buyGame.platform %></p>
+  </div>
+  <div class="col-xs-2">
+    <%= link_to 'Show', buy_game_path(buyGame), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  </div><hr/>
+<% end %>
+
+<%= link_to "View All Purchased Games", buy_games_index_path, class: 'btn btn-info', style: "color:white" %>

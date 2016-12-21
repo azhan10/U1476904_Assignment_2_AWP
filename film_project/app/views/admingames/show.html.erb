@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<h2><%= @admingames.gametitle %> Information</h2>
+
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Game Title:</strong>
+    <%= @admingames.gametitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Game Description:</strong>
+    <%= @admingames.gameDescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Rating:</strong>
+    <%= @admingames.gamerating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Genre:</strong>
+    <%= @admingames.gamegenre %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Platform:</strong>
+    <%= @admingames.platform %>
+  </div>
+</div>
+
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>

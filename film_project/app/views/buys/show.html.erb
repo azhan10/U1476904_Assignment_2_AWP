@@ -1,22 +1,25 @@
-<p>
-  <strong>Film Title:</strong>
-  <%= @buys.filmtitle %>
-</p>
- 
-<p>
-  <strong>Film Price:</strong>
-  <%= @buys.filmprice %>
-</p>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 
-<p>
-  <strong>Payment Type:</strong>
-  <%= @buys.paymenttype %>
-</p>
- 
+<h1 class="text-center">Payment Status</h1>
 
- <p>
-  <strong>Date Purchased:</strong>
-  <%= @buys.created_at %>
-</p>
 
-<%= link_to 'Back', buys_path %>
+  <h3><strong>Film Title:</strong> <%= @buys.filmtitle %></h3>
+
+  <h3><strong>Film Price:</strong> <%= @buys.filmprice %></h3>
+
+
+  <h3><strong>Payment Type:</strong> <%= @buys.paymenttype %></h3>
+
+
+ <h3><strong>Date Purchased:</strong> <%= @buys.created_at %></h3>
+
+
+<%= link_to 'Back', buys_path, class: 'btn btn-primary', :style => 'color:white' %>

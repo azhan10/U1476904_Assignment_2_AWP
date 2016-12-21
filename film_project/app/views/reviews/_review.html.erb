@@ -1,19 +1,18 @@
-<p>
-  <strong>Commenter:</strong>
+<div class="row">
+	<div class="col-xs-4">
+		<strong>Commenter:</strong>
   <%= review.commenter %>
-</p>
- 
-<p>
-  <strong>Comment:</strong>
-  <%= review.body %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
+	</div>
+	<div class="col-xs-4">
+		<strong>Rating:</strong>
   <%= review.rating %>
-</p>
-
-<p>
-  <strong>Created:</strong>
+	</div>
+	<div class="col-xs-4">
+		<strong>Created:</strong>
   <%= review.created_at %>
-</p>
+	</div>
+	<div class="col-xs-12">
+		<strong>Comment:</strong>
+  <%= review.body %>
+	</div>
+</div><hr/>

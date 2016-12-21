@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123234153) do
+ActiveRecord::Schema.define(version: 20161220184858) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text     "name",            limit: 65535
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20161123234153) do
     t.text     "postcode",        limit: 65535, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "buy_games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text     "gametitle",   limit: 65535
+    t.text     "gameprice",   limit: 65535
+    t.text     "platform",    limit: 65535
+    t.text     "paymenttype", limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "buys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -49,7 +59,7 @@ ActiveRecord::Schema.define(version: 20161123234153) do
     t.text     "gameDescription", limit: 65535
     t.text     "gamerating",      limit: 65535
     t.text     "gamegenre",       limit: 65535
-    t.text     "platform",
+    t.text     "platform",        limit: 65535, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -87,5 +97,6 @@ ActiveRecord::Schema.define(version: 20161123234153) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_foreign_key "game_reviews", "games"
   add_foreign_key "reviews", "films"
 end

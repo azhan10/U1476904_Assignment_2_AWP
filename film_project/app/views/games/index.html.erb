@@ -1,32 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Games</h1>
+<div class="row">
+  <div class="col-xs-3">
+    <%= link_to 'Admin Login', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
+    <%= link_to 'User Login', '/cool', class: 'btn btn-primary', style: 'color:white' %>
+  </div>
+  <div class="col-xs-6">  
+  <h1 class="text-center">Games</h1>
+  </div>
+  <div class="col-xs-3">
+  <br/>
+    <div class="text-right"><%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Game Title</th>
-      <th>Game Description</th>
-      <th>Game Rating</th>
-      <th>Game Genre</th>
-      <th>Platform</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Game Title</p>
+    
+  </div>
+  <div class="col-xs-5">
+    <p class="text-center" style="font-size: 22px">Game Description</p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center" style="font-size: 22px">Platform</p>
+  </div>
+  <div class="col-xs-2">
+    
+  </div>
+</div>
+<hr/>
+<% @games.each do |game| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <%= game.gametitle %>
+    
+  </div>
+  <div class="col-xs-5">
+    <%= game.gameDescription %>
+  </div>
+  <div class="col-xs-2">
+    <%= game.platform %>
+  </div>
+  <div class="col-xs-2">
+    <%= link_to 'Show', game_path(game), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  </div><hr/>
+<% end %>
 
-  <tbody>
-    <% @games.each do |game| %>
-      <tr>
-        <td><%= game.gametitle %></td>
-        <td><%= game.gameDescription %></td>
-        <td><%= game.gamerating %></td>
-        <td><%= game.gamegenre %></td>
-        <td><%= game.platform %></td>
-        <td><%= link_to 'Show', game_path(game) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 <br>
-<%= will_paginate @films %>
+<div class="text-center">
+<%= will_paginate @games %>
+</div>

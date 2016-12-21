@@ -1,31 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Game Title:</strong>
+<h1 class="text-center"><%= @game.gametitle %> Information</h1>
+</br>
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Game Title:</strong>
   <%= @game.gametitle %>
-</p>
-
-<p>
-  <strong>Game Description:</strong>
-  <%= @game.gameDescription %>
-</p>
-
-<p>
-  <strong>Game Rating:</strong>
+  </div>
+  <div class="col-xs-9">
+    <strong>Game Description:</strong>
+  <%= @game.gameDescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Rating:</strong>
   <%= @game.gamerating %>
-</p>
-
-<p>
-  <strong>Game Genre:</strong>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Genre:</strong>
   <%= @game.gamegenre %>
-</p>
-
-
-
-<p>
-  <strong>Game Platform:</strong>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Platform:</strong>
   <%= @game.platform %>
-</p>
+  </div>
+</div>
+</br></br>
 
 
-<%= link_to 'Back', games_path %>
+
+
+<%= link_to 'Back', games_path, class: 'btn btn-info', style: 'color:white' %>

@@ -2,6 +2,7 @@ class BuysController < ApplicationController
 
 	def new
 		@buy = Buy.new
+		@films = Film.all
 	end
 
 	def index

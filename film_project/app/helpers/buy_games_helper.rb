@@ -1,0 +1,2 @@
+module BuyGamesHelper
+end

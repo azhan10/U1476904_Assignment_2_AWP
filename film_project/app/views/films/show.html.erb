@@ -1,36 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Film Title:</strong>
-  <%= @film.filmtitle %>
-</p>
 
-<p>
-  <strong>Film Description:</strong>
-  <%= @film.filmdescription %>
-</p>
-
-<p>
-  <strong>Film Director:</strong>
-  <%= @film.filmdirector %>
-</p>
-
-<p>
-  <strong>Film Rating:</strong>
-  <%= @film.filmrating %>
-</p>
-
-<p>
-  <strong>Film Star Name:</strong>
-  <%= @film.filmstarname %>
-</p>
-
-
-<h2>Reviews</h2>
-<%= render @film.reviews %>
-
+<h1 class="text-center"><%= @film.filmtitle %> Information</h1>
+</br>
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Film Title:</strong>
+    <%= @film.filmtitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Film Description:</strong>
+    <%= @film.filmdescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Director:</strong>
+    <%= @film.filmdirector %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Rating:</strong>
+    <%= @film.filmrating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Star Name:</strong>
+    <%= @film.filmstarname %>
+  </div>
+</div>
+</br></br>
 
 <h2>Add a review:</h2>
 <%= render 'reviews/form' %>
 
-<%= link_to 'Back', films_path %>
+<h2 class="text-center"><%= @film.filmtitle %> Reviews</h2>
+<%= render @film.reviews %>
+
+
+
+<%= link_to 'Back', films_path, class: 'btn btn-info', style: 'color:white' %>
