@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+</br>
+<%= link_to 'Buy a new game', new_buy_game_path, class: 'btn btn-success', style: 'color:white' %>
+</br>
+</br>
+<table class="table">
+  <tr>
+    <th style="font-size: 18px">Game Title</th>
+    <th style="font-size: 18px">Platform</th>
+    <th style="font-size: 18px" colspan="3"></th>
+  </tr>
+ 
+  <% @buyGames.each do |buyGame| %>
+    <tr>
+      <td><%= buyGame.gametitle %></td>
+      <td><%= buyGame.platform %></td>
+      <td><%= link_to 'Show', buy_game_path(buyGame), class: 'btn btn-info', :style => 'color:white' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Home Page", '/cool', class: 'btn btn-primary', :style => 'color:white' %>

@@ -1,4 +1,4 @@
-Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+
 
   <% if @rental.errors.any? %>
     <div id="error_explanation">
@@ -15,13 +15,12 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
 
 <%= form_for @rental do |f| %>
  
- 
-  
-  <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true, :name => 'film' %>
- 
-  
+  <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
 
-  <%= f.select :filmduration, ['1 day', '2 days']%>
+ 
+  <h3>Rental Duration</h3>
+  <%= f.select(:filmduration, ['1 day', '2 days'], {}, { :class => 'form-control' }) %>
+  </br>
 
   <p style="display:none;">
     <%= f.label :rentalstatus %><br>
@@ -34,9 +33,8 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Rent Movie', :class => 'btn btn-primary' %> 
+    <%= link_to 'Back', rentals_path, :class => 'btn btn-info', style: 'color:white' %>
   </p>
  
 <% end %>
-
-<%= link_to 'Back', rentals_path %>

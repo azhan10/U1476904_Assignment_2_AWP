@@ -2,6 +2,7 @@ class RentalsController < ApplicationController
 
 	def index
 		@rentals = Rental.where(user_id: current_user.id)
+
 	end
 
 	def new
@@ -20,7 +21,7 @@ class RentalsController < ApplicationController
 
 	def edit
  	@rental = Rental.find(params[:id])
-
+	@films = Film.all
 	end
 
 	def update

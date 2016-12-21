@@ -1,6 +1,16 @@
-Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></br>
-<%= link_to 'Rent a new film', new_rental_path %>
-<table>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+
+<%= link_to 'Rent a new film', new_rental_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
+<table class="table">
   <tr>
     <th>Film Title</th>
     <th>Film Duration</th>
@@ -13,13 +23,14 @@ Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></br>
       <td><%= rental.filmtitle %></td>
       <td><%= rental.filmduration %></td>
       <td><%= rental.rentalstatus %></td>
-      <td><%= link_to 'Show', rental_path(rental) %></td>
-      <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
-      <td><%= link_to 'Destroy', rental_path(rental),
+      <td><%= link_to 'Show', rental_path(rental), class: 'btn btn-primary', style: 'color:white' %></td>
+      <td><%= link_to 'Edit', edit_rental_path(rental), class: 'btn btn-info', style: 'color:white' %></td>
+      <td><%= link_to 'Delete Rent', rental_path(rental),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white' %></td>
     </tr>
   <% end %>
 </table>
+</br>
 
-<%= link_to "Home Page", '/cool' %>
+<%= link_to "Home Page", '/cool', class: 'btn btn-info', style: 'color:white' %>

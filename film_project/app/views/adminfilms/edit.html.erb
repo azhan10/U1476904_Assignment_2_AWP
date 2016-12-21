@@ -1,3 +1,13 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
 <%= form_for @adminfilm, :url => { :action => :update, :type => @type, :this => @adminfilm } do |f| %>
 
  <% if @adminfilm.errors.any? %>
@@ -16,33 +26,35 @@
 
   <p>
     <%= f.label :filmtitle %><br>
-    <%= f.text_area :filmtitle %>
+    <%= f.text_area :filmtitle, class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :filmdescription %><br>
-    <%= f.text_area :filmdescription %>
+    <%= f.text_area :filmdescription, class: 'form-control' %>
   </p>
 
 
   <p>
     <%= f.label :filmdirector %><br>
-    <%= f.text_area :filmdirector %>
+    <%= f.text_area :filmdirector, class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :filmrating %><br>
-    <%= f.text_area :filmrating %>
+    <%= f.text_area :filmrating, class: 'form-control' %>
   </p>
 
   <p>
     <%= f.label :filmstarname %><br>
-    <%= f.text_area :filmstarname %>
+    <%= f.text_area :filmstarname, class: 'form-control' %>
   </p>
 
   
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Update Film', class: 'btn btn-primary' %>
   </p>
  
 <% end %>
+
+<%= link_to 'Back', '/adminCool', class: 'btn btn-info', style: 'color:white' %>

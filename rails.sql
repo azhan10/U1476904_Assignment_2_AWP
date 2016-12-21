@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2016 at 01:01 AM
+-- Generation Time: Dec 21, 2016 at 01:46 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
-(2, 'azhh', 'azhh', '$2a$10$hEmDvVRkft.6pGJoJ2UVzu4/W1sm9RKiK9w1mcCwBeeDG4N417St2', 'test', 'joji', 'oij', 'oijo', '0', '2016-11-22 19:22:06', '2016-11-22 19:22:06');
+(2, 'azhh', 'azhh', '$2a$10$JPLHq.kmKdAyjYbFhS3hK.1L/kCEd8PwaKGmx.GZpRfNUqFZScfCC', 'testing', 'joji', 'oij', 'oijo', 'sdf', '2016-11-22 19:22:06', '2016-12-21 12:44:17');
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,36 @@ CREATE TABLE `buys` (
 --
 
 INSERT INTO `buys` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'The Descendants', '£5.00', 'Cash', 1, '2016-11-22 12:15:38', '2016-11-22 12:15:38');
+(1, 'The Descendants', '£5.00', 'Cash', 1, '2016-11-22 12:15:38', '2016-11-22 12:15:38'),
+(2, 'Star Wars: Episode VII - The Force Awakens', '£5.00', 'Credit/Debit Card', 1, '2016-12-20 14:49:58', '2016-12-20 14:49:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buy_games`
+--
+
+CREATE TABLE `buy_games` (
+  `id` int(11) NOT NULL,
+  `gametitle` text,
+  `gameprice` text,
+  `platform` text,
+  `paymenttype` text,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buy_games`
+--
+
+INSERT INTO `buy_games` (`id`, `gametitle`, `gameprice`, `platform`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, '', '£5.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-19 16:03:55', '2016-12-19 16:03:55'),
+(2, 'WWE 2K17', '£5.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-19 16:06:11', '2016-12-19 16:06:11'),
+(3, 'WWE 2K17', '£10.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-19 18:30:19', '2016-12-19 18:30:19'),
+(4, 'WWE 2K17', '£10.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-20 14:20:58', '2016-12-20 14:20:58'),
+(5, 'WWE 2K17', '£10.00', 'PS4', 'Credit/Debit Card', 1, '2016-12-20 14:21:04', '2016-12-20 14:21:04');
 
 -- --------------------------------------------------------
 
@@ -336,7 +365,8 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `gametitle`, `gameDescription`, `gamerating`, `gamegenre`, `platform`, `created_at`, `updated_at`) VALUES
-(1, 'WWE 2K17', 'Welcome to Suplex City, courtesy of cover Superstar Brock Lesnar! WWE 2K17 arrives as the reigning and defending flagship WWE video game franchise champion! WWE 2K17 features stunning graphics, ultra-authentic gameplay and a massive roster of WWE and NXT’s popular Superstars and Legends.', 'Suitable for people aged 16 and over.', 'Sport', 'PS4, Xbox One', '2016-11-23 00:00:00', '2016-11-23 00:00:00');
+(1, 'WWE 2K17', 'Welcome to Suplex City, courtesy of cover Superstar Brock Lesnar! WWE 2K17 arrives as the reigning and defending flagship WWE video game franchise champion! WWE 2K17 features stunning graphics, ultra-authentic gameplay and a massive roster of WWE and NXT’s popular Superstars and Legends.', 'Suitable for people aged 16 and over.', 'Sport', 'PS4, Xbox One', '2016-11-23 00:00:00', '2016-12-20 16:27:19'),
+(2, 'fdg', 'dsf', 'dfg', 'sdf', 'fdg', '2016-12-20 16:28:45', '2016-12-20 16:28:45');
 
 -- --------------------------------------------------------
 
@@ -354,6 +384,17 @@ CREATE TABLE `rentals` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rentals`
+--
+
+INSERT INTO `rentals` (`id`, `filmtitle`, `filmduration`, `rentalstatus`, `user_id`, `username`, `created_at`, `updated_at`) VALUES
+(1, 'Star Trek II: The Wrath of Khan', '1 day', 'Reserved', 1, NULL, '2016-12-20 12:44:46', '2016-12-20 13:23:02'),
+(2, 'Bruce Almighty', '2 days', 'Reserved', 1, NULL, '2016-12-20 13:09:07', '2016-12-20 13:23:07'),
+(3, 'Star Trek: The Motion Picture', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:09:56', '2016-12-20 13:09:56'),
+(4, 'Bedtime Stories', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:11:30', '2016-12-20 13:11:30'),
+(5, 'Bruce Almighty', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:20:30', '2016-12-20 13:20:30');
 
 -- --------------------------------------------------------
 
@@ -376,15 +417,7 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `commenter`, `body`, `rating`, `film_id`, `created_at`, `updated_at`) VALUES
-(1, 'pokjpkp', 'kpokpok', 'pokpko', 1, '2016-11-20 19:40:41', '2016-11-20 19:40:41'),
-(2, 'oijhoj', 'ojpojoj', 'pjojpo', 1, '2016-11-20 19:44:36', '2016-11-20 19:44:36'),
-(3, 'pojpj', 'pjpjpj', 'pjpjp', 1, '2016-11-20 23:20:02', '2016-11-20 23:20:02'),
-(4, 'oihoih', 'ohohoih', 'oihoih', 1, '2016-11-20 23:45:15', '2016-11-20 23:45:15'),
-(5, 'oijhoip', 'jpoj', '1 Star', 9, '2016-11-23 22:37:59', '2016-11-23 22:37:59'),
-(6, 'asd', 'asd', '1 Star', 9, '2016-11-23 22:43:01', '2016-11-23 22:43:01'),
-(7, '', '', '1 Star', 9, '2016-11-23 22:57:13', '2016-11-23 22:57:13'),
-(8, 'Your Name', 'asd', '1 Star', 2, '2016-11-23 23:39:15', '2016-11-23 23:39:15'),
-(9, 'jp', 'jpopoj', '1 Star', 2, '2016-11-23 23:40:21', '2016-11-23 23:40:21');
+(1, 'cxvsdf', 'sdf', '1 Star', 1, '2016-12-20 18:26:09', '2016-12-20 18:26:09');
 
 -- --------------------------------------------------------
 
@@ -415,7 +448,9 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20161121194955'),
 ('20161121213627'),
 ('20161121222619'),
-('20161123234153');
+('20161123234153'),
+('20161219153640'),
+('20161220184858');
 
 -- --------------------------------------------------------
 
@@ -442,7 +477,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
-(1, 'azhan', 'azhan', '$2a$10$XKoMuBtbhOgxC0VYIhFuWujs0e5qkarsm210p4FT/zNsaibr11RxC', '', '', '', '', '', '2016-11-21 08:51:22', '2016-11-21 08:51:22'),
+(1, 'azhan', 'azhan', '$2a$10$fDr3B9v/qx150UXrBocbn.jjrCd30zAZc6w37vNLFZ3Lz1OqzC1q2', '', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-11-21 08:51:22', '2016-12-21 12:14:12'),
 (2, 'azhan', 'azhan', '$2a$10$EXFlNh/phljPmjLQWq5RTeP8Q7O5L1rPVjMCVgcUBKwKG6cnKzr1i', '', '', '', '', '', '2016-11-21 08:52:05', '2016-11-21 08:52:05'),
 (3, 'azhan', 'azhan', '$2a$10$WVcVB5ez0sNeC/dKYhFoIuWXAkNDVVE5FyUEZt8TdzkN5OaD2zlfu', '', '', '', '', '', '2016-11-21 08:53:34', '2016-11-21 08:53:34'),
 (4, 'azhan', 'rashid.azhan@hotmail.co.uk', '$2a$10$4rD0qlBQByub8c6WeaDnuuMXiCevVGerwE8NKOYG1WAa0NRydHz1.', '', '', '', '', '', '2016-11-21 08:54:01', '2016-11-21 08:54:01'),
@@ -452,7 +487,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `salt`, `firstnam
 (8, 'high', 'high', '$2a$10$3rZfi0igFfJ/Cu7112wOf.KyVusL0ILzs.4olii7PPfDLJeSU9wFq', 'high', 'kbghgoo', 'ihgiohh', 'ohohoih', 'oho', '2016-11-22 14:57:20', '2016-11-22 14:57:20'),
 (9, 'lok', 'lok', '$2a$10$FXRDunDqfL2oLtlVkXzlHe3fpnsNixkRxoqk07QOdBWNcLpngGQaS', 'lok', 'lok', 'lok', 'lok', 'lok', '2016-11-22 14:58:49', '2016-11-22 14:58:49'),
 (10, 'hugh', 'hugh', '$2a$10$3FHDHkokfMF37ldjc0mbUeiVwlQplG0j2a07Kdy2Ar1mxoHjwNEQS', 'fff', 'ljljjj', 'pojpjp', 'pojpoj', 'poj', '2016-11-22 18:48:39', '2016-11-22 18:48:39'),
-(11, 'uy', 'hhhh', '$2a$10$Mp2.atqf.ZJfOkdIp8FSz.LpBpu8.l0qg.sSioQs8g95mjtjAOe7e', 'nlnlkn', 'nlknlkn', 'lnklknlkn', 'lknlknlk', 'nln', '2016-11-22 18:52:47', '2016-11-22 18:52:47');
+(11, 'uy', 'hhhh', '$2a$10$Mp2.atqf.ZJfOkdIp8FSz.LpBpu8.l0qg.sSioQs8g95mjtjAOe7e', 'nlnlkn', 'nlknlkn', 'lnklknlkn', 'lknlknlk', 'nln', '2016-11-22 18:52:47', '2016-11-22 18:52:47'),
+(12, 'azhan', 'azhan', '$2a$10$Mq3p.rmtU2Y9RWeL4Eg3A.z/qLI0GolNDpqfh.Y2AXSRmmYJc.sr.', 'test', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:13:32', '2016-12-21 12:13:32'),
+(13, 'azhan', 'azhan', '$2a$10$v7SjZ2NlQ4uKQkao8NsuwOYH/4/v.jxbgXB8q1HUzOGusjGA4VkpC', 'test', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:35:51', '2016-12-21 12:35:51'),
+(14, 'azhan', 'azhan', '$2a$10$5kjUgC.O4Vbqo/ZlcOsn6ekB3LvmOHv/hqka5l.sM2iKSi1EfER7G', 'testing', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:42:37', '2016-12-21 12:42:37');
 
 --
 -- Indexes for dumped tables
@@ -474,6 +512,12 @@ ALTER TABLE `ar_internal_metadata`
 -- Indexes for table `buys`
 --
 ALTER TABLE `buys`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `buy_games`
+--
+ALTER TABLE `buy_games`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -521,12 +565,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `buys`
 --
 ALTER TABLE `buys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `buy_games`
+--
+ALTER TABLE `buy_games`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `films`
 --
@@ -536,22 +585,22 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --

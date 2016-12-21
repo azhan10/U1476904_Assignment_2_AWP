@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  get 'adminreview/show'
+
+  get 'adminreview/new'
+
+  get 'adminreview/edit'
+
+  get 'adminreview/destroy'
+
+  get 'adminreview/create'
+
+  get 'adminreview/index'
+
+  get 'admingames/show'
+
+  get 'admingames/new'
+
+  get 'admingames/edit'
+
+  get 'buy_games/index'
+
+  get 'buy_games/show'
+
   resources :films do
   	resources :reviews
   end
@@ -12,6 +34,9 @@ Rails.application.routes.draw do
   resources :logins
   resources :admins_login
   resources :games
+  resources :adminuser
+  resources :admingames
+  resources :buy_games
 
 
   get '/adminCool' => 'admins_login#index'  

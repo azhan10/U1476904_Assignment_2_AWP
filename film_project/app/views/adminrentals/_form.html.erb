@@ -1,3 +1,13 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
 
 <%= form_for @rental, :url => { :action => :update, :type => @type, :this => @rental } do |f| %>
  
@@ -16,19 +26,26 @@
   <% end %>
  
   
-  <%= f.collection_select :filmtitle, Film.order(:id),:filmtitle,:filmtitle, include_blank: true %>
  
+<p><%= f.label :filmtitle, :value => "Film Name" %></p>
+  <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
+ 
+<p><%= f.label :filmduration, :value => "Film Duration" %></p>
+ <%= f.select(:filmduration, ['1 day', '2 days'], {}, { :class => 'form-control' }) %>
   
 
-  <%= f.select :filmduration, ['1 day', '2 days']%>
+ 
 
   <p>
-    <%= f.label :rentalstatus %><br>
-    <%= f.select :rentalstatus, ['Reserved', 'Rented Out', 'Retruned Late']%>
-  </p>
- 
+    <%= f.label :rentalstatus, :value => "Rental Status" %></p>
+    <%= f.select(:rentalstatus, ['Reserved', 'Rented Out', 'Retruned Late'], {}, { :class => 'form-control' }) %>
+  
+
+
+ </br>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Update Details', :class => 'btn btn-primary' %>
   </p>
  
 <% end %>
+<%= link_to 'Cancel', '/adminrentals', class: 'btn btn-info', style: 'color:white' %>

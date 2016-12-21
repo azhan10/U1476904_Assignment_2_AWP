@@ -1,6 +1,14 @@
-
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 <h1>User's List</h1>
-<table>
+<table class="table">
   <tr>
     <th>User Name</th>
     <th>Email</th>
@@ -16,9 +24,9 @@
       <td><%= adminuser.created_at %></td>
       <td><%= link_to 'Destroy', adminuser_path(adminuser.id),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style => 'color:white' %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Back', '/adminCool' %>
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', :style => 'color:white' %>

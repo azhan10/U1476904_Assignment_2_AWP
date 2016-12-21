@@ -1,24 +1,43 @@
-<p>
-  <strong>Film Title:</strong>
-  <%= @adminfilm.filmtitle %>
-</p>
 
-<p>
-  <strong>Film Description:</strong>
-  <%= @adminfilm.filmdescription %>
-</p>
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 
-<p>
-  <strong>Film Director:</strong>
-  <%= @adminfilm.filmdirector %>
-</p>
 
-<p>
-  <strong>Film Rating:</strong>
-  <%= @adminfilm.filmrating %>
-</p>
+<h2><%= @adminfilm.filmtitle %> Information</h2>
 
-<p>
-  <strong>Film Star Name:</strong>
-  <%= @adminfilm.filmstarname %>
-</p>
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Film Title:</strong>
+    <%= @adminfilm.filmtitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Film Description:</strong>
+    <%= @adminfilm.filmdescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Director:</strong>
+    <%= @adminfilm.filmdirector %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Rating:</strong>
+    <%= @adminfilm.filmrating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Star Name:</strong>
+    <%= @adminfilm.filmstarname %>
+  </div>
+</div>
+
+<h2 class="text-center"><%= @adminfilm.filmtitle %> Reviews</h2>
+<%= render @adminfilm.reviews %>
+
+
+
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>

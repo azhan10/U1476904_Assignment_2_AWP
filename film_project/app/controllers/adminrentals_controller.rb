@@ -6,6 +6,7 @@ class AdminrentalsController < ApplicationController
 
 	def edit
 		@rental = Rental.find(params[:id])
+		@films = Film.all
 	end
 	
 	def show

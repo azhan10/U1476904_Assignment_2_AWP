@@ -1,7 +1,15 @@
-
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
 
 <h2>Rental Table</h2>
-<table>
+<table class="table">
   <tr>
     <th>Film Title</th>
     <th>Film Duration</th>
@@ -14,15 +22,15 @@
       <td><%= rental.filmtitle %></td>
       <td><%= rental.filmduration %></td>
       <td><%= rental.rentalstatus %></td>
-      <td><%= link_to 'Show', adminrental_path(rental) %></td>
-      <td><%= link_to 'Edit', edit_adminrental_path(rental) %></td>
+      <td><%= link_to 'Show', adminrental_path(rental), class: 'btn btn-info', :style => 'color:white' %></td>
+      <td><%= link_to 'Edit', edit_adminrental_path(rental), class: 'btn btn-info', :style => 'color:white' %></td>
       <td><%= link_to 'Destroy', adminrental_path(rental),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style => 'color:white' %></td>
     </tr>
   <% end %>
 </table>
 
 
-<%= link_to 'Back', '/adminCool' %>
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
 

@@ -1,5 +1,6 @@
 class AdminfilmsController < ApplicationController
 
+before_action :set_film, only: [:show]
 	def new
 		@adminfilm = Film.new
 	end
@@ -39,6 +40,9 @@ class AdminfilmsController < ApplicationController
 	end
 
 	private
+	def set_film
+      @adminfilm = Film.find(params[:id])
+    end
   		def adminfilm_params
     		params.require(:film).permit(:filmtitle, :filmdescription, :filmdirector, :filmrating, :filmstarname)
   		end

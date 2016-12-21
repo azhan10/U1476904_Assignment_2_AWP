@@ -7,28 +7,28 @@
 
 <%= form_for([@film, @film.reviews.build]) do |f| %>
 <% if flash[:error] -%>
-  <p class="error"><%= flash[:error] %></p>
+  <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>
 
   <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter, :placeholder => 'Your name' %>
+    <%= f.label :commenter, :value => 'Your Name' %><br>
+    <%= f.text_field :commenter, :placeholder => 'Your name', class: 'form-control' %>
     <% if flash[:commenter] -%>
-    <p class="error"><%= flash[:commenter] %></p>
+    <p style="color:red; font-size: 18px" class="error"><%= flash[:commenter] %></p>
       <% end -%>
   </p>
   <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body, :placeholder => 'Your comment' %>
+    <%= f.label :body, :value => 'Your Review' %><br>
+    <%= f.text_area :body, :placeholder => 'Your comment', class: 'form-control' %>
     <% if flash[:body] -%>
-    <p class="error"><%= flash[:body] %></p>
+    <p style="color:red; font-size: 18px" class="error"><%= flash[:body] %></p>
       <% end -%>
   </p>
   <p>
-    <%= f.label :rating %><br>
-    <%= f.select :rating, ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'] %>
+    <%= f.label :rating, :value => 'Your Personal Rating' %><br>
+    <%= f.select(:rating, ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'], {}, { :class => 'form-control' }) %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Add Review', :class => 'btn btn-primary' %>
   </p>
 <% end %>

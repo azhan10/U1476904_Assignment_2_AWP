@@ -1,8 +1,5 @@
 <h1>Admin Log In</h1>
 
-<%= link_to 'Admin Signup', '/adminsignup' %>
-
-
 <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@admin.errors.count, "error") %></h2>
@@ -15,10 +12,20 @@
   </div>
 <% end %>
 
+
+<p style="display:none;">
+<%= link_to 'Admin Signup', '/adminsignup', :class => 'btn btn-info', style: 'color:white' %>
+</p>
+
+<%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %>
+<%= link_to 'User Login', '/cool', class: 'btn btn-primary', style: 'color:white' %>
+<%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
+</br></br>
+
 <%= form_tag '/adminlogin' do %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <h3>Email: <%= text_field_tag :email, nil, class:'form-control' %></h3>
+  <h3>Password: <%= password_field_tag :password, nil, class:'form-control' %></h3>
+  <%= submit_tag "Login", :class => 'btn btn-success' %>
 
 <% end %>
