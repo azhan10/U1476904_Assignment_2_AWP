@@ -1,3 +1,6 @@
+#This handles the database interaction for the rental database table.
+#Here I added validation to avoid blank inputs
+
 class Rental < ApplicationRecord
 	validates :filmtitle,  presence: true
      validates :filmduration,  presence: true

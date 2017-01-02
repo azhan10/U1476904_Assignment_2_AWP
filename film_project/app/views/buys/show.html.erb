@@ -1,15 +1,18 @@
+  <!--The interface is used to view all information of a selected film purchase-->
 <div class="row">
   <div class="col-xs-6">
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+      <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
 <h1 class="text-center">Payment Status</h1>
 
+ <!--Here it shows all games information-->
 
   <h3><strong>Film Title:</strong> <%= @buys.filmtitle %></h3>
 
@@ -21,5 +24,5 @@
 
  <h3><strong>Date Purchased:</strong> <%= @buys.created_at %></h3>
 
-
+  <!--Button below is used to return a user to the buy films index interface-->
 <%= link_to 'Back', buys_path, class: 'btn btn-primary', :style => 'color:white' %>

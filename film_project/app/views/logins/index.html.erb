@@ -1,12 +1,17 @@
+ <!--This interface is used to view all necessary information of a customer-->
+
 <div class="row">
   <div class="col-xs-6">
+   <!--Displays customers user's name-->
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+   <!--Button is used to log users out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
+
 
 <div class="panel panel-default">
 <div class="panel-heading"><h2 class="text-center">Rented Films</h2></div>
@@ -25,7 +30,7 @@
   </div>
 </div>
 
-
+ <!--Its displaying each rental information-->
 <% @rentals.each do |rental| %>
       <div class="row">
   <div class="col-xs-3">
@@ -41,6 +46,7 @@
   </div><hr/>
 <% end %>
 <div class="text-center">
+ <!--Button below allows users to view all rental films-->
 <%= link_to "View All Rent", '/rentals', class: 'btn btn-info', style: "color:white" %>
 </div>
 
@@ -60,6 +66,7 @@
   
 </div>
 
+ <!--It displaying each film purchase -->
 <%  @buys.each do |buy| %>
       <div class="row">
   <div class="col-xs-6">
@@ -72,6 +79,7 @@
 <% end %>
 
 <div class="text-center">
+ <!--Button below allows users to view all purchase film-->
 <%= link_to "View All Purchased Films", '/buys', class: 'btn btn-info', style: "color:white" %>
 </div>
 
@@ -83,6 +91,8 @@
 
 <div class="panel panel-default">
 <div class="panel-heading"><h2 class="text-center">Account Details</h2></div>
+
+ <!--It displays the current customer account information-->
 <div class="panel-body text-center">
   <% @users.each do |user| %>
       <h3><b>User Name: </b><%= user.name %></h3>
@@ -122,6 +132,8 @@
   </div>
   <div class="col-xs-4"></div>
 </div>
+
+ <!--It displaying each purchased game-->
 <%  @buyGames.each do |buyGame| %>
       <div class="row">
   <div class="col-xs-4">
@@ -136,6 +148,8 @@
   </div><hr/>
 <% end %>
 <div class="text-center">
+
+ <!--Button below allows users to view all purchase game-->
 <%= link_to "View All Purchased Games", buy_games_index_path, class: 'btn btn-info', style: "color:white" %>
 </div>
 </div>

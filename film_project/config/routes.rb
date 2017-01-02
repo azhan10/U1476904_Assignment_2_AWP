@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+#I managed to insert many routes to allow users to access to each content of the website
+
   get 'adminreview/show'
 
   get 'adminreview/new'
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
 
   get 'buy_games/show'
 
+  #Here I used the father and child inheritence
   resources :films do
   	resources :reviews
   end
@@ -59,5 +63,7 @@ Rails.application.routes.draw do
   get '/cool' => 'logins#index'  
 
   
+  #This is the default web page route
+  root :to => "films#index"
 
 end

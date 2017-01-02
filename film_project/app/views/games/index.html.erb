@@ -1,8 +1,11 @@
+  <!--The interface is used to dispay all game title and description to the interface-->
 <p id="notice"><%= notice %></p>
 
 <div class="row">
   <div class="col-xs-3">
+      <!--Button below is used to all administrators to log in-->
     <%= link_to 'Admin Login', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
+        <!--Button below is used to all customers to log in-->
     <%= link_to 'User Login', '/cool', class: 'btn btn-primary', style: 'color:white' %>
   </div>
   <div class="col-xs-6">  
@@ -10,6 +13,7 @@
   </div>
   <div class="col-xs-3">
   <br/>
+        <!--Button below is used to view all films-->
     <div class="text-right"><%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></div>
   </div>
 </div>
@@ -30,6 +34,7 @@
   </div>
 </div>
 <hr/>
+  <!--The code below display each game-->
 <% @games.each do |game| %>
       <div class="row">
   <div class="col-xs-3">
@@ -51,6 +56,7 @@
 
 
 <br>
+  <!--The game is paginated-->
 <div class="text-center">
 <%= will_paginate @games %>
 </div>

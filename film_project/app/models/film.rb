@@ -1,3 +1,6 @@
+#This handles the database interaction for the film database table.
+#Here I added validation to avoid blank inputs
+
 class Film < ApplicationRecord
 	has_many :reviews
 

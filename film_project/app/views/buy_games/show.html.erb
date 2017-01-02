@@ -1,13 +1,16 @@
+  <!--The interface is used to view all information of a selected game purchase-->
 <div class="row">
   <div class="col-xs-6">
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+    <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
+ <!--Here it shows all games information-->
 <h3>
   <strong>Film Title:</strong>
   <%= @buyGames.gametitle %>
@@ -34,4 +37,5 @@
   <%= @buyGames.created_at %>
 </h3>
 
+  <!--Button below is used to return a user to the buy games index interface-->
 <%= link_to 'Back', buy_games_path, class: 'btn btn-info', style: 'color:white' %>

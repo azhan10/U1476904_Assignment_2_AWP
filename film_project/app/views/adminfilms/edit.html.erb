@@ -1,9 +1,13 @@
+<!--This is used to edit information of a film that is stored in the database-->
+
 <div class="row">
   <div class="col-xs-6">
+    <!--Displays the administrator user name-->
     <h1>Welcome <%= admin_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+    <!--Administrators can log out-->
     <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
@@ -12,6 +16,7 @@
 
 <%= form_for @adminfilm, :url => { :action => :update, :type => @type, :this => @adminfilm } do |f| %>
 
+<!--Here is the code for displaying error messages-->
  <% if @adminfilm.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -26,6 +31,7 @@
     </div>
   <% end %>
 
+<!--Here are all the data the administrator can change-->
   <p>
     <%= f.label :filmtitle %><br>
     <%= f.text_area :filmtitle, class: 'form-control' %>
@@ -60,4 +66,5 @@
 <% end %>
 </div>
 
+<!--This directs users to the administrator account page-->
 <%= link_to 'Back', '/adminCool', class: 'btn btn-info', style: 'color:white' %>

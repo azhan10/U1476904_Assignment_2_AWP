@@ -1,14 +1,18 @@
+<!--The interface is used to allow users to purchase new games.-->
+
 <div class="row">
   <div class="col-xs-6">
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+   <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
+  <!--Form is used to add new data to the database-->
 <%= form_for @buyGame do |f| %>
- 
+   <!--Here is the code for displaying error messages-->
   <% if @buyGame.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -57,4 +61,5 @@
  
 <% end %>
 
+  <!--Button below is used to return a user to the buy games index interface-->
 <%= link_to "Cancel", buy_games_index_path, class: 'btn btn-info', :style => 'color:white' %>
