@@ -1,6 +1,22 @@
-Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<p> filmtitle:  <%= @rental.filmtitle %></p>
-      <p> film duration:  <%= @rental.filmduration %></p>
-      <p>rental status:  <%= @rental.rentalstatus %></p>
 
-      <%= link_to 'Back', rentals_path %>
+
+
+<!--This is used to view full information of an rental film-->
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+  <!--Administrators can log out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<!--The code below displays all information of a rental film-->
+<h3><strong> Film Title:</strong>  <%= @rental.filmtitle %></h3>
+      <h3><strong>Film Duration: </strong> <%= @rental.filmduration %></h3>
+      <h3><strong>Rental Status:</strong>  <%= @rental.rentalstatus %></h3>
+<h3><strong>Rental Time:</strong>  <%= @rental.created_at %></h3>
+
+<%= link_to 'Back', rentals_path, class: 'btn btn-primary', style: 'color:white' %>

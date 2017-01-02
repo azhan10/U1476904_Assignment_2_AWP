@@ -1,16 +1,20 @@
+<!--The interface provides information of all current games purchesed by a user-->
 <div class="row">
   <div class="col-xs-6">
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+   <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 </br>
+<!--Button below directs user to another interface where their can buy a new game-->
 <%= link_to 'Buy a new game', new_buy_game_path, class: 'btn btn-success', style: 'color:white' %>
 </br>
 </br>
+<!--Table below is display each row of purchased game-->
 <table class="table">
   <tr>
     <th style="font-size: 18px">Game Title</th>
@@ -27,4 +31,5 @@
   <% end %>
 </table>
 
+<!--Button below returns the user back to the pervious page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-primary', :style => 'color:white' %>

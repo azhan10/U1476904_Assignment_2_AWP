@@ -1,9 +1,12 @@
+#The class is used to log exisitng users to their account page
 class SessionsController < ApplicationController
-
+ #Users access this page to sign in
   def new
     @user = User.new
   end
 
+#The create function is used to check if information is right.
+    #If so, it will start a session and direct the user to the account page
   def create
     user = User.find_by_email(params[:email])
     # if the user exists AND the password entered is correct
@@ -12,7 +15,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/cool'
     else
+      #This is used for validation reasons
       @user = Olduser.new
+      #If the validation is false then display a error message in the pervious interface
       if @user.valid? == false 
         @user.errors.messages
         flash[:error] = "Login detials is incorrect"
@@ -21,8 +26,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  #This function is used to terminiate a session.
+  #The function is applied when the user logs out
   def destroy
+    #Make the session is null
     session[:user_id] = nil
+    #Direct the user to login page
     redirect_to '/login'
   end
 end

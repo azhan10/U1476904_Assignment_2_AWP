@@ -1,18 +1,16 @@
+<!--This interface is used to view all reviews of that particular film-->
+<hr/>
 <div class="row">
-	<div class="col-xs-4">
-		<strong>Commenter:</strong>
+	<div class="col-xs-2">
   <%= review.commenter %>
 	</div>
-	<div class="col-xs-4">
-		<strong>Rating:</strong>
+	<div class="col-xs-2">
   <%= review.rating %>
 	</div>
-	<div class="col-xs-4">
-		<strong>Created:</strong>
+	<div class="col-xs-3">
   <%= review.created_at %>
 	</div>
-	<div class="col-xs-12">
-		<strong>Comment:</strong>
+	<div class="col-xs-5">
   <%= review.body %>
 	</div>
-</div><hr/>
+</div>

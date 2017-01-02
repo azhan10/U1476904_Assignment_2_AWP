@@ -1,7 +1,9 @@
 <h1>Admin Sign In</h1>
 
+  <!--Administrators can log out-->
 <%= link_to 'Admin Login', '/adminlogin', :class => 'btn btn-info', style: 'color:white' %>
-
+ 
+  <!--Here is the code for displaying error messages-->
 <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@admin.errors.count, "error") %></h2>
@@ -15,7 +17,7 @@
 <% end %>
 
 <div class="jumbotron ">
-
+<!--Form is used to sign a new administrator user.-->
 <%= form_for :admin, url: '/admins' do |f| %>
 
   <h3>Name: <%= f.text_field :name, class:'form-control' %></h3>

@@ -1,11 +1,15 @@
+<!--The interface is used to add new review of the film-->
 
+<!--Code for publishing errors (if any)-->
  <% if @film.errors.any? %>
   <% @film.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
 <% end %>
 
+<!--Here is the form-->
 <%= form_for([@film, @film.reviews.build]) do |f| %>
+<!--Code for publishing errors (if any)-->
 <% if flash[:error] -%>
   <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>

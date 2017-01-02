@@ -1,5 +1,5 @@
 
-
+ <!--This code prints out all errors-->
   <% if @rental.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -13,6 +13,7 @@
   <% end %>
 
 <div class="jumbotron ">
+ <!--Form is used to rent a new film-->
 <%= form_for @rental do |f| %>
  
   <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>

@@ -1,18 +1,21 @@
+<!--The interface used here allows users to edit their account information such as their password-->
+
 <div class="row">
   <div class="col-xs-6">
+   <!--This displays the customers user name-->
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+   <!--Button is used to log customers out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
 <div class="jumbotron ">
 <%= form_for @user, :url => { :action => :update, :type => @type, :this => @user } do |f| %>
- 
  <%= f.error_messages %>
-
+ <!--This is used for displaying error messages-->
 <% if flash[:error] -%>
   <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>
@@ -65,5 +68,6 @@
 
 </div>
 
+<!--This button return users back to the customer account page (index)-->
 <%= link_to "Back", '/cool', class: 'btn btn-info', style: 'color:white' %>
 

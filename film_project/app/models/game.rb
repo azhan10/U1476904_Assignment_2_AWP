@@ -1,3 +1,6 @@
+#This handles the database interaction for the game database table.
+#Here I added validation to avoid blank inputs
+
 class Game < ApplicationRecord
 	validates_presence_of :gametitle,  presence: true
 	validates_presence_of :gameDescription,  presence: true

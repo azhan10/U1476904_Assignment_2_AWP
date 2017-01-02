@@ -1,16 +1,18 @@
 
 <div class="row">
   <div class="col-xs-6">
+    <!--Displays the administrator user name-->
     <h1>Welcome <%= admin_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
+      <!--Administrators can log out-->
     <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
 <div class="jumbotron ">
-
+    <!--Form is used to edit information-->
 <%= form_for @currentuser, :url => { :action => :update, :type => @type, :currentuser => @user } do |f| %>
 
 <%= f.error_messages %>
@@ -68,5 +70,6 @@
  
 <% end %>
 </div>
+<!--This directs users to the administrator account page-->
 <%= link_to "Back", '/adminCool', class: 'btn btn-info', style: 'color:white' %>
 
