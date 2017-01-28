@@ -17,8 +17,14 @@ class AdminsLoginController < ApplicationController
 		@rentals = Rental.all.limit(5).order('created_at desc')
 		@films = Film.all.paginate(page: params[:page], per_page: 20)
 		@games = Game.all.paginate(page: params[:page], per_page: 20)
-		@adminusers = User.all.limit(5).order('created_at desc')
+		@customerUsers = User.all.limit(5).order('created_at desc')
 		@currentuser = Admin.where(id: admin_user.id)
+
+		@filmsAmount = Film.count
+		@gamesAmount = Game.count
+		@customerUsersAmount = User.count
+		@rentalsAmount = Rental.count
+
 	end 
 
 	#The edit function is used to edit information of the acccount holder such as email

@@ -17,7 +17,7 @@
 
 <!--This is used to view current rental information-->
 <div class="panel panel-default">
-<div class="panel-heading text-center"><h2>Rental List</h2></div>
+<div class="panel-heading text-center"><h2>Rental List(<%= @rentalsAmount %>)</h2></div>
 <div class="panel-body">
 <table class="table">
   <tr>
@@ -92,7 +92,7 @@
 <!--This is used to view user's account information-->
 
 <div class="panel panel-default">
-<div class="panel-heading text-center"><h2>Current Users</h2></div>
+<div class="panel-heading text-center"><h2>Current Users(<%= @customerUsersAmount %>)</h2></div>
 
 <div class="panel-body">
 
@@ -105,11 +105,11 @@
   </tr>
   <!--Displaying each row of information in the database to the interface-->
 
-  <% @adminusers.each do |adminuser| %>
+  <% @customerUsers.each do |customerUser| %>
     <tr>
-      <td><%= adminuser.name %></td>
-      <td><%= adminuser.email %></td>
-      <td><%= adminuser.created_at %></td>
+      <td><%= customerUser.name %></td>
+      <td><%= customerUser.email %></td>
+      <td><%= customerUser.created_at %></td>
     </tr>
   <% end %>
 </table>
@@ -125,7 +125,7 @@
 
 <!--This is used to view current film information-->
 <div class="panel panel-default">
-<div class="panel-heading text-center"><h2>Films Information</h2></div>
+<div class="panel-heading text-center"><h2>Films Information(<%= @filmsAmount  %>)</h2></div>
 
 <div class="panel-body">
 
@@ -166,7 +166,7 @@
 
 <!--This is used to view current game information-->
 <div class="panel panel-default">
-<div class="panel-heading text-center"><h2>Games Information</h2></div>
+<div class="panel-heading text-center"><h2>Games Information(<%= @gamesAmount %>)</h2></div>
 
 <div class="panel-body">
 

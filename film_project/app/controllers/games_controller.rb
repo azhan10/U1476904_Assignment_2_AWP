@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 	  # The index function gets all game information and subdivide the information into pages (30 per page)
 	def index
 		@games = Game.all.paginate(page: params[:page], per_page: 30)
+		@gamesAmount = Game.count
 	end
 
 	#This function is not used.

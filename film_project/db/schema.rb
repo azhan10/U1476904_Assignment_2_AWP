@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220184858) do
+ActiveRecord::Schema.define(version: 20170128102418) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text     "name",            limit: 65535
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20161220184858) do
     t.text     "postcode",        limit: 65535, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "buy_films", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text     "filmtitle",   limit: 65535
+    t.text     "filmprice",   limit: 65535
+    t.text     "paymenttype", limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "buy_games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -97,6 +106,5 @@ ActiveRecord::Schema.define(version: 20161220184858) do
     t.datetime "updated_at",                    null: false
   end
 
-  add_foreign_key "game_reviews", "games"
   add_foreign_key "reviews", "films"
 end

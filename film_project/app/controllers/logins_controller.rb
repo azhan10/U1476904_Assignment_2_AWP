@@ -12,9 +12,14 @@ class LoginsController < ApplicationController
   	#The index function holds current information stored in the database.
   def index
 		@rentals = Rental.where(user_id: current_user.id).limit(5)
-		@buys = Buy.where(user_id: current_user.id).limit(5)
+		@buyFilms = BuyFilm.where(user_id: current_user.id).limit(5)
 		@users = User.where(id: current_user.id)
 		@buyGames = BuyGame.where(user_id: current_user.id).limit(5)
+
+		@RentedAmount = Rental.where(user_id: current_user.id).count
+		@purchaseAmount = BuyFilm.where(user_id: current_user.id).count
+		@gameAmount = BuyGame.where(user_id: current_user.id).count
+
 	end 
 
 	#This function allows users to delete their information

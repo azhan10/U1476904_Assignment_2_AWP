@@ -11,8 +11,12 @@
 </div>
 </br>
 <!--Button below directs user to another interface where their can buy a new film-->
-<%= link_to 'Buy a new film', new_buy_path, class: 'btn btn-primary', :style => 'color:white' %>
+<%= link_to 'Buy a new film', new_buy_film_path, class: 'btn btn-primary', :style => 'color:white' %>
 </br></br>
+
+<% if @filmAmount == 0 %>
+<h3 class="text-center">No Films</h3>
+<% else %>
  <!--Table below is display each row of purchased film-->
 <table class="table">
   <tr>
@@ -21,13 +25,16 @@
     <th colspan="3"></th>
   </tr>
 
-  <% @buys.each do |buy| %>
+  <% @buyFilms.each do |buyFilm| %>
     <tr>
-      <td><%= buy.filmtitle %></td>
-      <td><%= buy.filmprice %></td>
-      <td><%= link_to 'Show', buy_path(buy), class: 'btn btn-success', :style => 'color:white' %></td>
+      <td><%= buyFilm.filmtitle %></td>
+      <td><%= buyFilm.filmprice %></td>
+      <td><%= link_to 'Show', buy_film_path(buyFilm), class: 'btn btn-success', :style => 'color:white' %></td>
     </tr>
   <% end %>
 </table>
+<% end %>
+
+
 <!--Button below returns the user back to the pervious page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-info', :style => 'color:white' %>
