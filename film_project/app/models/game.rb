@@ -7,4 +7,8 @@ class Game < ApplicationRecord
 	validates_presence_of :gamerating,  presence: true
 	validates_presence_of :gamegenre,  presence: true
 	validates_presence_of :platform,  presence: true
+
+	def self.search(search)
+  	  where("gametitle LIKE ?", "%#{search}%") 
+	end
 end

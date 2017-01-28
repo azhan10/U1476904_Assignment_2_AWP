@@ -8,6 +8,13 @@ class FilmsController < ApplicationController
   def index
     @films = Film.all.paginate(page: params[:page], per_page: 30)
     @filmAmount = Film.count
+   
+    if params[:search]
+      @films = Film.search(params[:search]).order("created_at DESC").paginate(page: params[:page])
+    else
+      @films = Film.all.order("created_at DESC").paginate(page: params[:page])
+    end
+
   end
 
   #These action function is not used for film interface

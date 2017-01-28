@@ -7,6 +7,12 @@ class GamesController < ApplicationController
 	def index
 		@games = Game.all.paginate(page: params[:page], per_page: 30)
 		@gamesAmount = Game.count
+
+		if params[:search]
+      		@games = Game.search(params[:search]).order("created_at DESC").paginate(page: params[:page])
+    	else
+      		@games = Game.all.order("created_at DESC").paginate(page: params[:page])
+    	end
 	end
 
 	#This function is not used.

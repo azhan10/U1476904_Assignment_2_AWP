@@ -9,4 +9,8 @@ class Film < ApplicationRecord
 	validates_presence_of :filmdirector,  presence: true
 	validates_presence_of :filmrating,  presence: true
 	validates_presence_of :filmstarname,  presence: true
+
+	def self.search(search)
+  	  where("filmtitle LIKE ?", "%#{search}%") 
+	end
 end
