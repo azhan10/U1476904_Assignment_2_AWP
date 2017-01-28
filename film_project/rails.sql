@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2016 at 05:12 PM
+-- Generation Time: Jan 28, 2017 at 11:49 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
-(2, 'azhh', 'azhh', '$2a$10$JPLHq.kmKdAyjYbFhS3hK.1L/kCEd8PwaKGmx.GZpRfNUqFZScfCC', 'testing', 'joji', 'oij', 'oijo', 'sdf', '2016-11-22 19:22:06', '2016-12-21 12:44:17');
+(2, 'azhh', 'azhh', '$2a$10$8nYISTfwwYPnuYI9QUxRu.qY4kPMIpnb9ZG72yb3pVlv2U3KEyyCm', 'test', 'joji', 'oij', 'oijo', 'sdf', '2016-11-22 19:22:06', '2017-01-02 21:00:23');
 
 -- --------------------------------------------------------
 
@@ -70,10 +70,10 @@ INSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buys`
+-- Table structure for table `buy_films`
 --
 
-CREATE TABLE `buys` (
+CREATE TABLE `buy_films` (
   `id` int(11) NOT NULL,
   `filmtitle` text,
   `filmprice` text,
@@ -84,12 +84,14 @@ CREATE TABLE `buys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `buys`
+-- Dumping data for table `buy_films`
 --
 
-INSERT INTO `buys` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'The Descendants', '£5.00', 'Cash', 1, '2016-11-22 12:15:38', '2016-11-22 12:15:38'),
-(2, 'Star Wars: Episode VII - The Force Awakens', '£5.00', 'Credit/Debit Card', 1, '2016-12-20 14:49:58', '2016-12-20 14:49:58');
+INSERT INTO `buy_films` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:37:01', '2017-01-28 10:37:01'),
+(2, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:37:25', '2017-01-28 10:37:25'),
+(3, 'Star Wars: Episode III - Revenge of the Sith', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:38:41', '2017-01-28 10:38:41'),
+(4, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:49:03', '2017-01-28 10:49:03');
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,9 @@ INSERT INTO `buy_games` (`id`, `gametitle`, `gameprice`, `platform`, `paymenttyp
 (2, 'WWE 2K17', '£5.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-19 16:06:11', '2016-12-19 16:06:11'),
 (3, 'WWE 2K17', '£10.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-19 18:30:19', '2016-12-19 18:30:19'),
 (4, 'WWE 2K17', '£10.00', 'Xbox One', 'Credit/Debit Card', 1, '2016-12-20 14:20:58', '2016-12-20 14:20:58'),
-(5, 'WWE 2K17', '£10.00', 'PS4', 'Credit/Debit Card', 1, '2016-12-20 14:21:04', '2016-12-20 14:21:04');
+(5, 'WWE 2K17', '£10.00', 'PS4', 'Credit/Debit Card', 1, '2016-12-20 14:21:04', '2016-12-20 14:21:04'),
+(6, 'Metal Gear Solid V: The Phantom Pain', '£10.00', 'Xbox One', 'Credit/Debit Card', 1, '2017-01-02 20:56:39', '2017-01-02 20:56:39'),
+(7, 'WWE 2K17', '£10.00', 'Xbox One', 'Credit/Debit Card', 15, '2017-01-28 09:45:02', '2017-01-28 09:45:02');
 
 -- --------------------------------------------------------
 
@@ -402,11 +406,9 @@ CREATE TABLE `rentals` (
 --
 
 INSERT INTO `rentals` (`id`, `filmtitle`, `filmduration`, `rentalstatus`, `user_id`, `username`, `created_at`, `updated_at`) VALUES
-(1, 'Star Trek II: The Wrath of Khan', '1 day', 'Reserved', 1, NULL, '2016-12-20 12:44:46', '2016-12-20 13:23:02'),
-(2, 'Bruce Almighty', '2 days', 'Reserved', 1, NULL, '2016-12-20 13:09:07', '2016-12-20 13:23:07'),
-(3, 'Star Trek: The Motion Picture', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:09:56', '2016-12-20 13:09:56'),
-(4, 'Bedtime Stories', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:11:30', '2016-12-20 13:11:30'),
-(5, 'Bruce Almighty', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:20:30', '2016-12-20 13:20:30');
+(5, 'Bruce Almighty', '1 day', 'Reserved', 1, NULL, '2016-12-20 13:20:30', '2016-12-20 13:20:30'),
+(6, 'Star Wars: Episode VII - The Force Awakens', '1 day', 'Reserved', 1, NULL, '2017-01-02 20:53:46', '2017-01-02 20:53:46'),
+(8, 'Bruce Almighty', '1 day', 'Reserved', 15, NULL, '2017-01-28 09:45:56', '2017-01-28 09:45:56');
 
 -- --------------------------------------------------------
 
@@ -429,7 +431,10 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `commenter`, `body`, `rating`, `film_id`, `created_at`, `updated_at`) VALUES
-(1, 'cxvsdf', 'sdf', '1 Star', 1, '2016-12-20 18:26:09', '2016-12-20 18:26:09');
+(1, 'cxvsdf', 'sdf', '1 Star', 1, '2016-12-20 18:26:09', '2016-12-20 18:26:09'),
+(2, 'sdf', 'sdf', '1 Star', 1, '2017-01-02 13:19:53', '2017-01-02 13:19:53'),
+(3, 'oihohoh', 'oihohoih', '1 Star', 2, '2017-01-02 20:53:13', '2017-01-02 20:53:13'),
+(4, 'sdf', 'sdf', '1 Star', 1, '2017-01-28 08:58:49', '2017-01-28 08:58:49');
 
 -- --------------------------------------------------------
 
@@ -462,7 +467,8 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20161121222619'),
 ('20161123234153'),
 ('20161219153640'),
-('20161220184858');
+('20161220184858'),
+('20170128102418');
 
 -- --------------------------------------------------------
 
@@ -489,20 +495,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `salt`, `firstname`, `secondname`, `address`, `postcode`, `created_at`, `updated_at`) VALUES
-(1, 'azhan', 'azhan', '$2a$10$fDr3B9v/qx150UXrBocbn.jjrCd30zAZc6w37vNLFZ3Lz1OqzC1q2', '', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-11-21 08:51:22', '2016-12-21 12:14:12'),
-(2, 'azhan', 'azhan', '$2a$10$EXFlNh/phljPmjLQWq5RTeP8Q7O5L1rPVjMCVgcUBKwKG6cnKzr1i', '', '', '', '', '', '2016-11-21 08:52:05', '2016-11-21 08:52:05'),
-(3, 'azhan', 'azhan', '$2a$10$WVcVB5ez0sNeC/dKYhFoIuWXAkNDVVE5FyUEZt8TdzkN5OaD2zlfu', '', '', '', '', '', '2016-11-21 08:53:34', '2016-11-21 08:53:34'),
-(4, 'azhan', 'rashid.azhan@hotmail.co.uk', '$2a$10$4rD0qlBQByub8c6WeaDnuuMXiCevVGerwE8NKOYG1WAa0NRydHz1.', '', '', '', '', '', '2016-11-21 08:54:01', '2016-11-21 08:54:01'),
-(5, 'azhan', 'rashid.azhan@', '$2a$10$JiPOikKpKw.ko5d5RzRIu.jQfv4eExNp6gkDebHlunyUE87YQqA5e', 'test', '', '', '', '', '2016-11-22 13:50:56', '2016-11-22 13:56:00'),
-(6, 'test', 'jopj', '$2a$10$P9IlyLRm5QSnRi6luMJkCehszl4jkHt7Amk6xVIwFUK8xALqFVMKa', 'test', 'pjpjpo', 'jpojjpo', 'jpojj', 'poj', '2016-11-22 14:10:31', '2016-11-22 14:16:06'),
-(7, 'king', 'king', '$2a$10$Ku.co1UwTvJBoQLvLEfYCObOld1Q7sRLQO1uLshiz7vkBdm1WN.xS', 'test', 'azhan', 'rashid', 'oijhopijhjpoj', 'pojpojpoj', '2016-11-22 14:45:27', '2016-11-22 14:45:27'),
-(8, 'high', 'high', '$2a$10$3rZfi0igFfJ/Cu7112wOf.KyVusL0ILzs.4olii7PPfDLJeSU9wFq', 'high', 'kbghgoo', 'ihgiohh', 'ohohoih', 'oho', '2016-11-22 14:57:20', '2016-11-22 14:57:20'),
-(9, 'lok', 'lok', '$2a$10$FXRDunDqfL2oLtlVkXzlHe3fpnsNixkRxoqk07QOdBWNcLpngGQaS', 'lok', 'lok', 'lok', 'lok', 'lok', '2016-11-22 14:58:49', '2016-11-22 14:58:49'),
-(10, 'hugh', 'hugh', '$2a$10$3FHDHkokfMF37ldjc0mbUeiVwlQplG0j2a07Kdy2Ar1mxoHjwNEQS', 'fff', 'ljljjj', 'pojpjp', 'pojpoj', 'poj', '2016-11-22 18:48:39', '2016-11-22 18:48:39'),
-(11, 'uy', 'hhhh', '$2a$10$Mp2.atqf.ZJfOkdIp8FSz.LpBpu8.l0qg.sSioQs8g95mjtjAOe7e', 'nlnlkn', 'nlknlkn', 'lnklknlkn', 'lknlknlk', 'nln', '2016-11-22 18:52:47', '2016-11-22 18:52:47'),
-(12, 'azhan', 'azhan', '$2a$10$Mq3p.rmtU2Y9RWeL4Eg3A.z/qLI0GolNDpqfh.Y2AXSRmmYJc.sr.', 'test', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:13:32', '2016-12-21 12:13:32'),
-(13, 'azhan', 'azhan', '$2a$10$v7SjZ2NlQ4uKQkao8NsuwOYH/4/v.jxbgXB8q1HUzOGusjGA4VkpC', 'test', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:35:51', '2016-12-21 12:35:51'),
-(14, 'azhan', 'azhan', '$2a$10$5kjUgC.O4Vbqo/ZlcOsn6ekB3LvmOHv/hqka5l.sM2iKSi1EfER7G', 'testing', 'ijpoijpj', 'pjpjpjp', 'jpjp', 'jpjpjp', '2016-12-21 12:42:37', '2016-12-21 12:42:37'),
 (15, 'azhan', 'rashid.azhan6@hotmail.co.uk', '$2a$10$OeZN4pM/ixqxCHTOmGyn5OAWy6iq95Km3gYfUL3EuuMyFBnWWX5e.', 'test', 'oihopih', 'oihoih', 'hoih', 'hoih', '2016-12-21 14:22:31', '2016-12-21 14:22:31');
 
 --
@@ -522,9 +514,9 @@ ALTER TABLE `ar_internal_metadata`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indexes for table `buys`
+-- Indexes for table `buy_films`
 --
-ALTER TABLE `buys`
+ALTER TABLE `buy_films`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -578,17 +570,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `buys`
---
-ALTER TABLE `buys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `buy_films`
+--
+ALTER TABLE `buy_films`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `buy_games`
 --
 ALTER TABLE `buy_games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `films`
 --
@@ -603,12 +595,12 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --

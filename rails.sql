@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 11:44 AM
+-- Generation Time: Jan 28, 2017 at 11:49 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -70,32 +70,6 @@ INSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buys`
---
-
-CREATE TABLE `buys` (
-  `id` int(11) NOT NULL,
-  `filmtitle` text,
-  `filmprice` text,
-  `paymenttype` text,
-  `user_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `buys`
---
-
-INSERT INTO `buys` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'The Descendants', '£5.00', 'Cash', 1, '2016-11-22 12:15:38', '2016-11-22 12:15:38'),
-(2, 'Star Wars: Episode VII - The Force Awakens', '£5.00', 'Credit/Debit Card', 1, '2016-12-20 14:49:58', '2016-12-20 14:49:58'),
-(3, 'The Descendants', '£5.00', 'Cash', 1, '2017-01-02 20:55:47', '2017-01-02 20:55:47'),
-(4, 'Inception', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 09:36:29', '2017-01-28 09:36:29');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `buy_films`
 --
 
@@ -116,7 +90,8 @@ CREATE TABLE `buy_films` (
 INSERT INTO `buy_films` (`id`, `filmtitle`, `filmprice`, `paymenttype`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:37:01', '2017-01-28 10:37:01'),
 (2, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:37:25', '2017-01-28 10:37:25'),
-(3, 'Star Wars: Episode III - Revenge of the Sith', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:38:41', '2017-01-28 10:38:41');
+(3, 'Star Wars: Episode III - Revenge of the Sith', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:38:41', '2017-01-28 10:38:41'),
+(4, 'Bruce Almighty', '£5.00', 'Credit/Debit Card', 15, '2017-01-28 10:49:03', '2017-01-28 10:49:03');
 
 -- --------------------------------------------------------
 
@@ -539,12 +514,6 @@ ALTER TABLE `ar_internal_metadata`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indexes for table `buys`
---
-ALTER TABLE `buys`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `buy_films`
 --
 ALTER TABLE `buy_films`
@@ -603,15 +572,10 @@ ALTER TABLE `users`
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `buys`
---
-ALTER TABLE `buys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
 -- AUTO_INCREMENT for table `buy_films`
 --
 ALTER TABLE `buy_films`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `buy_games`
 --
