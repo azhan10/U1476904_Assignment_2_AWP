@@ -7,10 +7,24 @@ class FilmsController < ApplicationController
   # The index function gets all film information and subdivide the information into pages (13 per page)
   def index
     @films = Film.all.paginate(page: params[:page], per_page: 30)
+    @filmAmount = Film.count
   end
 
   #These action function is not used for film interface
   def show
+    @film = Film.find(params[:id])
+    @reviewAmount = Review.where(film_id: @film).count
+    @reviewAverage = Review.where(film_id: @film).average('rating')
+    @reviewExist = Review.where(film_id: @film).exists?
+
+    if @reviewExist == false
+      flash[:anyReviews] = 'No Reviews'
+      flash[:anyReviewAverage] = 'No Rating'
+    else
+       flash[:anyReviews] = ['Reviews Amount: ', @reviewAmount].join()
+       flash[:anyReviewAverage] = ['Reviews Rating: ', @reviewAverage].join()
+    end
+
   end
 
   def new

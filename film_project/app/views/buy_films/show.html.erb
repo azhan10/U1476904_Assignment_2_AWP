@@ -14,15 +14,15 @@
 
  <!--Here it shows all games information-->
 
-  <h3><strong>Film Title:</strong> <%= @buys.filmtitle %></h3>
+  <h3><strong>Film Title:</strong> <%= @buyFilms.filmtitle %></h3>
 
-  <h3><strong>Film Price:</strong> <%= @buys.filmprice %></h3>
-
-
-  <h3><strong>Payment Type:</strong> <%= @buys.paymenttype %></h3>
+  <h3><strong>Film Price:</strong> <%= @buyFilms.filmprice %></h3>
 
 
- <h3><strong>Date Purchased:</strong> <%= @buys.created_at %></h3>
+  <h3><strong>Payment Type:</strong> <%= @buyFilms.paymenttype %></h3>
+
+
+ <h3><strong>Date Purchased:</strong> <%= @buyFilms.created_at %></h3>
 
   <!--Button below is used to return a user to the buy films index interface-->
-<%= link_to 'Back', buys_path, class: 'btn btn-primary', :style => 'color:white' %>
+<%= link_to 'Back', buy_films_path, class: 'btn btn-primary', :style => 'color:white' %>

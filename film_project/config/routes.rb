@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
 
   resources :rentals
-  resources :buys
+  resources :buy_films
   resources :admin
   resources :adminrentals
   resources :adminfilms

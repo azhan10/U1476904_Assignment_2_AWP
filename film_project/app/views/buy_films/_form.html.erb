@@ -12,16 +12,16 @@
   </div>
 </div>
   <!--Form is used to add new data to the database-->
-<%= form_for @buy do |f| %>
+<%= form_for @buyFilms do |f| %>
     <!--Here is the code for displaying error messages-->
-  <% if @buy.errors.any? %>
+  <% if @buyFilms.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@buy.errors.count, "error") %> prohibited
+        <%= pluralize(@buyFilms.errors.count, "error") %> prohibited
         this buy from being saved:
       </h2>
       <ul>
-        <% @buy.errors.full_messages.each do |msg| %>
+        <% @buyFilms.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

@@ -6,6 +6,7 @@ class BuyGamesController < ApplicationController
   #This function gets all games what matches the account holder identify
   def index
   	@buyGames = BuyGame.where(user_id: current_user.id)
+    @buyAmount = BuyGame.where(user_id: current_user.id).count
   end
 
   #This function gets adn display all data in the database to the interface

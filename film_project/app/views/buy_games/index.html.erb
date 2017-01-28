@@ -14,6 +14,11 @@
 <%= link_to 'Buy a new game', new_buy_game_path, class: 'btn btn-success', style: 'color:white' %>
 </br>
 </br>
+
+<% if @buyAmount == 0 %>
+<hr />
+<h3 class="text-center">No Games</h3>
+<% else %>
 <!--Table below is display each row of purchased game-->
 <table class="table">
   <tr>
@@ -30,6 +35,7 @@
     </tr>
   <% end %>
 </table>
+<% end %>
 
 <!--Button below returns the user back to the pervious page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-primary', :style => 'color:white' %>

@@ -6,6 +6,7 @@ class RentalsController < ApplicationController
 	#This function just get all users rentals in the database
 	def index
 		@rentals = Rental.where(user_id: current_user.id)
+		@rentalsAmount = Rental.where(user_id: current_user.id).count
 	end
 
 	#This function is used to rent a new film.

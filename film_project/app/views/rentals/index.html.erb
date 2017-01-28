@@ -13,6 +13,11 @@
 
  <!--Button below is used to rent a new film-->
 <%= link_to 'Rent a new film', new_rental_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
+
+<% if @rentalsAmount == 0 %>
+<hr />
+<h3 class="text-center">No Rentals</h3>
+<% else %>
 <table class="table">
   <tr>
     <th>Film Title</th>
@@ -35,6 +40,9 @@
     </tr>
   <% end %>
 </table>
+<% end %>
+
+
 </br>
 
  <!--Button below is used to return users back to the index page-->
