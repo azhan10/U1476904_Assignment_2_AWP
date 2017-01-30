@@ -38,8 +38,6 @@ class LoginsController < ApplicationController
 	def update
 		#Get user id
 		@user = User.find(params[:id])
-		#Edituser is used for validation reasons
-		@user = Edituser.find(params[:id])
      	@user.valid?
      	#If validation comes true, then update the information and direct the user back to the account page
      	@user.errors.messages

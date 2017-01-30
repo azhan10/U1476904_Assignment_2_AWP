@@ -7,6 +7,7 @@ class AdmingamesController < ApplicationController
   #Examples includes the platform
   def show
 	 @admingames = Game.find(params[:id])
+   @reviewAmount = Gamereview.where(game_id: @admingames).count
   end
 
 #The code below is used for the new interface. 

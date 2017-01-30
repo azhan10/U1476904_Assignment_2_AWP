@@ -36,5 +36,14 @@
   </div>
 </div>
 
+<h2 class="text-center"><%= @admingames.gametitle %> Reviews(<%= @reviewAmount %>)</h2>
+
+<% if @reviewAmount != 0 %>
+<%= render @admingames.gamereviews %>
+<% else %>
+<h3 class="text-center">No Reviews</h3>
+<% end %>
+<br/>
+
 <!--This directs users to the administrator account page-->
 <%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>

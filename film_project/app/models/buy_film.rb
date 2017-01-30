@@ -1,7 +1,14 @@
-#This handles the database interaction for the film purchase database table.
-#Here I added validation to avoid blank inputs
-class BuyFilm < ApplicationRecord
-	validates_presence_of :filmtitle,  presence: true
+class BuyFilm
+  include Mongoid::Document
+
+   field :filmtitle, type: String
+  field :filmprice, type: String
+  field :paymenttype, type: String
+  field :user_id, type: String
+  field :created_at, :type => Date, default: ->{ Date.today }
+
+
+  validates_presence_of :filmtitle,  presence: true
 	validates_presence_of :filmprice,  presence: true
 	validates_presence_of :paymenttype,  presence: true
 end

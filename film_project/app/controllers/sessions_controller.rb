@@ -8,9 +8,13 @@ class SessionsController < ApplicationController
 #The create function is used to check if information is right.
     #If so, it will start a session and direct the user to the account page
   def create
-    user = User.find_by_email(params[:email])
+
+    userEmail = User.where(email: params[:email]).count
+    userPassword = User.where(password: params[:password]).count
+
     # if the user exists AND the password entered is correct
-    if user && user.authenticate(params[:password])
+    if userEmail != 0 && userPassword != 0
+      user = User.find_by email: params[:email]
       # save the user id inside the browser cookie. This is how we keep the user logged in when they navigate around our website.
       session[:user_id] = user.id
       redirect_to '/cool'
@@ -20,7 +24,7 @@ class SessionsController < ApplicationController
       #If the validation is false then display a error message in the pervious interface
       if @user.valid? == false 
         @user.errors.messages
-        flash[:error] = "Login detials is incorrect"
+        flash[:error] = "Login details is incorrect"
         redirect_to :back
       end
     end
