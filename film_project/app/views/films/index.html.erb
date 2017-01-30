@@ -20,8 +20,7 @@
 </div>
 
 
-
-
+ <!--Search form-->
 <%= form_tag(films_path, :method => "get", id: "search-form") do %>
 
 <div class="row">
@@ -77,13 +76,13 @@
   <h4 class="text-center" style="color: red;">There are no films containing the term "<%= params[:search] %>".</h4>
 <% end %>
 
+ <!--Used whenever a user searches a film-->
 
 <% if params[:search] != nil
      %>
     <div class="text-center"><%= link_to 'Return', films_path, class: 'btn btn-primary', style: 'color:white' %></div>
 <% end %>
 
-  <!--The film is paginated-->
 <div class="text-center">
 <%= will_paginate @films %>
 </div>

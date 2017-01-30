@@ -14,17 +14,15 @@
   </div>
 <% end %>
 
-<!--Button below is used to sign new customers up-->
 <%= link_to 'User Signup', '/signup', class: 'btn btn-primary', style: 'color:white' %>
-<!--Button below is used to view current games-->
 <%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
-<!--Button below is used to view current films-->
 <%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
 <!--Code for publishing errors (if any)-->
 <% if flash[:error] -%>
   <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>
 
+ <!--Login form-->
 <div class="jumbotron ">
 
 <%= form_tag '/login' do %>

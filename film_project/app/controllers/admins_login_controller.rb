@@ -34,21 +34,14 @@ class AdminsLoginController < ApplicationController
 
 	#This function allows administrators to delete their information
 	def destroy
-		#Get the current adminstrator id
 		@currentuser = Admin.find(params[:id])
-		#Delete their account
   		@currentuser.destroy
-  		#Direct the user to the logout page
 	  	redirect_to '/adminlogout'
 	end
 	
 	#This function allows administrators to update information
 	def update
-		#Get admin id
 		@currentuser = Admin.find(params[:id])
-		#Editadmin is used for validation reasons
-		#@currentuser = Editadmin.find(params[:id])
-		#Check if text are filled
 		@currentuser.valid? 
 		#If validation comes true, then update the information and direct the user back to the account page
 		if @currentuser.update(currentAdmin_params)
@@ -57,12 +50,10 @@ class AdminsLoginController < ApplicationController
 			#Otherwise, provide the errors to the same interface
 			@currentuser.errors.messages
 			flash[:error] = "Please enter all content"
-			#This is used to return back to the pervious interface
    			redirect_to :back
 		end
 	end
 
-	#These are private methods
 	private
 	#These methods are used to perform database interaction such as email
 		def currentAdmin_params

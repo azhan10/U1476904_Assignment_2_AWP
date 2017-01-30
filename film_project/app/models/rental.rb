@@ -14,7 +14,7 @@ class Rental
      validates :user_id,  presence: true
 end
 
-
+#Validations purposes
 @rental = Rental.new
 @rental.valid? 
 @rental.errors.messages

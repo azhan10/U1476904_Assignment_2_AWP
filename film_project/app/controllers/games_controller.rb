@@ -1,5 +1,4 @@
-#The class is used to get all game information in the database
-#The show function is used here to view more information of a film
+#The class is used to get all games information in the database
 
 class GamesController < ApplicationController
 	before_action :set_game, only: [:show]
@@ -10,6 +9,7 @@ class GamesController < ApplicationController
 
 		@games = Game.all.paginate(:page => params[:page], :per_page => 30)
 
+    #This is for the search game form
 		if params[:search]
      		@games = Game.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
     	else
@@ -17,6 +17,7 @@ class GamesController < ApplicationController
     	end	
 	end
 
+#The show function is used here to view more information of a film such as the game reviews
 	def show
 		@games = Game.find(params[:id])
 		@reviewAmount = Gamereview.where(game_id: @games).count
@@ -27,12 +28,11 @@ class GamesController < ApplicationController
       flash[:anyReviews] = 'No Reviews'
       flash[:anyReviewAverage] = 'No Rating'
     else
-       flash[:anyReviews] = ['Reviews Amount: ', @reviewAmount].join()
-       flash[:anyReviewAverage] = ['Reviews Rating: ', @reviewAverage].join()
+       flash[:anyReviews] = ['Total Reviews: ', @reviewAmount].join()
+       flash[:anyReviewAverage] = ['Average Score: ', @reviewAverage].join()
     end
 	end
 
-  #These are private methods
 	private
 	 #The set game function is used to get game information
 	 def set_game

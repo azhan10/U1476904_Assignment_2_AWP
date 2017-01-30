@@ -12,9 +12,7 @@ class RentalsController < ApplicationController
 	#This function is used to rent a new film.
 	#The function is used to get all current films and add new content to the rental database
 	def new
-		#Get all films
 		@films = Film.all
-		#Is used to add new rental films
 		@rental = Rental.new
 	end
 
@@ -22,33 +20,27 @@ class RentalsController < ApplicationController
 	def create
 		#Call the rental_params method
 		@rental = Rental.new(rental_params)
-    	#If the save was successful, then direct to the rental interface
+		#Save information (if successfull) or render new interface (if save fails)
     	if @rental.save
       		redirect_to '/rentals'
     	else
-    		#Otherwise, render the new interface
       		render 'new'
     	end
 	end
 
 	#This function is used to edit rental content using the identify
 	def edit
-		#Get rental id
  		@rental = Rental.find(params[:id])
- 		#Get all film information
 		@films = Film.all
 	end
 
 	#This is used to update exisiting data from the database
 	def update
-		#Get current rental id
 		@rental = Rental.find(params[:id])
-		#If the information is updated
+		#Update information (if successfull) or render edit interface (if update fails)
     if @rental.update(rental_params)
-    	#Direct the user to rental interface
         redirect_to '/rentals'
       else
-      	#Otherwise, render the edit interface
         render 'edit'
       end
 	end
@@ -60,15 +52,11 @@ class RentalsController < ApplicationController
 
   	#The destroy function is used to delete an existing rental information
 	def destroy
-		#Get rental id
   		@rental = Rental.find(params[:id])
-  		#Delete the row
   		@rental.destroy
-  		#Direct the user to rentals index interface
 	  	redirect_to '/rentals'
 	end
 
-	#These methods are set private
 	private
 	#This function is used to perform database interaction with all data content in the database
     #For example, updating current information

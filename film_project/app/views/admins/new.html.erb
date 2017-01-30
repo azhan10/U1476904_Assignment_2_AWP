@@ -16,19 +16,43 @@
   </div>
 <% end %>
 
+
+
 <div class="jumbotron ">
 <!--Form is used to sign a new administrator user.-->
 <%= form_for :admin, url: '/admins' do |f| %>
 
   <h3>Name: <%= f.text_field :name, class:'form-control' %></h3>
   <h3>Email: <%= f.text_field :email, class:'form-control' %> </h3>
-  <h3>Password: <%= f.password_field :password, class:'form-control' %></h3>
- <h3> Password Retype: <%= f.password_field :salt, class:'form-control' %> </h3>
+  <h3>Password: <%= f.password_field :password, class:'form-control', id: 'password' %></h3>
+ <h3> Password Retype: <%= f.password_field :salt, class:'form-control', id: 'salt' %> </h3>
+ <span id='message'></span>
  <h3> First Name: <%= f. text_field :firstname, class:'form-control' %></h3> 
  <h3> Second Name: <%= f.text_field :secondname, class:'form-control' %> </h3>
  <h3> Address: <%= f.text_area :address, class:'form-control' %> </h3>
  <h3> Post Code: <%= f.text_field :postcode, class:'form-control' %> </h3>
-  <%= f.submit "Submit", :class => 'btn btn-success' %>
+  <%= f.submit "Submit", :class => 'btn btn-success', id: 'submitButton' %>
 
 <% end %>
+
+<!--JavaScript/JQuery below is used to check if passwords match-->
+
+ <script type="text/javascript">
+   $('#password, #salt').on('keyup', function () {
+    if ($('#password').val() == $('#salt').val()) {
+      $("#submitButton").attr('disabled', false);
+      if($("#password").val().length <= 7 && $("#salt").val().length <= 7){
+          $('#message').html('Password is to short').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+      } else if($("#password").val().length >= 7 && $("#salt").val().length >= 7){
+          $('#message').html('').css('color', 'red');
+          $("#submitButton").attr('disabled', false);
+      }
+    }else {
+          $('#message').html('Password does not match').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+    }
+    });
+</script>
+
 </div>

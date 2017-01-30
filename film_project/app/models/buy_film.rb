@@ -13,7 +13,7 @@ class BuyFilm
 	validates_presence_of :paymenttype,  presence: true
 end
 
-
+#Validations purposes
 @buyFilms = BuyFilm.new
 @buyFilms.valid? 
 @buyFilms.errors.messages

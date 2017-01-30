@@ -1,4 +1,3 @@
-#The controller is for game information which is held by the administrator
 #The administrator has the privledge to perform the CRUD operations.
 
 class AdmingamesController < ApplicationController
@@ -24,27 +23,22 @@ class AdmingamesController < ApplicationController
 
 #This function is used to create a new row of game data to the database
   def create
-    #Get the game id
   	@admingame = Game.new(admingame_params)
-    #If save was completed
+    #Save information (if successfull) or render the new interface (if fails)
   	if @admingame.save
-      #Direct the user to the home page
    	 redirect_to '/adminCool'
  	else
-    #Otherwise, render the new interface
    	 render 'new'
   	end
   end
 
   #The update function performs the operation of updating information of a game in the database
   def update
-    #Get the game id
     @admingame = Game.find(params[:id])
     #If update is successful, then direct back admin home page
       if @admingame.update(admingame_params)
         redirect_to '/adminCool'
       else
-        #Otherwise, render the edit interface.
         render 'edit'
       end
   end
@@ -52,18 +46,13 @@ class AdmingamesController < ApplicationController
 #This function is used to delete a game information in the database using a game
   #identify
   def destroy
-    #Get the game id
     @admingame = Game.find(params[:id])
-    #Delete the game row in the database
       @admingame.destroy
-      #Direct administrator to the home page.
       redirect_to '/adminCool'
   end
 
-#These methods are set private
   private
   #This function is used to perform database interaction with all data content in the database
-  #For example, updating current information
    def admingame_params
     params.require(:game).permit(:gametitle, :gameDescription, :gamerating, :gamegenre, :platform)
    end

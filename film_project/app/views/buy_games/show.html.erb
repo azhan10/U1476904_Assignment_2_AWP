@@ -5,7 +5,6 @@
   </div>
   <div class="col-xs-6 text-right">
   </br>
-    <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
@@ -37,5 +36,4 @@
   <%= @buyGames.created_at %>
 </h3>
 
-  <!--Button below is used to return a user to the buy games index interface-->
 <%= link_to 'Back', buy_games_path, class: 'btn btn-info', style: 'color:white' %>

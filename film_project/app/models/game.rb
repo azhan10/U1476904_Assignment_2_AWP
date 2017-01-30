@@ -16,6 +16,7 @@ class Game
 	validates_presence_of :gamegenre,  presence: true
 	validates_presence_of :platform,  presence: true
 
+  #Search engine for searching game titles
 	def self.search(search)
     Game.where(gametitle: /#{search}/i)
   end

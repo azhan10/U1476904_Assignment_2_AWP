@@ -9,10 +9,9 @@ class AdminsController < ApplicationController
   #The create function is used to start a session and direct hte user to the account page
 	def create
     admin = Admin.new(admin_params)
-    #If admin is correct, then start the session
+    #If admin is correct, then start the session and direct the user to the account page
     if admin.save
       session[:admin_id] = admin.id
-      #And direct the user to account page
       redirect_to '/adminCool'
     else
       #Otherwise, return back error messages in the new interface
@@ -23,7 +22,6 @@ class AdminsController < ApplicationController
     end
   end
 
-#These are private methods
 private
   #The method is used to perform several database interaction.
   def admin_params

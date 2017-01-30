@@ -15,15 +15,11 @@
 
 
 <p style="display:none;">
-  <!--Button below is used to sign new administrators up-->
 <%= link_to 'Admin Signup', '/adminsignup', :class => 'btn btn-info', style: 'color:white' %>
 </p>
 
-  <!--Button below view all current films in the database-->
 <%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %>
-<!--Button below logs the current user out-->
 <%= link_to 'User Login', '/cool', class: 'btn btn-primary', style: 'color:white' %>
-<!--Button below view all current games in the database-->
 <%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
 </br></br>
 
@@ -34,7 +30,6 @@
 
 <div class="jumbotron ">
 
-<!--Here is a form-->
 <%= form_tag '/adminlogin' do %>
 
   <h3>Email: <%= text_field_tag :email, nil, class:'form-control' %></h3>
