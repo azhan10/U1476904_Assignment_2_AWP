@@ -1,0 +1,24 @@
+<!--This interface is used to view all reviews of that particular film-->
+<hr/>
+<% if gamereview.commenter != nil  %>
+<div class="row">
+	<div class="col-xs-2">
+  <%= gamereview.commenter %>
+	</div>
+	<div class="col-xs-2">
+      <%= gamereview.rating %> Star(s)
+	</div>
+	<div class="col-xs-3">
+  <%= gamereview.created_at %>
+	</div>
+	<div class="col-xs-5">
+  <%= gamereview.body %>
+	</div>
+</div>
+<% end %>
+
+<% if @reviewAmount == 0
+	 %>
+	 <!--Display information if no reviews exists -->
+<h4 class="text-center" style="color: green;">Be the first person to review</h4>
+<% end %>

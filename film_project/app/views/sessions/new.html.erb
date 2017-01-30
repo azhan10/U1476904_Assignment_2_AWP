@@ -1,11 +1,35 @@
-<h1>Login</h1>
+<!--This interface is used to logs existing users in to their account-->
 
-<%= link_to 'Signup', '/signup' %>
+<h1>User Login</h1>
+<!--Code for publishing errors (if any)-->
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+ 
+    <ul>
+    <%= @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= link_to 'User Signup', '/signup', class: 'btn btn-primary', style: 'color:white' %>
+<%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
+<%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
+<!--Code for publishing errors (if any)-->
+<% if flash[:error] -%>
+  <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
+<% end -%>
+
+ <!--Login form-->
+<div class="jumbotron ">
 
 <%= form_tag '/login' do %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+ <h3> Email: <%= text_field_tag :email, nil, class:'form-control' %></h3>
+ <h3> Password: <%= password_field_tag :password, nil, class:'form-control' %></h3>
+  <%= submit_tag "Submit", :class => 'btn btn-success' %>
 
 <% end %>
+</div>

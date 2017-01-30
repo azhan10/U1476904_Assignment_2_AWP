@@ -1,0 +1,67 @@
+<p id="notice"></p>
+
+<h1 class="text-center"><%= @games.gametitle %> Information</h1>
+</br>
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Game Title:</strong>
+  <%= @games.gametitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Game Description:</strong>
+  <%= @games.gameDescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Rating:</strong>
+  <%= @games.gamerating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Genre:</strong>
+  <%= @games.gamegenre %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Platform:</strong>
+  <%= @games.platform %>
+  </div>
+</div>
+</br></br>
+
+<!--This function is used to add new review of the current film-->
+<h2>Add a review:</h2>
+<%= render 'gamereviews/form' %>
+
+<h2 class="text-center"><%= @games.gametitle %> Reviews</h2>
+
+<div class="row">
+    <div class="col-xs-6">
+      <% if flash[:anyReviewAverage]  -%>
+        <h3 class="text-right"><%= flash[:anyReviewAverage] %></h3>
+      <% end -%>
+    </div>
+    <div class="col-xs-6">
+
+    <% if flash[:anyReviews]  -%>
+        <h3><%= flash[:anyReviews] %></h3>
+      <% end -%>
+    </div>
+</div></br>
+
+
+<div class="row">
+  <div class="col-xs-2">
+    <strong style="font-size: 18px;">Customer Name</strong>
+  </div>
+  <div class="col-xs-2">
+    <strong style="font-size: 18px;">Rating</strong>
+  </div>
+  <div class="col-xs-3">
+    <strong style="font-size: 18px;">Date Uploaded</strong>
+  </div>
+  <div class="col-xs-5">
+    <strong style="font-size: 18px;">Comment</strong>
+  </div>
+</div>
+<!--Displays all current games-->
+<%= render @games.gamereviews %>
+
+<%= link_to 'Back', games_path, class: 'btn btn-info', style: 'color:white' %>

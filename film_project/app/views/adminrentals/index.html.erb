@@ -1,0 +1,41 @@
+<!--This is used to add new information of a rental that is stored in the database-->
+<div class="row">
+  <div class="col-xs-6">
+    <!--Displays the administrator user name-->
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <!--Administrators can log out-->
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<!--This views rental information in a table-->
+<h2>Rental Table</h2>
+<table class="table">
+  <tr>
+    <th>Film Title</th>
+    <th>Film Duration</th>
+    <th>Rental Status</th>
+    <th colspan="3"></th>
+  </tr>
+  <!--Displaying each row of information in the database to the interface-->
+
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.filmtitle %></td>
+      <td><%= rental.filmduration %></td>
+      <td><%= rental.rentalstatus %></td>
+      <td><%= link_to 'Show', adminrental_path(rental), class: 'btn btn-info', :style => 'color:white' %></td>
+      <td><%= link_to 'Edit', edit_adminrental_path(rental), class: 'btn btn-info', :style => 'color:white' %></td>
+      <td><%= link_to 'Destroy', adminrental_path(rental),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style => 'color:white' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<!--This directs users to the administrator account page-->
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
+

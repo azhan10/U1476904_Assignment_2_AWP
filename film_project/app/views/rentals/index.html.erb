@@ -1,0 +1,49 @@
+ <!--The interface is used to view all rental films of a customer-->
+<div class="row">
+  <div class="col-xs-6">
+   <!--Displays the customer's user name-->
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+   <!--Button below is used to log cusomers out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+ <!--Button below is used to rent a new film-->
+<%= link_to 'Rent a new film', new_rental_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
+
+<% if @rentalsAmount == 0 %>
+<hr />
+<h3 class="text-center">No Rentals</h3>
+<% else %>
+<table class="table">
+  <tr>
+    <th>Film Title</th>
+    <th>Film Duration</th>
+    <th>Rental Status</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <!--This displays each film content of a film to the interface-->
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.filmtitle %></td>
+      <td><%= rental.filmduration %></td>
+      <td><%= rental.rentalstatus %></td>
+      <td><%= link_to 'Show', rental_path(rental), class: 'btn btn-primary', style: 'color:white' %></td>
+      <td><%= link_to 'Edit', edit_rental_path(rental), class: 'btn btn-info', style: 'color:white' %></td>
+      <td><%= link_to 'Delete Rent', rental_path(rental),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white' %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+
+</br>
+
+ <!--Button below is used to return users back to the index page-->
+<%= link_to "Home Page", '/cool', class: 'btn btn-info', style: 'color:white' %>

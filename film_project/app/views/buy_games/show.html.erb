@@ -1,0 +1,39 @@
+  <!--The interface is used to view all information of a selected game purchase-->
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+ <!--Here it shows all games information-->
+<h3>
+  <strong>Film Title:</strong>
+  <%= @buyGames.gametitle %>
+</h3>
+ 
+<h3>
+  <strong>Film Price:</strong>
+  <%= @buyGames.gameprice %>
+</h3>
+
+<h3>
+  <strong>Payment Type:</strong>
+  <%= @buyGames.paymenttype %>
+</h3>
+
+<h3>
+  <strong>Platform Type:</strong>
+  <%= @buyGames.platform %>
+</h3>
+ 
+
+ <h3>
+  <strong>Date Purchased:</strong>
+  <%= @buyGames.created_at %>
+</h3>
+
+<%= link_to 'Back', buy_games_path, class: 'btn btn-info', style: 'color:white' %>

@@ -1,36 +1,70 @@
+<!--The interface here displays all data content of an film such as the film star name-->
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Film Title:</strong>
-  <%= @film.filmtitle %>
-</p>
 
-<p>
-  <strong>Film Description:</strong>
-  <%= @film.filmdescription %>
-</p>
+<h1 class="text-center"><%= @film.filmtitle %> Information</h1>
+</br>
+<!--The table below displays all film information-->
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Film Title:</strong>
+    <%= @film.filmtitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Film Description:</strong>
+    <%= @film.filmdescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Director:</strong>
+    <%= @film.filmdirector %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Rating:</strong>
+    <%= @film.filmrating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Film Star Name:</strong>
+    <%= @film.filmstarname %>
+  </div>
+</div>
+</br></br>
 
-<p>
-  <strong>Film Director:</strong>
-  <%= @film.filmdirector %>
-</p>
-
-<p>
-  <strong>Film Rating:</strong>
-  <%= @film.filmrating %>
-</p>
-
-<p>
-  <strong>Film Star Name:</strong>
-  <%= @film.filmstarname %>
-</p>
-
-
-<h2>Reviews</h2>
-<%= render @film.reviews %>
-
-
+<!--This function is used to add new review of the current film-->
 <h2>Add a review:</h2>
-<%= render 'reviews/form' %>
+<%= render 'filmreviews/form' %>
 
-<%= link_to 'Back', films_path %>
+<h2 class="text-center"><%= @film.filmtitle %> Reviews</h2>
+
+<div class="row">
+    <div class="col-xs-6">
+      <% if flash[:anyReviewAverage]  -%>
+        <h3 class="text-right"><%= flash[:anyReviewAverage] %></h3>
+      <% end -%>
+    </div>
+    <div class="col-xs-6">
+
+    <% if flash[:anyReviews]  -%>
+        <h3><%= flash[:anyReviews] %></h3>
+      <% end -%>
+    </div>
+</div></br>
+
+
+<div class="row">
+  <div class="col-xs-2">
+    <strong style="font-size: 18px;">Customer Name</strong>
+  </div>
+  <div class="col-xs-2">
+    <strong style="font-size: 18px;">Rating</strong>
+  </div>
+  <div class="col-xs-3">
+    <strong style="font-size: 18px;">Date Uploaded</strong>
+  </div>
+  <div class="col-xs-5">
+    <strong style="font-size: 18px;">Comment</strong>
+  </div>
+</div>
+<%= render @film.filmreviews %>
+
+<%= link_to 'Back', films_path, class: 'btn btn-info', style: 'color:white' %>

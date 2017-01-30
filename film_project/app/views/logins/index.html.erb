@@ -1,0 +1,182 @@
+ <!--This interface is used to view all necessary information of a customer-->
+
+<div class="row">
+  <div class="col-xs-6">
+   <!--Displays customers user's name-->
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+   <!--Button is used to log users out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+<div class="panel-heading"><h2 class="text-center">Rented Films(<%= @RentedAmount %>)</h2></div>
+<div class="panel-body">
+
+
+<% if @RentedAmount == 0 %>
+
+<h3 class="text-center">No Rentals</h3>
+
+<% else %>
+
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Film Title</p>
+    
+  </div>
+  <div class="col-xs-7">
+    <p class="text-center" style="font-size: 22px">Film Description</p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center" style="font-size: 22px">Rental Status</p>
+  </div>
+</div>
+
+ <!--Its displaying each rental information-->
+<% @rentals.each do |rental| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <p class="text-center"><%= rental.filmtitle %></p>
+    
+  </div>
+  <div class="col-xs-7">
+    <p class="text-center"><%= rental.filmduration %></p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center"><%= rental.rentalstatus %></p>
+  </div>
+  </div><hr/>
+<% end %>
+
+<% end %>
+
+
+<div class="text-center">
+ <!--Button below allows users to view all rental films-->
+<%= link_to "View All Rent", '/rentals', class: 'btn btn-info', style: "color:white" %>
+</div>
+
+</div>
+</div>
+
+</br></br>
+
+<div class="panel panel-default">
+<div class="panel-heading"><h2 class="text-center">Purchased Films(<%= @purchaseAmount %>)</h2></div>
+<div class="panel-body">
+
+<% if @purchaseAmount == 0 %>
+
+<h3 class="text-center">No Purchase</h3>
+
+<% else %>
+<div class="row">
+  <div class="col-xs-6">
+    <p class="text-center" style="font-size: 22px">Film Title</p>
+  </div>
+  
+</div>
+
+
+ <!--It displaying each film purchase -->
+<%  @buyFilms.each do |buyFilm| %>
+      <div class="row">
+  <div class="col-xs-6">
+    <p class="text-center" style="font-size: 18px"> <%= buyFilm.filmtitle %></p>
+  </div>
+  <div class="col-xs-6 text-center">
+   <%= link_to 'Show', buy_film_path(buyFilm), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  </div><hr/>
+<% end %>
+<% end %>
+
+
+<div class="text-center">
+ <!--Button below allows users to view all purchase film-->
+<%= link_to "View All Purchased Films", '/buy_films', class: 'btn btn-info', style: "color:white" %>
+</div>
+
+
+</div>
+</div>
+
+</br></br>
+
+<div class="panel panel-default">
+<div class="panel-heading"><h2 class="text-center">Account Details</h2></div>
+
+ <!--It displays the current customer account information-->
+<div class="panel-body text-center">
+  <% @users.each do |user| %>
+      <h3><b>User Name: </b><%= user.name %></h3>
+      <h3><b>Email: </b><%= user.email %></h3>
+      <h3><b>First Name: </b><%= user.firstname %></h3>
+      <h3><b>Second Name: </b><%= user.secondname %></h3>
+      <h3><b>Address: </b><%= user.address %></h3>
+      <h3><b>Post Code: </b><%= user.postcode %></h3>
+      <h3><b>Account Created: </b><%= user.created_at %></h3>
+      <h3><%= link_to 'Edit', edit_login_path(user.id), class: 'btn btn-success', style: 'color:white;'  %> 
+      <%= link_to 'Destroy', login_path(user.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white'  %>
+                
+      </h3>
+  <% end %>
+
+</div>
+</div>
+
+<hr/>
+
+</br></br>
+
+<div class="panel panel-default">
+<div class="panel-heading"><h2 class="text-center">Purchased Games(<%= @gameAmount %>)</h2></div>
+<div class="panel-body">
+
+<% if @gameAmount == 0 %>
+
+<h3 class="text-center">No Purchase</h3>
+
+<% else %>
+<div class="row">
+  <div class="col-xs-4">
+    <p class="text-center" style="font-size: 22px">Game Title</p>
+    
+  </div>
+  <div class="col-xs-4">
+    <p class="text-center" style="font-size: 22px">Platform</p>
+  </div>
+  <div class="col-xs-4"></div>
+</div>
+
+ <!--It displaying each purchased game-->
+<%  @buyGames.each do |buyGame| %>
+      <div class="row">
+  <div class="col-xs-4">
+    <p class="text-center"><%= buyGame.gametitle %></p>
+  </div>
+  <div class="col-xs-4">
+  <p class="text-center"> <%= buyGame.platform %></p>
+  </div>
+  <div class="col-xs-4 text-center">
+    <%= link_to 'Show', buy_game_path(buyGame), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  </div><hr/>
+<% end %>
+<% end %>
+
+
+<div class="text-center">
+
+ <!--Button below allows users to view all purchase game-->
+<%= link_to "View All Purchased Games", buy_games_index_path, class: 'btn btn-info', style: "color:white" %>
+</div>
+</div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-6">
+    <!--Displays the administrator user name-->
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <!--Administrators can log out-->
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<div class="jumbotron ">
+
+<!--Here are all the data the administrator can change-->
+<%= form_for @rental, :url => { :action => :update, :type => @type, :this => @rental } do |f| %>
+  
+  <!--Here is the code for displaying error messages-->
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ental.errors.count, "error") %> prohibited
+        this rental from being saved:
+      </h2>
+      <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  
+ 
+<p><%= f.label :filmtitle, :value => "Film Name" %></p>
+  <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
+ 
+<p><%= f.label :filmduration, :value => "Film Duration" %></p>
+ <%= f.select(:filmduration, ['1 day', '2 days'], {}, { :class => 'form-control' }) %>
+  
+
+ 
+
+  <p>
+    <%= f.label :rentalstatus, :value => "Rental Status" %></p>
+    <%= f.select(:rentalstatus, ['Reserved', 'Rented Out', 'Retruned Late'], {}, { :class => 'form-control' }) %>
+  
+
+
+ </br>
+  <p>
+    <%= f.submit 'Update Details', :class => 'btn btn-primary' %>
+  </p>
+ 
+<% end %>
+
+</div>
+<!--This directs users to the administrator account page-->
+<%= link_to 'Cancel', '/adminrentals', class: 'btn btn-info', style: 'color:white' %>

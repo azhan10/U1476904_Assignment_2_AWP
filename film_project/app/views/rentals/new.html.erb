@@ -1,0 +1,13 @@
+ <!--The interface is used to add a new rental content to the database-->
+<div class="row">
+  <div class="col-xs-6">
+   <!--Displays the customer's user name-->
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+  <!--Button below is used to log cusomers out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+<%= render 'form' %>

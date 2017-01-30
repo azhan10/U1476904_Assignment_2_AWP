@@ -1,0 +1,68 @@
+<!--This is used to edit information of a game that is stored in the database-->
+<div class="row">
+  <div class="col-xs-6">
+    <!--Displays the administrator user name-->
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <!--Administrators can log out-->
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<div class="jumbotron ">
+
+<!--Here are all the data the administrator can change-->
+<%= form_for @admingame, :url => { :action => :update, :type => @type, :this => @admingame } do |f| %>
+
+ <% if @admingame.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@admingame.errors.count, "error") %> prohibited
+        this film from being saved:
+      </h2>
+      <ul>
+        <% @admingame.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :gametitle %><br>
+    <%= f.text_area :gametitle, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :gameDescription %><br>
+    <%= f.text_area :gameDescription, class: 'form-control' %>
+  </p>
+
+
+  <p>
+    <%= f.label :gamerating %><br>
+    <%= f.text_area :gamerating, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :gamegenre %><br>
+    <%= f.text_area :gamegenre, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :platform %><br>
+    <%= f.text_area :platform, class: 'form-control' %>
+  </p>
+
+  
+  <p>
+    <%= f.submit 'Update Game', class: 'btn btn-primary' %>
+  </p>
+ 
+<% end %>
+
+</div>
+<!--This directs users to the administrator account page-->
+<%= link_to 'Back', '/adminCool', class: 'btn btn-info', style: 'color:white' %>

@@ -1,0 +1,96 @@
+<!--The interface used here allows users to edit their account information such as their password-->
+
+<div class="row">
+  <div class="col-xs-6">
+   <!--This displays the customers user name-->
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+   <!--Button is used to log customers out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<div class="jumbotron ">
+<%= form_for @user, :url => { :action => :update, :type => @type, :this => @user } do |f| %>
+ <%= f.error_messages %>
+ <!--This is used for displaying error messages-->
+<% if flash[:error] -%>
+  <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
+<% end -%>
+
+
+
+  
+    <p style="display: none;">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control', readonly: true %>
+  </p>
+
+    <p style="display: none;">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: 'form-control', readonly: true %>
+  </p>
+
+  <p >
+    <%= f.label :password, :value => 'New Password' %><br>
+    <%= f.password_field :password, :value => '', :placeholder => 'New password', class: 'form-control', id: 'password' %>
+  </p>
+
+  <p>
+    <%= f.label :salt, :value => 'Retype New Password' %><br>
+    <%= f.password_field :salt, :value => '', :placeholder => 'Retype new password', class: 'form-control', id: 'salt' %>
+  </p><span id='message'></span>
+
+  <p style="display: none;">
+    <%= f.label :firstname, :value => 'First Name' %><br>
+    <%= f.text_field :firstname, :placeholder => 'First name', class: 'form-control', readonly: true  %>
+  </p>
+
+  <p style="display: none;">
+    <%= f.label :secondname, :value => 'Second Name' %><br>
+    <%= f.text_field :secondname, :placeholder => 'Second name', class: 'form-control', readonly: true  %>
+  </p>
+
+  <p>
+    <%= f.label :address, :value => 'Address' %><br>
+    <%= f.text_field :address, :placeholder => 'Address', class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :postcode, :value => 'Post Code' %><br>
+    <%= f.text_field :postcode, :placeholder => 'Post Code', class: 'form-control' %>
+  </p>
+ 
+  <p>
+    <%= f.submit 'Update Account', class: 'btn btn-primary', style: 'color:white', id: 'submitButton' %>
+  </p>
+ 
+<% end %>
+
+<!--JavaScript/JQuery below is used to check if passwords match-->
+
+ <script type="text/javascript">
+   $('#password, #salt').on('keyup', function () {
+    if ($('#password').val() == $('#salt').val()) {
+      $("#submitButton").attr('disabled', false);
+      if($("#password").val().length <= 7 && $("#salt").val().length <= 7){
+          $('#message').html('Password is to short').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+      } else if($("#password").val().length >= 7 && $("#salt").val().length >= 7){
+          $('#message').html('').css('color', 'red');
+          $("#submitButton").attr('disabled', false);
+      }
+    }else {
+          $('#message').html('Password does not match').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+    }
+    });
+</script>
+
+</div>
+
+<!--This button return users back to the customer account page (index)-->
+<%= link_to "Back", '/cool', class: 'btn btn-info', style: 'color:white' %>
+

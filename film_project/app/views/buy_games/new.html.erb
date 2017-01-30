@@ -1,0 +1,64 @@
+<!--The interface is used to allow users to purchase new games.-->
+
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Welcome <%= current_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+   <!--Button below is used to log a user out-->
+    <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+  <!--Form is used to add new data to the database-->
+<%= form_for @buyGame do |f| %>
+   <!--Here is the code for displaying error messages-->
+  <% if @buyGame.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@buyGame.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @buyGame.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+  <%= f.label :gametitle, :value => 'Select your game?' %><br>
+    
+
+    <%= f.collection_select :gametitle, @gamePurchase, :gametitle, :gametitle, {:include_blank => false}, {class: "form-control"} %>
+
+  </p>
+ 
+  <p>
+    <%= f.label :gameprice, :value => 'Game Price' %><br>
+    <%= f.text_field :gameprice, :value => '£10.00', :readonly => true, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :platform, :value => 'Select your game format?'  %><br>
+    <%= f.select(:platform, ['Xbox One', 'PS4'], {}, { :class => 'form-control' }) %>
+  </p>
+
+  <p>
+    <%= f.label :paymenttype, :value => 'Select your payment type?'  %><br>
+    <%= f.select(:paymenttype, ['Credit/Debit Card', 'Cash', 'Cheque'], {}, { :class => 'form-control' }) %>
+  </p>
+
+
+  <p style="display:none;">
+    <%= f.label :user_id %><br>
+    <%= f.text_area :user_id, :value => current_user.id %>
+  </p>
+ 
+  <p>
+    <%= f.submit :value => 'Buy Game', :class => 'btn btn-primary'%>
+  </p>
+ 
+<% end %>
+
+<%= link_to "Cancel", buy_games_index_path, class: 'btn btn-info', :style => 'color:white' %>

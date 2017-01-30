@@ -1,0 +1,91 @@
+  <!--The interface is used to dispay all game title and description to the interface-->
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= link_to 'Admin Login', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
+    <%= link_to 'User Login', '/cool', class: 'btn btn-primary', style: 'color:white' %>
+  </div>
+  <div class="col-xs-6">  
+  <h1 class="text-center">Games</h1>
+  </div>
+  <div class="col-xs-3">
+  <br/>
+    <div class="text-right"><%= link_to 'View Films', films_path, class: 'btn btn-primary', style: 'color:white' %></div>
+  </div>
+</div>
+
+ <!--Search form-->
+
+<%= form_tag(games_path, :method => "get", id: "search-form") do %>
+<div class="row text-center">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6">
+    <%= text_field_tag :search, params[:search], placeholder: "Search Game(s)", class: 'form-control' %>
+  </div>
+  <div class="col-xs-3 text-left">
+    <%= submit_tag "Search", class: 'btn btn-success' %>
+  </div>
+</div>
+<% end %>
+
+<% if params[:search] == ""
+     %>
+    <h3 class="text-center" style="color: red;">Please fill in a game title</h3>
+<% end %>
+
+<h3 class="text-center">Total Games: <%= @gamesAmount %></h3></br>
+
+<div class="row">
+  <div class="col-xs-3">
+    <p class="text-center" style="font-size: 22px">Game Title</p>
+    
+  </div>
+  <div class="col-xs-5">
+    <p class="text-center" style="font-size: 22px">Game Description</p>
+  </div>
+  <div class="col-xs-2">
+    <p class="text-center" style="font-size: 22px">Platform</p>
+  </div>
+  <div class="col-xs-2">
+    
+  </div>
+</div>
+<hr/>
+
+
+
+  <!--The code below display each game-->
+<% @games.each do |game| %>
+      <div class="row">
+  <div class="col-xs-3">
+    <%= game.gametitle %>
+    
+  </div>
+  <div class="col-xs-5">
+    <%= game.gameDescription %>
+  </div>
+  <div class="col-xs-2">
+    <%= game.platform %>
+  </div>
+  <div class="col-xs-2">
+    <%= link_to 'Show', game_path(game), class: 'btn btn-success', style: 'color:white' %>
+  </div>
+  </div><hr/>
+<% end %>
+
+<% if @games.blank? %>
+  <h4 class="text-center" style="color: red;">There are no games containing the term "<%= params[:search] %>".</h4>
+<% end %>
+
+ <!--Used whenever a user searches a game-->
+<% if params[:search] != nil && params[:search] != ""
+     %>
+    <div class="text-center"><%= link_to 'Return', games_path, class: 'btn btn-primary', style: 'color:white' %></div>
+<% end %>
+
+<br>
+
+<div class="text-center">
+<%= will_paginate @games %>
+</div>

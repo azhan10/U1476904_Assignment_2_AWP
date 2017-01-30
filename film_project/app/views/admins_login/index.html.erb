@@ -1,0 +1,203 @@
+<!--This is used to view all administrator information
+    This includes rental films, account holder details, films and games information. 
+
+    All information performs the CRUD operations
+-->
+<div class="row">
+  <div class="col-xs-6">
+    <!--Displays the administrator user name-->
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+
+<!--This is used to view current rental information-->
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Rental List(<%= @rentalsAmount %>)</h2></div>
+<div class="panel-body">
+<table class="table">
+  <tr>
+    <th>Film Title</th>
+    <th>Film Duration</th>
+    <th>Rental Status</th>
+    <th colspan="3"></th>
+  </tr>
+ <!--Displaying each row of information in the database to the interface-->
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.filmtitle %></td>
+      <td><%= rental.filmduration %></td>
+      <td><%= rental.rentalstatus %></td>
+    </tr>
+  <% end %>
+
+
+</table>
+
+<div class="text-center">
+<%= link_to "View All Rental", '/adminrentals', class: 'btn btn-info', style: 'color:white' %>
+</div>
+
+</div>
+</div>
+
+<hr/>
+
+<!--This is used to view current account information-->
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Account Details</h2></div>
+
+<div class="panel-body">
+<table class="table">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Second Name</th>
+    <th>Address</th>
+    <th>Post Code</th>
+    <th>Account Created</th>
+    <th colspan="3"></th>
+  </tr>
+  <!--Displaying each row of information in the database to the interface-->
+
+  <% @currentuser.each do |holder| %>
+    <tr>
+      <td><%= holder.name %></td>
+      <td><%= holder.email %></td>
+      <td><%= holder.firstname %></td>
+      <td><%= holder.secondname %></td>
+      <td><%= holder.address %></td>
+      <td><%= holder.postcode %></td>
+      <td><%= holder.created_at %></td>
+      <td><%= link_to 'Edit', edit_admins_login_path(holder), class: 'btn btn-info', style: 'color:white'  %></td>
+      <td><%= link_to 'Destroy', admins_login_path(holder.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white' %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>
+</div>
+
+
+<hr/>
+
+<!--This is used to view user's account information-->
+
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Current Users(<%= @customerUsersAmount %>)</h2></div>
+
+<div class="panel-body">
+
+<table class="table">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Account Created</th>
+    <th colspan="3"></th>
+  </tr>
+  <!--Displaying each row of information in the database to the interface-->
+
+  <% @customerUsers.each do |customerUser| %>
+    <tr>
+      <td><%= customerUser.name %></td>
+      <td><%= customerUser.email %></td>
+      <td><%= customerUser.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="text-center">
+<%= link_to "View All Users", '/adminuser', class: 'btn btn-info', style: 'color:white' %>
+</div>
+
+</div>
+</div>
+
+<hr/>
+
+
+<!--This is used to view current film information-->
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Films Information(<%= @filmsAmount  %>)</h2></div>
+
+<div class="panel-body">
+
+
+<%= link_to 'Add new film', new_adminfilm_path, class: 'btn btn-success', style: 'color:white' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Film Title</th>
+      <th>Film Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ <!--Displaying each row of information in the database to the interface-->
+
+  <tbody>
+    <% @films.each do |film| %>
+      <tr>
+        <td><%= film.filmtitle %></td>
+        <td><%= film.filmdescription %></td>
+        <td><%= link_to 'Show', adminfilm_path(film.id), class: 'btn btn-info', style: 'color:white'  %></td>
+        <td><%= link_to 'Edit', edit_adminfilm_path(film.id), class: 'btn btn-primary', style: 'color:white'  %></td>
+        <td><%= link_to 'Destroy', adminfilm_path(film.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+<%= will_paginate @films %>
+</div>
+
+</div>
+</div>
+
+<hr/>
+
+<!--This is used to view current game information-->
+<div class="panel panel-default">
+<div class="panel-heading text-center"><h2>Games Information(<%= @gamesAmount %>)</h2></div>
+
+<div class="panel-body">
+
+<%= link_to 'Add new game', new_admingame_path, class: 'btn btn-success', style: 'color:white' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Game Title</th>
+      <th>Game Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ <!--Displaying each row of information in the database to the interface-->
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.gametitle %></td>
+        <td><%= game.gameDescription %></td>
+        <td><%= link_to 'Show', admingame_path(game.id), class: 'btn btn-info', style: 'color:white'  %></td>
+        <td><%= link_to 'Edit', edit_admingame_path(game.id), class: 'btn btn-primary', style: 'color:white'  %></td>
+        <td><%= link_to 'Destroy', admingame_path(game.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+<%= will_paginate @games %>
+</div>
+
+</div>
+</div>

@@ -1,51 +1,47 @@
+#The class is used to get all films information in the database
+
 class FilmsController < ApplicationController
   before_action :set_film, only: [:show]
 
-  # GET /films
-  # GET /films.json
+  # The index function gets all film information and subdivide the information into pages (13 per page)
   def index
-    @films = Film.all
+    @films = Film.all.paginate(page: params[:page], per_page: 30)
+    @filmAmount = Film.count
+
+    #This is for the search game form
+    if params[:search]
+     @films = Film.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+    else
+     @films = Film.all.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+    end
   end
 
-  # GET /films/1
-  # GET /films/1.json
+  #These action function is used for film interface.
+  #Getting several correct information for the show interface such as the amount of current reviews of a film
   def show
-  end
+    @film = Film.find(params[:id])
+    @reviewAmount = Filmreview.where(film_id: @film).count
+    @reviewAverage = Filmreview.where(film_id: @film).avg('rating')
+    @reviewExist = Filmreview.where(film_id: @film).exists?
 
-  # GET /films/new
-  def new
-    
-  end
+    #Condition is executed depending on the current review information of a film
+    if @reviewExist == false
+      flash[:anyReviews] = 'No Reviews'
+      flash[:anyReviewAverage] = 'No Rating'
+    else
+       flash[:anyReviews] = ['Total Reviews: ', @reviewAmount].join()
+       flash[:anyReviewAverage] = ['Average Score: ', @reviewAverage].join()
+    end
 
-  # GET /films/1/edit
-  def edit
-  end
-
-  # POST /films
-  # POST /films.json
-  def create
-   
-  end
-
-  # PATCH/PUT /films/1
-  # PATCH/PUT /films/1.json
-  def update
-    
-  end
-
-  # DELETE /films/1
-  # DELETE /films/1.json
-  def destroy
-    
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    #The set film function is used to get film information
     def set_film
       @film = Film.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    #The function is used for database interactions such as retrieving
     def film_params
       params.require(:film).permit(:filmtitle, :filmdescription)
     end

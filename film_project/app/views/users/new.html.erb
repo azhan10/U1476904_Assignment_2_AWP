@@ -1,13 +1,61 @@
-<h1>Signup!</h1>
+<!--The interface is used to sign new customers up-->
 
-<%= link_to 'Login', '/login' %>
+<h1>User Signup</h1>
+<!--Button is used to direct users to the login page-->
+<%= link_to 'User Login', '/login', class:'btn btn-info', style: 'color:white' %>
+<br/>
+<br/>
+<!--Code for publishing errors (if any)-->
+ <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+ 
+    <ul>
+    <%= @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
+
+
+<!--The form is used to register a new customer-->
+<div class="jumbotron ">
 <%= form_for :user, url: '/users' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+  <p>User Name: <%= f.text_field :name, class:'form-control' %></p>
+  <p>Email: <%= f.text_field :email, class:'form-control' %> </p>
+ <p> Password: <%= f.password_field :password, class:'form-control', id: 'password' %> </p>
+ <p> Password Retype: <%= f.password_field :salt, class:'form-control', id: 'salt' %> </p>
+   <span id='message'></span>
+  <p>First Name: <%= f. text_field :firstname, class:'form-control' %> </p>
+ <p> Second Name: <%= f.text_field :secondname, class:'form-control' %> </p>
+ <p> Address: <%= f.text_area :address, class:'form-control' %> </p>
+ <p> Post Code: <%= f.text_field :postcode, class:'form-control' %> </p>
+  <%= f.submit "Register", class:'btn btn-primary', id: 'submitButton' %>
 
 <% end %>
+
+
+<!--JavaScript/JQuery below is used to check if passwords match-->
+
+ <script type="text/javascript">
+   $('#password, #salt').on('keyup', function () {
+    if ($('#password').val() == $('#salt').val()) {
+      $("#submitButton").attr('disabled', false);
+      if($("#password").val().length <= 7 && $("#salt").val().length <= 7){
+          $('#message').html('Password is to short').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+      } else if($("#password").val().length >= 7 && $("#salt").val().length >= 7){
+          $('#message').html('').css('color', 'red');
+          $("#submitButton").attr('disabled', false);
+      }
+    }else {
+          $('#message').html('Password does not match').css('color', 'red');
+          $("#submitButton").attr('disabled', true);
+    }
+    });
+</script>
+
+</div>

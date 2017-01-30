@@ -1,0 +1,1 @@
+json.partial! "games/film", game: @game

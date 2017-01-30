@@ -1,0 +1,49 @@
+<!--This is used to view full information of an film-->
+<div class="row">
+  <div class="col-xs-6">
+    <!--Displays the administrator user name-->
+    <h1>Welcome <%= admin_user.name %></h1>
+  </div>
+  <div class="col-xs-6 text-right">
+  </br>
+    <!--Administrators can log out-->
+    <%= link_to "User Logout", '/adminlogout', class: 'btn btn-danger', :style => 'color:white' %>
+  </div>
+</div>
+
+<h2><%= @admingames.gametitle %> Information</h2>
+
+<div class="row">
+  <div class="col-xs-3">
+    <strong>Game Title:</strong>
+    <%= @admingames.gametitle %>
+  </div>
+  <div class="col-xs-9">
+    <strong>Game Description:</strong>
+    <%= @admingames.gameDescription %></br></br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Rating:</strong>
+    <%= @admingames.gamerating %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Genre:</strong>
+    <%= @admingames.gamegenre %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Game Platform:</strong>
+    <%= @admingames.platform %>
+  </div>
+</div>
+
+<h2 class="text-center"><%= @admingames.gametitle %> Reviews(<%= @reviewAmount %>)</h2>
+
+<% if @reviewAmount != 0 %>
+<%= render @admingames.gamereviews %>
+<% else %>
+<h3 class="text-center">No Reviews</h3>
+<% end %>
+<br/>
+
+<!--This directs users to the administrator account page-->
+<%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
