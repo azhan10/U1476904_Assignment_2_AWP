@@ -5,12 +5,10 @@
   </div>
   <div class="col-xs-6 text-right">
   </br>
-   <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 </br>
-<!--Button below directs user to another interface where their can buy a new game-->
 <%= link_to 'Buy a new game', new_buy_game_path, class: 'btn btn-success', style: 'color:white' %>
 </br>
 </br>
@@ -37,5 +35,4 @@
 </table>
 <% end %>
 
-<!--Button below returns the user back to the pervious page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-primary', :style => 'color:white' %>

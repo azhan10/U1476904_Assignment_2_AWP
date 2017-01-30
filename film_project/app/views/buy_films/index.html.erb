@@ -5,12 +5,10 @@
   </div>
   <div class="col-xs-6 text-right">
   </br>
-   <!--Button below is used to log a user out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 </br>
-<!--Button below directs user to another interface where their can buy a new film-->
 <%= link_to 'Buy a new film', new_buy_film_path, class: 'btn btn-primary', :style => 'color:white' %>
 </br></br>
 
@@ -18,7 +16,6 @@
 <hr/>
 <h3 class="text-center">No Films</h3>
 <% else %>
- <!--Table below is display each row of purchased film-->
 <table class="table">
   <tr>
     <th>Film Title</th>
@@ -37,5 +34,4 @@
 <% end %>
 
 
-<!--Button below returns the user back to the pervious page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-info', :style => 'color:white' %>

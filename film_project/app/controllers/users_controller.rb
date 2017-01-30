@@ -1,4 +1,4 @@
-#Thsi class is used to view current user accounts stored in the database
+#This class is used to view current user information in the database
 
 class UsersController < ApplicationController
   #User access this page to sign up
@@ -9,20 +9,17 @@ class UsersController < ApplicationController
   #The create function is used to start a session and direct hte user to the account page
    def create
     @user = User.new(user_params)
-    #If admin is correct, then start the session
+    #Save information (if successfull) or render new interface (if save fails)
     if @user.save
       session[:user_id] = @user.id
-       #And direct the user to account page
       redirect_to '/cool'
     else
-      #Otherwise, return back error messages in the new interface
       @user.valid? 
       @user.errors.messages
       render 'new'
     end
   end
 
-#These are private methods
 private
   #The method is used to perform several database interaction.
   def user_params

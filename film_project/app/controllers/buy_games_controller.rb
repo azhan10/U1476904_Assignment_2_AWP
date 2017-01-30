@@ -1,5 +1,4 @@
-#The class is used to allow users to but games
-#The class uses most of the action functions
+#The class is used to allow users to buy games
 
 class BuyGamesController < ApplicationController
 
@@ -11,32 +10,26 @@ class BuyGamesController < ApplicationController
 
   #This function gets adn display all data in the database to the interface
   def show
-    #Get the games identify
   	@buyGames = BuyGame.find(params[:id])
   end
 
   #This function is used to buy new games
   def new
   	@buyGame = BuyGame.new
-    #This is used to get all current games stored in the datavase
     @gamePurchase = Game.all
   end
 
   #The create function is used to buy a new game and add the data to the database
   def create
-    #Trigger this method to get all data
   	@buyGame = BuyGame.new(buy_games_params)
-    #If the information was saved
+    #Save information (if successfull) or abort (if fails)
       if @buyGame.save
-        #Direct the user back to the index interface
        redirect_to buy_games_index_path
       else
-        #Otherwise, render the new interface
        render 'new'
       end
   end
 
-  #This function (below) is private
   private
   #This is used to get all column data of the database table
   def buy_games_params

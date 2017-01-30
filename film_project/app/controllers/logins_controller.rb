@@ -9,7 +9,7 @@ class LoginsController < ApplicationController
 	#This is used to determine if theirs a session
   before_filter :authorize
 
-  	#The index function holds current information stored in the database.
+  	#The index function holds current information stored in the database such as the rentals
   def index
 		@rentals = Rental.where(user_id: current_user.id).limit(5)
 		@buyFilms = BuyFilm.where(user_id: current_user.id).limit(5)
@@ -36,22 +36,18 @@ class LoginsController < ApplicationController
 
 	#This function allows administrators to update information
 	def update
-		#Get user id
 		@user = User.find(params[:id])
      	@user.valid?
-     	#If validation comes true, then update the information and direct the user back to the account page
+     	#Update information (if successfull) or abort (if updates fails)
      	@user.errors.messages
   		if @user.update(account_params)
     		redirect_to '/cool'
   		else
-  			#Otherwise, provide the errors to the same interface
   			flash[:error] = 'Please enter all content'
-  			#This is used to return back to the pervious interface
     		redirect_to :back
   		end
 	end
 	
-	#These are private methods
 	private
 	 #These methods are used to perform database interaction such as email
 	 def account_params

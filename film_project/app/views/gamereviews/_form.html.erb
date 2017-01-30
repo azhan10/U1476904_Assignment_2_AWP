@@ -1,13 +1,11 @@
 <!--The interface is used to add new review of the film-->
 
-<!--Code for publishing errors (if any)-->
  <% if @games.errors.any? %>
   <% @games.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
 <% end %>
 
-<!--Here is the form-->
 <%= form_for([@games, @games.gamereviews.build]) do |f| %>
 <!--Code for publishing errors (if any)-->
 <% if flash[:error] -%>

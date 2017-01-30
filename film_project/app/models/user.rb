@@ -1,3 +1,5 @@
+#Using MongoDB
+
 class User
   include Mongoid::Document
   include ActiveModel::Validations

@@ -1,3 +1,4 @@
+
 class BuyGame
   include Mongoid::Document
 
@@ -15,6 +16,7 @@ class BuyGame
 	validates_presence_of :paymenttype,  presence: true
 end
 
+#Validations purposes
 
 @buyGame = BuyGame.new
 @buyGame.valid? 

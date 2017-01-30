@@ -1,3 +1,5 @@
+
+#Using MongoDB
 class Admin
   include Mongoid::Document
 
