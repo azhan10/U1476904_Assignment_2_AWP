@@ -2,6 +2,6 @@
 
 Name: Azhan Rashid
 
-This is s Ruby on Rails project and MongoDB database sysem (NoSQL).
+This is s Ruby on Rails project and MongoDB database system (NoSQL).
 
 This is assignment 2 for Advanced Web Programming
