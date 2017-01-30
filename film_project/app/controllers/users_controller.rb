@@ -16,7 +16,6 @@ class UsersController < ApplicationController
       redirect_to '/cool'
     else
       #Otherwise, return back error messages in the new interface
-      @user = Newuser.new
       @user.valid? 
       @user.errors.messages
       render 'new'

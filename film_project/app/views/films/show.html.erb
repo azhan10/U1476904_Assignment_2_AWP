@@ -32,7 +32,7 @@
 
 <!--This function is used to add new review of the current film-->
 <h2>Add a review:</h2>
-<%= render 'reviews/form' %>
+<%= render 'filmreviews/form' %>
 
 <h2 class="text-center"><%= @film.filmtitle %> Reviews</h2>
 
@@ -65,7 +65,7 @@
     <strong style="font-size: 18px;">Comment</strong>
   </div>
 </div>
-<%= render @film.reviews %>
+<%= render @film.filmreviews %>
 
 <!--Button below is used to return back to the film's index page-->
 <%= link_to 'Back', films_path, class: 'btn btn-info', style: 'color:white' %>

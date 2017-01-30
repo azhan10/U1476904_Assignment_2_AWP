@@ -1,12 +1,20 @@
-#This handles the database interaction for the game purchase database table.
-#Here I added validation to avoid blank inputs
+class BuyGame
+  include Mongoid::Document
 
-class BuyGame < ApplicationRecord
-	validates_presence_of :platform,  presence: true
+   field :platform, type: String
+  field :gametitle, type: String
+  field :gameprice, type: String
+   field :paymenttype, type: String
+   field :user_id, type: String
+   field :created_at, :type => Date, default: ->{ Date.today }
+
+
+  validates_presence_of :platform,  presence: true
 	validates_presence_of :gametitle,  presence: true
 	validates_presence_of :gameprice,  presence: true
 	validates_presence_of :paymenttype,  presence: true
 end
+
 
 @buyGame = BuyGame.new
 @buyGame.valid? 

@@ -20,21 +20,25 @@
 </div>
 
 
+
+
 <%= form_tag(films_path, :method => "get", id: "search-form") do %>
-    <div class="row">
-    <div class="col-xs-3"></div>
-      <div class="col-xs-5 text-right">
-        <%= text_field_tag :search, params[:search], placeholder: "Search Films", class: 'form-control' %>
-      </div>
-      <div class="col-xs-4 text-left">
-            <%= submit_tag "Search", :filmtitle => nil, class: 'btn btn-success' %>
-      </div>
-    </div>
+
+<div class="row">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6">
+    <%= text_field_tag :search, params[:search], placeholder: "Search Film(s)", class: 'form-control' %>
+  </div>
+  <div class="col-xs-3">
+    <%= submit_tag "Search", class: 'btn btn-success' %>
+
+  </div>
+</div>
 <% end %>
 
 
 
-<h3 class="text-center">Film Amount: <%=@filmAmount %></h3></br>
+<h3 class="text-center">Total Films: <%=@filmAmount %></h3></br>
 
 <div class="row">
   <div class="col-xs-3">
@@ -51,10 +55,6 @@
 
 
 <hr/>
-
-<% if @films.blank? %>
-  <h4 class="text-center" style="color: red;">There are no films containing the term "<%= params[:search] %>".</h4>
-<% end %>
 
 
   <!--The code below display each film-->
@@ -73,11 +73,15 @@
   </div><hr/>
 <% end %>
 
+<% if @films.blank? %>
+  <h4 class="text-center" style="color: red;">There are no films containing the term "<%= params[:search] %>".</h4>
+<% end %>
+
+
 <% if params[:search] != nil
      %>
     <div class="text-center"><%= link_to 'Return', films_path, class: 'btn btn-primary', style: 'color:white' %></div>
 <% end %>
-
 
   <!--The film is paginated-->
 <div class="text-center">

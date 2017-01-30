@@ -120,8 +120,8 @@
       <h3><b>Second Name: </b><%= user.secondname %></h3>
       <h3><b>Address: </b><%= user.address %></h3>
       <h3><b>Post Code: </b><%= user.postcode %></h3>
-      <h3><b>Date Created: </b><%= user.created_at %></h3>
-      <h3><%= link_to 'Edit', edit_login_path(user.id), class: 'btn btn-success', style: 'color:white'  %> 
+      <h3><b>Account Created: </b><%= user.created_at %></h3>
+      <h3><%= link_to 'Edit', edit_login_path(user.id), class: 'btn btn-success', style: 'color:white;'  %> 
       <%= link_to 'Destroy', login_path(user.id),
               method: :delete,
               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'color:white'  %>

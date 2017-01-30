@@ -9,9 +9,11 @@ class AdminsSessionsController < ApplicationController
     #If so, it will start a session and direct the user to the account page
   def create
     #Get administrator email
-    admin = Admin.find_by_email(params[:email])
+    adminEmail = Admin.where(email: params[:email]).count
+    adminPassword = Admin.where(password: params[:password]).count
     # if the admin exists AND the password entered is correct
-    if admin && admin.authenticate(params[:password])
+    if adminEmail != 0 && adminPassword != 0
+      admin = Admin.find_by email: params[:email]
       # save the admin id inside the browser cookie. This is how we keep the admin logged in when they navigate around our website.
       session[:admin_id] = admin.id
       redirect_to '/adminCool'

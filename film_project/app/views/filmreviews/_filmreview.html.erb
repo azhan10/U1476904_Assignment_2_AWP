@@ -1,0 +1,23 @@
+<!--This interface is used to view all reviews of that particular film-->
+<hr/>
+<% if filmreview.commenter != nil  %>
+<div class="row">
+	<div class="col-xs-2">
+  <%= filmreview.commenter %>
+	</div>
+	<div class="col-xs-2">
+      <%= filmreview.rating %> Star(s)
+	</div>
+	<div class="col-xs-3">
+  <%= filmreview.created_at %>
+	</div>
+	<div class="col-xs-5">
+  <%= filmreview.body %>
+	</div>
+</div>
+<% end %>
+
+<% if @reviewAmount == 0
+	 %>
+<h4 class="text-center" style="color: green;">Be the first person to review</h4>
+<% end %>

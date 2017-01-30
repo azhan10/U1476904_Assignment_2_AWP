@@ -1,0 +1,2 @@
+module GamereviewsHelper
+end

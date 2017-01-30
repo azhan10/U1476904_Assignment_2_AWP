@@ -15,8 +15,8 @@ class AdminsLoginController < ApplicationController
 	def index
 		#Here I'm getting the rentals, films, games, the account holder and all current users
 		@rentals = Rental.all.limit(5).order('created_at desc')
-		@films = Film.all.paginate(page: params[:page], per_page: 20)
-		@games = Game.all.paginate(page: params[:page], per_page: 20)
+		@films = Film.all.paginate(page: params[:page], per_page: 30)
+		@games = Game.all.paginate(page: params[:page], per_page: 30)
 		@customerUsers = User.all.limit(5).order('created_at desc')
 		@currentuser = Admin.where(id: admin_user.id)
 
@@ -47,7 +47,7 @@ class AdminsLoginController < ApplicationController
 		#Get admin id
 		@currentuser = Admin.find(params[:id])
 		#Editadmin is used for validation reasons
-		@currentuser = Editadmin.find(params[:id])
+		#@currentuser = Editadmin.find(params[:id])
 		#Check if text are filled
 		@currentuser.valid? 
 		#If validation comes true, then update the information and direct the user back to the account page

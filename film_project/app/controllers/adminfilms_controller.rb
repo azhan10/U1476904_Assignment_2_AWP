@@ -15,6 +15,7 @@ before_action :set_film, only: [:show]
 	#Examples includes the film's star name
 	def show
 		@adminfilm = Film.find(params[:id])
+    	@reviewAmount = Filmreview.where(film_id: @adminfilm).count
 	end
 
 	#The edit funtion is used to edit information of a film using the identify

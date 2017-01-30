@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'gamereviews/index'
 
+  get 'gamereviews/show'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #I managed to insert many routes to allow users to access to each content of the website
 
   get 'adminreview/show'
@@ -26,7 +30,12 @@ Rails.application.routes.draw do
 
   #Here I used the father and child inheritence
   resources :films do
-  	resources :reviews
+  	resources :filmreviews
+  end
+
+    #Here I used the father and child inheritence
+  resources :games do
+    resources :gamereviews
   end
 
 
@@ -37,7 +46,6 @@ Rails.application.routes.draw do
   resources :adminfilms
   resources :logins
   resources :admins_login
-  resources :games
   resources :adminuser
   resources :admingames
   resources :buy_games

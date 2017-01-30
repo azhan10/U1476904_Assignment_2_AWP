@@ -8,21 +8,20 @@ class FilmsController < ApplicationController
   def index
     @films = Film.all.paginate(page: params[:page], per_page: 30)
     @filmAmount = Film.count
-   
-    if params[:search]
-      @films = Film.search(params[:search]).order("created_at DESC").paginate(page: params[:page])
-    else
-      @films = Film.all.order("created_at DESC").paginate(page: params[:page])
-    end
 
+    if params[:search]
+     @films = Film.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+    else
+     @films = Film.all.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+    end
   end
 
   #These action function is not used for film interface
   def show
     @film = Film.find(params[:id])
-    @reviewAmount = Review.where(film_id: @film).count
-    @reviewAverage = Review.where(film_id: @film).average('rating')
-    @reviewExist = Review.where(film_id: @film).exists?
+    @reviewAmount = Filmreview.where(film_id: @film).count
+    @reviewAverage = Filmreview.where(film_id: @film).avg('rating')
+    @reviewExist = Filmreview.where(film_id: @film).exists?
 
     if @reviewExist == false
       flash[:anyReviews] = 'No Reviews'

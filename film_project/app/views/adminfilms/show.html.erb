@@ -36,9 +36,12 @@
   </div>
 </div>
 
-<h2 class="text-center"><%= @adminfilm.filmtitle %> Reviews</h2>
-<%= render @adminfilm.reviews %>
-
+<h2 class="text-center"><%= @adminfilm.filmtitle %> Reviews(<%= @reviewAmount %>)</h2>
+<% if @reviewAmount != 0 %>
+<%= render @adminfilm.filmreviews %>
+<% else %>
+<h3 class="text-center">No Reviews</h3>
+<% end %>
 
 <!--This directs users to the administrator account page-->
 <%= link_to 'Back', '/adminCool', class: 'btn btn-primary', style: 'color:white' %>
