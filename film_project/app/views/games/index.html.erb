@@ -29,7 +29,10 @@
 </div>
 <% end %>
 
-
+<% if params[:search] == ""
+     %>
+    <h3 class="text-center" style="color: red;">Please fill in a game title</h3>
+<% end %>
 
 <h3 class="text-center">Total Games: <%= @gamesAmount %></h3></br>
 
@@ -76,7 +79,7 @@
 <% end %>
 
  <!--Used whenever a user searches a game-->
-<% if params[:search] != nil
+<% if params[:search] != nil && params[:search] != ""
      %>
     <div class="text-center"><%= link_to 'Return', games_path, class: 'btn btn-primary', style: 'color:white' %></div>
 <% end %>
