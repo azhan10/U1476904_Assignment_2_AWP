@@ -46,9 +46,14 @@
   </p>
 
 
-  <p style="display:none;">
+  <p style="display: none;">
     <%= f.label :user_id %><br>
-    <%= f.text_area :user_id, :value => current_user.id %>
+    <%= f.text_field :user_id, :value => current_user.id, class:'form-control', readonly: true %>
+  </p>
+
+  <p style="display: none;">
+    <%= f.label :username %><br>
+    <%= f.text_field :username, :value => current_user.name, class:'form-control', readonly: true %>
   </p>
  
   <p>

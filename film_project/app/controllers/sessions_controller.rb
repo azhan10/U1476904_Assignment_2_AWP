@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       #If the validation is false then display a error message in the pervious interface
       if @user.valid? == false 
         @user.errors.messages
-        flash[:error] = "Login details is incorrect"
+        flash[:error] = "Please enter valid information"
         redirect_to :back
       end
     end

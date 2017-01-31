@@ -16,7 +16,7 @@ class User
 
   validates_presence_of :name,  presence: true, length: { minimum: 5 }, uniqueness: true
      validates_presence_of :email,  presence: true, uniqueness: true
-     validates_presence_of :password, length: { minimum: 7 }
+     validates_presence_of :password, presence: true, length: { minimum: 7 }
      validates_presence_of :salt,  presence: true, length: { minimum: 7 }
      validates_presence_of :firstname,  presence: true
      validates_presence_of :secondname,  presence: true
