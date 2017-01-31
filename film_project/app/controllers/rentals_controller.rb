@@ -61,6 +61,6 @@ class RentalsController < ApplicationController
 	#This function is used to perform database interaction with all data content in the database
     #For example, updating current information
   	def rental_params
-    	params.require(:rental).permit(:filmtitle, :filmduration, :rentalstatus, :user_id)
+    	params.require(:rental).permit(:filmtitle, :filmduration, :rentalstatus, :user_id, :username)
   	end
 end

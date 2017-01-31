@@ -5,6 +5,7 @@ class BuyFilm
   field :filmprice, type: String
   field :paymenttype, type: String
   field :user_id, type: String
+    field :username, type: String
   field :created_at, :type => Date, default: ->{ Date.today }
 
 

@@ -22,17 +22,20 @@
 
 <!--The form is used to register a new customer-->
 <div class="jumbotron ">
+
+<span id="errorMessage"></span>
+
 <%= form_for :user, url: '/users' do |f| %>
 
-  <p>User Name: <%= f.text_field :name, class:'form-control' %></p>
-  <p>Email: <%= f.text_field :email, class:'form-control' %> </p>
+  <p>User Name: <%= f.text_field :name, class:'form-control', id: 'username' %></p>
+  <p>Email: <%= f.text_field :email, class:'form-control', id: 'email' %> </p>
  <p> Password: <%= f.password_field :password, class:'form-control', id: 'password' %> </p>
  <p> Password Retype: <%= f.password_field :salt, class:'form-control', id: 'salt' %> </p>
    <span id='message'></span>
-  <p>First Name: <%= f. text_field :firstname, class:'form-control' %> </p>
- <p> Second Name: <%= f.text_field :secondname, class:'form-control' %> </p>
- <p> Address: <%= f.text_area :address, class:'form-control' %> </p>
- <p> Post Code: <%= f.text_field :postcode, class:'form-control' %> </p>
+  <p>First Name: <%= f. text_field :firstname, class:'form-control', id: 'firstname' %> </p>
+ <p> Second Name: <%= f.text_field :secondname, class:'form-control', id: 'secondname' %> </p>
+ <p> Address: <%= f.text_area :address, class:'form-control', id: 'address' %> </p>
+ <p> Post Code: <%= f.text_field :postcode, class:'form-control', id: 'postcode' %> </p>
   <%= f.submit "Register", class:'btn btn-primary', id: 'submitButton' %>
 
 <% end %>
@@ -41,20 +44,50 @@
 <!--JavaScript/JQuery below is used to check if passwords match-->
 
  <script type="text/javascript">
+ var username = jQuery.trim($("#username").val());
+
    $('#password, #salt').on('keyup', function () {
+
+
     if ($('#password').val() == $('#salt').val()) {
+
       $("#submitButton").attr('disabled', false);
+
+      
       if($("#password").val().length <= 7 && $("#salt").val().length <= 7){
+
           $('#message').html('Password is to short').css('color', 'red');
           $("#submitButton").attr('disabled', true);
+
       } else if($("#password").val().length >= 7 && $("#salt").val().length >= 7){
+
           $('#message').html('').css('color', 'red');
           $("#submitButton").attr('disabled', false);
+
       }
+
     }else {
           $('#message').html('Password does not match').css('color', 'red');
           $("#submitButton").attr('disabled', true);
     }
+
+    });
+
+   $('#username, #firstname, #secondname, #address, #postcode, #email').on('keyup', function () {
+
+    if ($("#username").val().length < 4 || $("#firstname").val().length < 4 || $("#secondname").val().length < 4 || $("#address").val().length < 4 || $("#postcode").val().length < 4 || $("#email").val().length < 4){
+      $("#submitButton").attr('disabled', true);
+    }else{
+      $("#submitButton").attr('disabled', false);
+      if($("#email").val().indexOf('@') == -1){
+      $('#errorMessage').html('It does not look like a email').css('color', 'red');
+      $("#submitButton").attr('disabled', true);
+    }else{
+      $('#errorMessage').html('');
+      $("#submitButton").attr('disabled', false);
+    }
+    }
+
     });
 </script>
 

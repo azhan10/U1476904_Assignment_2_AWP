@@ -5,6 +5,7 @@ class Rental
   field :filmduration, type: String
   field :rentalstatus, type: String
   field :user_id, type: String
+  field :username, type: String
   field :created_at, :type => Date, default: ->{ Date.today }
 
 
@@ -12,6 +13,7 @@ class Rental
      validates :filmduration,  presence: true
      validates :rentalstatus,  presence: true
      validates :user_id,  presence: true
+      validates :username,  presence: true
 end
 
 #Validations purposes

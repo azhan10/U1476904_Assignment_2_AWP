@@ -24,6 +24,8 @@
   <p style="color:red; font-size: 18px" class="error"><%= flash[:error] %></p>
 <% end -%>
 
+<span id="errorMessage"></span>
+
     <p style="display: none;">
     <%= f.label :name %><br>
     <%= f.text_field :name, :readonly => true, class: 'form-control' %>
@@ -55,14 +57,22 @@
   </p>
 
   <p>
-    <%= f.label :address, :value => 'Address' %><br>
+    <%= f.label :address, :value => 'Address', id: 'address' %><br>
     <%= f.text_field :address, :placeholder => 'Address', class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.label :postcode, :value => 'Post Code' %><br>
+    <%= f.label :postcode, :value => 'Post Code', id: 'postcode' %><br>
     <%= f.text_field :postcode, :placeholder => 'Post Code', class: 'form-control' %>
   </p>
+
+
+ 
+  <p>
+    <%= f.submit 'Update Account', class: 'btn btn-primary', style: 'color:white', id: 'submitButton' %>
+  </p>
+ 
+<% end %>
 
 <!--JavaScript/JQuery below is used to check if passwords match-->
 
@@ -82,13 +92,10 @@
           $("#submitButton").attr('disabled', true);
     }
     });
+
 </script>
- 
-  <p>
-    <%= f.submit 'Update Account', class: 'btn btn-primary', style: 'color:white', id: 'submitButton' %>
-  </p>
- 
-<% end %>
+
+
 </div>
 <!--This directs users to the administrator account page-->
 <%= link_to "Back", '/adminCool', class: 'btn btn-info', style: 'color:white' %>
