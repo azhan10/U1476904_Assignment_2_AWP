@@ -21,7 +21,8 @@ class GamesController < ApplicationController
 	def show
 		@games = Game.find(params[:id])
 		@reviewAmount = Gamereview.where(game_id: @games).count
-    @reviewAverage = Gamereview.where(game_id: @games).avg('rating')
+    #Rounding the review average to 2 decimal places
+    @reviewAverage = Gamereview.where(game_id: @games).avg('rating').round(2)
     @reviewExist = Gamereview.where(game_id: @games).exists?
 
     if @reviewExist == false
