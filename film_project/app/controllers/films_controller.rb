@@ -21,7 +21,8 @@ class FilmsController < ApplicationController
   def show
     @film = Film.find(params[:id])
     @reviewAmount = Filmreview.where(film_id: @film).count
-    @reviewAverage = Filmreview.where(film_id: @film).avg('rating')
+    #Rounding the review average to 2 decimal places
+    @reviewAverage = Filmreview.where(film_id: @film).avg('rating').round(2)
     @reviewExist = Filmreview.where(film_id: @film).exists?
 
     #Condition is executed depending on the current review information of a film
