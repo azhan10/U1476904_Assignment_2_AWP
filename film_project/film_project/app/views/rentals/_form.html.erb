@@ -15,10 +15,15 @@
 <div class="jumbotron ">
  <!--Form is used to rent a new film-->
 <%= form_for @rental do |f| %>
- 
+
+<!--Code for publishing completion (if any)-->
+<% if flash[:success] -%>
+  <p style="color:green; font-size: 22px" class="success"><%= flash[:success] %></p>
+<% end -%>
+
   <%= f.collection_select :filmtitle, @films, :filmtitle, :filmtitle, {:include_blank => false}, {class: "form-control"} %>
 
- 
+
   <h3>Rental Duration</h3>
   <%= f.select(:filmduration, ['1 day', '2 days'], {}, { :class => 'form-control' }) %>
   </br>
@@ -28,20 +33,20 @@
     <%= f.text_field :rentalstatus, :value => 'Reserved', class:'form-control', readonly: true %>
   </p>
 
-  <p style="">
+  <p style="display:none;">
     <%= f.label :username %><br>
     <%= f.text_field :username, :value => current_user.name, class:'form-control', readonly: true %>
   </p>
 
-  <p style="">
+  <p style="display:none;">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id, :value => current_user.id, class:'form-control', readonly: true %>
   </p>
- 
+
   <p>
-    <%= f.submit 'Rent Movie', :class => 'btn btn-primary' %> 
+    <%= f.submit 'Rent Movie', :class => 'btn btn-primary' %>
     <%= link_to 'Back', rentals_path, :class => 'btn btn-info', style: 'color:white' %>
   </p>
- 
+
 <% end %>
 </div>

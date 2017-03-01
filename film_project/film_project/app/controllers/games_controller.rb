@@ -14,7 +14,7 @@ class GamesController < ApplicationController
      		@games = Game.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
     	else
     		@games = Game.all.order('created_at DESC').paginate(page: params[:page], per_page: 30)
-    	end	
+    	end
 	end
 
 #The show function is used here to view more information of a film such as the game reviews
@@ -22,7 +22,9 @@ class GamesController < ApplicationController
 		@games = Game.find(params[:id])
 		@reviewAmount = Gamereview.where(game_id: @games).count
     #Rounding the review average to 2 decimal places
-    @reviewAverage = Gamereview.where(game_id: @games).avg('rating').round(2)
+		if @reviewAmount != 0
+      @reviewAverage = Gamereview.where(game_id: @games).avg('rating').round(2)
+	  end
     @reviewExist = Gamereview.where(game_id: @games).exists?
 
     if @reviewExist == false

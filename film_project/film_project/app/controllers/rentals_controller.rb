@@ -22,6 +22,7 @@ class RentalsController < ApplicationController
 		@rental = Rental.new(rental_params)
 		#Save information (if successfull) or render new interface (if save fails)
     	if @rental.save
+					flash[:success] = 'Rental is reserved'
       		redirect_to '/rentals'
     	else
       		render 'new'

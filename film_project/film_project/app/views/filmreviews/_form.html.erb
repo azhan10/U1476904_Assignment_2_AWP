@@ -12,6 +12,11 @@
   <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>
 
+<!--Code for publishing completion (if any)-->
+<% if flash[:success] -%>
+  <p style="color:green; font-size: 22px" class="success"><%= flash[:success] %></p>
+<% end -%>
+
   <p>
     <%= f.label :commenter, :value => 'Your Name' %><br>
     <%= f.text_field :commenter, :placeholder => 'Your name', class: 'form-control' %>
