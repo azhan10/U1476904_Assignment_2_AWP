@@ -22,7 +22,9 @@ class FilmsController < ApplicationController
     @film = Film.find(params[:id])
     @reviewAmount = Filmreview.where(film_id: @film).count
     #Rounding the review average to 2 decimal places
-    @reviewAverage = Filmreview.where(film_id: @film).avg('rating').round(2)
+    if(@reviewAmount != 0)
+      @reviewAverage = Filmreview.where(film_id: @film).avg('rating').round(2)
+    end
     @reviewExist = Filmreview.where(film_id: @film).exists?
 
     #Condition is executed depending on the current review information of a film
