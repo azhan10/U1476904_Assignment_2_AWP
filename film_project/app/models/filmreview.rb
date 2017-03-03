@@ -1,3 +1,4 @@
+#Model for current film reviews
 class Filmreview
   include Mongoid::Document
 

@@ -4,11 +4,11 @@ class FilmsController < ApplicationController
   before_action :set_film, only: [:show]
 
   # The index function gets all film information and subdivide the information into pages (13 per page)
+  # it also functions to search current films
   def index
     @films = Film.all.paginate(page: params[:page], per_page: 30)
     @filmAmount = Film.count
 
-    #This is for the search game form
     if params[:search]
      @films = Film.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
     else
@@ -16,18 +16,15 @@ class FilmsController < ApplicationController
     end
   end
 
-  #These action function is used for film interface.
-  #Getting several correct information for the show interface such as the amount of current reviews of a film
+  #Show information of a film such as their current reviews
   def show
     @film = Film.find(params[:id])
     @reviewAmount = Filmreview.where(film_id: @film).count
-    #Rounding the review average to 2 decimal places
     if(@reviewAmount != 0)
       @reviewAverage = Filmreview.where(film_id: @film).avg('rating').round(2)
     end
     @reviewExist = Filmreview.where(film_id: @film).exists?
 
-    #Condition is executed depending on the current review information of a film
     if @reviewExist == false
       flash[:anyReviews] = 'No Reviews'
       flash[:anyReviewAverage] = 'No Rating'

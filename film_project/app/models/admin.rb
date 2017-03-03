@@ -1,5 +1,6 @@
 
 #Using MongoDB
+#Model for the adminstrator accounts
 class Admin
   include Mongoid::Document
 
@@ -25,7 +26,6 @@ class Admin
 end
 
 
-#This is used for exisiting administrator's interface
 class Oldadmin < Admin
      validates_presence_of :password,  presence: true
      validates_presence_of :email,  presence: true

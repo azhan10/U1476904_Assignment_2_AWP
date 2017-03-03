@@ -1,12 +1,6 @@
-#The class is the user account page. 
-#Where it displays all the information for a user.
-#It contains the customer's rental, films, games and user informations.
-#The controller also contains an authorisation mechanism
-#This is used to check if their is an existing session
-#If so, direct the user to that interface, otherwise, return to the login page
-
+#The class holds features of customer's account.
 class LoginsController < ApplicationController
-	#This is used to determine if theirs a session
+	#Checks if theirs a session
   before_filter :authorize
 
   	#The index function holds current information stored in the database such as the rentals
@@ -22,7 +16,7 @@ class LoginsController < ApplicationController
 
 	end 
 
-	#This function allows users to delete their information
+	#This function allows users to delete account
 	def destroy
 		@user = User.find(params[:id])
   		@user.destroy
@@ -38,7 +32,6 @@ class LoginsController < ApplicationController
 	def update
 		@user = User.find(params[:id])
      	@user.valid?
-     	#Update information (if successfull) or abort (if updates fails)
      	@user.errors.messages
   		if @user.update(account_params)
     		redirect_to '/cool'

@@ -1,6 +1,6 @@
 <h1>Admin Log In</h1>
 
-  <!--Here is the code for displaying error messages-->
+  <!--Login page of administrators-->
 <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@admin.errors.count, "error") %></h2>
@@ -23,7 +23,6 @@
 <%= link_to 'View Games', games_path, class: 'btn btn-primary', style: 'color:white' %>
 </br></br>
 
-<!--This is used for displaying errors-->
 <% if flash[:error] -%>
   <p style="color:red; font-size: 22px" class="error"><%= flash[:error] %></p>
 <% end -%>

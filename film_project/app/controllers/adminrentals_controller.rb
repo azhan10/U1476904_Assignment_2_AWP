@@ -1,5 +1,3 @@
-#All function was not necessary for the rental information
-
 class AdminrentalsController < ApplicationController
 	
 	#This function just get all current information in the database
@@ -7,8 +5,7 @@ class AdminrentalsController < ApplicationController
 		@rentals = Rental.all
 	end
 
-	#This function is used to edit rental content using the identify
-	#It also get information from the database system
+	#This function is used to edit rental content and view selected film's information
 	def edit
 		@rental = Rental.find(params[:id])
 		@films = Film.all
@@ -25,7 +22,6 @@ class AdminrentalsController < ApplicationController
   		if @rental.update(rental_params)
     		redirect_to '/adminrentals'
   		else
-  			#If fails, render the edit interface
     		render 'edit'
   		end
 	end
@@ -37,15 +33,8 @@ class AdminrentalsController < ApplicationController
 	  	redirect_to '/adminrentals'
 	end
 
-	#The create and new methods was not used.
-	def create
-	end
-	def new
-	end
-
 	private
-	#This function is used to perform database interaction with all data content in the database
-    #For example, updating current information
+	#This function is used to perform database interaction with all data content in the database such as editing
   def rental_params
     params.require(:rental).permit(:filmtitle, :filmduration, :rentalstatus)
   end

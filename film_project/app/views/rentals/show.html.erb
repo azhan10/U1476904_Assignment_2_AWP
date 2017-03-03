@@ -8,12 +8,10 @@
   </div>
   <div class="col-xs-6 text-right">
   </br>
-  <!--users can log out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
-<!--The code below displays all information of a rental film-->
 <h3><strong> Film Title:</strong>  <%= @rental.filmtitle %></h3>
       <h3><strong>Film Duration: </strong> <%= @rental.filmduration %></h3>
       <h3><strong>Rental Status:</strong>  <%= @rental.rentalstatus %></h3>

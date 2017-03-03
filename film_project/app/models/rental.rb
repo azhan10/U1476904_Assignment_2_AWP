@@ -1,3 +1,4 @@
+#Model for current film rentals
 class Rental
   include Mongoid::Document
 

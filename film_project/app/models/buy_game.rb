@@ -1,4 +1,4 @@
-
+#Model for purchased games
 class BuyGame
   include Mongoid::Document
 

@@ -1,15 +1,13 @@
 class GamereviewsController < ApplicationController
-  #The create function is used to add new data content to the database
+  
+  #This function is used to users to review a game
 	def create
 		@game = Game.find(params[:game_id])
-    #Call the review_params method
     	@review = @game.gamereviews.new(gamereview_params)
-    	#If the save was sucessful, then return back to pervious webpage
       if @review.save
 				flash[:success] = 'Game review is added'
       	redirect_to game_path(@game)
     	else
-        #Otherwise, return back to the current interface with error messages
         flash[:error] = 'Please enter all content'
         flash[:commenter] = @review.errors[:commenter].first
         flash[:body] = @review.errors[:body].first

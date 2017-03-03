@@ -1,9 +1,7 @@
 <h1>Admin Sign In</h1>
 
-  <!--Administrators can log out-->
 <%= link_to 'Admin Login', '/adminlogin', :class => 'btn btn-info', style: 'color:white' %>
  
-  <!--Here is the code for displaying error messages-->
 <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@admin.errors.count, "error") %></h2>

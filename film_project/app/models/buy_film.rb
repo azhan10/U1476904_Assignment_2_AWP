@@ -1,3 +1,4 @@
+#Model for the purchased games
 class BuyFilm
   include Mongoid::Document
 

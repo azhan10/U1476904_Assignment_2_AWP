@@ -1,13 +1,11 @@
- <!--This interface is used to view all necessary information of a customer-->
+ <!--This interface is used to view all necessary information of a customer such as rental films-->
 
 <div class="row">
   <div class="col-xs-6">
-   <!--Displays customers user's name-->
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
-   <!--Button is used to log users out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
@@ -57,7 +55,6 @@
 
 
 <div class="text-center">
- <!--Button below allows users to view all rental films-->
 <%= link_to "View All Rent", '/rentals', class: 'btn btn-info', style: "color:white" %>
 </div>
 
@@ -98,7 +95,6 @@
 
 
 <div class="text-center">
- <!--Button below allows users to view all purchase film-->
 <%= link_to "View All Purchased Films", '/buy_films', class: 'btn btn-info', style: "color:white" %>
 </div>
 
@@ -175,7 +171,6 @@
 
 <div class="text-center">
 
- <!--Button below allows users to view all purchase game-->
 <%= link_to "View All Purchased Games", buy_games_index_path, class: 'btn btn-info', style: "color:white" %>
 </div>
 </div>
