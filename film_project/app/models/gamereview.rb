@@ -1,3 +1,4 @@
+#Model for current game reviews
 class Gamereview
   include Mongoid::Document
 

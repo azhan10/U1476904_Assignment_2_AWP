@@ -1,17 +1,14 @@
  <!--The interface is used to view all rental films of a customer-->
 <div class="row">
   <div class="col-xs-6">
-   <!--Displays the customer's user name-->
     <h1>Welcome <%= current_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
   </br>
-   <!--Button below is used to log cusomers out-->
     <%= link_to "User Logout", '/logout', class: 'btn btn-danger', :style => 'color:white' %>
   </div>
 </div>
 
- <!--Button below is used to rent a new film-->
 <%= link_to 'Rent a new film', new_rental_path, class: 'btn btn-primary', style: 'color:white' %></br></br>
 
 <% if @rentalsAmount == 0 %>
@@ -45,5 +42,4 @@
 
 </br>
 
- <!--Button below is used to return users back to the index page-->
 <%= link_to "Home Page", '/cool', class: 'btn btn-info', style: 'color:white' %>

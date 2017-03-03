@@ -1,15 +1,15 @@
-#The class is used to get all games information in the database
+#The class is used to get all game information in the database
 
 class GamesController < ApplicationController
 	before_action :set_game, only: [:show]
 	  # The index function gets all game information and subdivide the information into pages (30 per page)
+	  # it also functions to search current games
 	def index
 		@games = Game.all
 		@gamesAmount = Game.count
 
 		@games = Game.all.paginate(:page => params[:page], :per_page => 30)
 
-    #This is for the search game form
 		if params[:search]
      		@games = Game.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 30)
     	else
@@ -17,11 +17,10 @@ class GamesController < ApplicationController
     	end
 	end
 
-#The show function is used here to view more information of a film such as the game reviews
+#The show function is used here to view more information of a game such as the game reviews
 	def show
 		@games = Game.find(params[:id])
 		@reviewAmount = Gamereview.where(game_id: @games).count
-    #Rounding the review average to 2 decimal places
 		if @reviewAmount != 0
       @reviewAverage = Gamereview.where(game_id: @games).avg('rating').round(2)
 	  end

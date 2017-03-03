@@ -1,19 +1,9 @@
-#The class is the administrator account page. 
-#Where it displays all the information for a administrator.
-#It contains the customer's rentals, films and games informations.
-#It also contains the admin account details such as email, first name and so on.
-#It finally contains all the current users that are NOT administrators
-#The controller also contains an authorization mechanism
-#This is used to check if their is an existing session
-#If so, direct the user to that interface, otherwise, return to the login page
-
 class AdminsLoginController < ApplicationController
-	#This is used to determine if theirs a session
+	#Checks if theirs a session
 	before_filter :authorizeAdmin
 
-	#The index function holds current information stored in the database.
+	#The index function displays infromation stored in the database such as games.
 	def index
-		#Here I'm getting the rentals, films, games, the account holder and all current users
 		@rentals = Rental.all.limit(5).order('created_at desc')
 		@films = Film.all.paginate(page: params[:page], per_page: 30)
 		@games = Game.all.paginate(page: params[:page], per_page: 30)
@@ -43,11 +33,9 @@ class AdminsLoginController < ApplicationController
 	def update
 		@currentuser = Admin.find(params[:id])
 		@currentuser.valid? 
-		#If validation comes true, then update the information and direct the user back to the account page
 		if @currentuser.update(currentAdmin_params)
 			redirect_to '/adminCool'
 		else
-			#Otherwise, provide the errors to the same interface
 			@currentuser.errors.messages
 			flash[:error] = "Please enter all content"
    			redirect_to :back

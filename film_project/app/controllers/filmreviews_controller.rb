@@ -1,15 +1,13 @@
 class FilmreviewsController < ApplicationController
-	  #The create function is used to add new data content to the database
+	  #The functions is used to allow users to add a review of a film
+    #Error messages are handled such as reviewer name
 	def create
 		@film = Film.find(params[:film_id])
-    #Call the review_params method
     	@review = @film.filmreviews.new(filmreview_params)
-    	#If the save was sucessful, then return back to pervious webpage
       if @review.save
 				flash[:success] = 'Film review is added'
       	redirect_to film_path(@film)
     	else
-        #Otherwise, return back to the current interface with error messages
         flash[:error] = 'Please enter all content'
         flash[:commenter] = @review.errors[:commenter].first
         flash[:body] = @review.errors[:body].first

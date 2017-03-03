@@ -1,5 +1,3 @@
-#The administrator has the privledge to perform the CRUD operations.
-
 class AdminfilmsController < ApplicationController
 
 before_action :set_film, only: [:show]
@@ -9,8 +7,7 @@ before_action :set_film, only: [:show]
 		@adminfilm = Film.new
 	end
 
-	#The show function is used to get all information of a film.
-	#Examples includes the film's star name
+	#The show function is used to get all information of a film such as its name.
 	def show
 		@adminfilm = Film.find(params[:id])
     	@reviewAmount = Filmreview.where(film_id: @adminfilm).count
@@ -24,7 +21,6 @@ before_action :set_film, only: [:show]
 	#The update function performs the operation of updating information of a film in the database
 	def update
 		@adminfilm = Film.find(params[:id])
- 		#If update is successful, then direct back admin home page
   		if @adminfilm.update(adminfilm_params)
     		redirect_to '/adminCool'
   		else
@@ -32,8 +28,7 @@ before_action :set_film, only: [:show]
   		end
 	end
 
-	#This function is used to delete a film information in the database using a film
-	#identify
+	#This function is used to delete a film information in the database using a film id
 	def destroy
 		@adminfilm = Film.find(params[:id])
   		@adminfilm.destroy
@@ -43,7 +38,6 @@ before_action :set_film, only: [:show]
 	#This function is used to create a new row of film data to the database
 	def create
 		@adminfilm = Film.new(adminfilm_params)
-		#Condition used to check if information is saved
   		if @adminfilm.save
    		 redirect_to '/adminCool'
  		else

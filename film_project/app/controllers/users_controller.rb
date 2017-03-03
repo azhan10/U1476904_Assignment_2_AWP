@@ -1,4 +1,4 @@
-#This class is used to view current user information in the database
+#This class is used to register a user
 
 class UsersController < ApplicationController
   #User access this page to sign up
@@ -6,10 +6,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  #The create function is used to start a session and direct hte user to the account page
+  #The create function is used to register the information and log the user into their account
    def create
     @user = User.new(user_params)
-    #Save information (if successfull) or render new interface (if save fails)
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/cool'

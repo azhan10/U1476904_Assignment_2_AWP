@@ -1,3 +1,4 @@
+#Model for current films in the database
 class Film
   include Mongoid::Document
   include Mongoid::Search

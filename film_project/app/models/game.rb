@@ -1,3 +1,4 @@
+#Model for the game information
 class Game
   include Mongoid::Document
 

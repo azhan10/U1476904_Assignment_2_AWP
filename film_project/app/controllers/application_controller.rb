@@ -1,4 +1,3 @@
-#The controller is used to check if theres a administrator or user session
 class ApplicationController < ActionController::Base
   #This is used to make the account system secure as possible
   protect_from_forgery with: :exception

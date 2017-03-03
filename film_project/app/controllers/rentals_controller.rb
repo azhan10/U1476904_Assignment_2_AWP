@@ -1,5 +1,4 @@
-#The controller is for rental information which is held by the user
-#All actions was applied to this interface
+#The controller is for customer's rental information
 
 class RentalsController < ApplicationController
 
@@ -10,7 +9,6 @@ class RentalsController < ApplicationController
 	end
 
 	#This function is used to rent a new film.
-	#The function is used to get all current films and add new content to the rental database
 	def new
 		@films = Film.all
 		@rental = Rental.new
@@ -18,9 +16,7 @@ class RentalsController < ApplicationController
 
 	#This action is used to create new row of data in the database
 	def create
-		#Call the rental_params method
 		@rental = Rental.new(rental_params)
-		#Save information (if successfull) or render new interface (if save fails)
     	if @rental.save
 					flash[:success] = 'Rental is reserved'
       		redirect_to '/rentals'
@@ -29,16 +25,15 @@ class RentalsController < ApplicationController
     	end
 	end
 
-	#This function is used to edit rental content using the identify
+	#This function is used to edit current film rentals
 	def edit
  		@rental = Rental.find(params[:id])
 		@films = Film.all
 	end
 
-	#This is used to update exisiting data from the database
+	#This is used to update exisiting rental information in the database
 	def update
 		@rental = Rental.find(params[:id])
-		#Update information (if successfull) or render edit interface (if update fails)
     if @rental.update(rental_params)
         redirect_to '/rentals'
       else
@@ -59,8 +54,7 @@ class RentalsController < ApplicationController
 	end
 
 	private
-	#This function is used to perform database interaction with all data content in the database
-    #For example, updating current information
+	#Used to perform database interactions such as their film title
   	def rental_params
     	params.require(:rental).permit(:filmtitle, :filmduration, :rentalstatus, :user_id, :username)
   	end

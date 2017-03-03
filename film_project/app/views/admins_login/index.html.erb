@@ -1,11 +1,6 @@
-<!--This is used to view all administrator information
-    This includes rental films, account holder details, films and games information. 
-
-    All information performs the CRUD operations
--->
+<!--This is used to view all administrator information-->
 <div class="row">
   <div class="col-xs-6">
-    <!--Displays the administrator user name-->
     <h1>Welcome <%= admin_user.name %></h1>
   </div>
   <div class="col-xs-6 text-right">
@@ -27,7 +22,6 @@
     <th>Customer Username</th>
     <th colspan="3"></th>
   </tr>
- <!--Displaying each row of information in the database to the interface-->
   <% @rentals.each do |rental| %>
     <tr>
       <td><%= rental.filmtitle %></td>
@@ -66,7 +60,6 @@
     <th>Account Created</th>
     <th colspan="3"></th>
   </tr>
-  <!--Displaying each row of information in the database to the interface-->
 
   <% @currentuser.each do |holder| %>
     <tr>
@@ -105,7 +98,6 @@
     <th>Account Created</th>
     <th colspan="3"></th>
   </tr>
-  <!--Displaying each row of information in the database to the interface-->
 
   <% @customerUsers.each do |customerUser| %>
     <tr>
@@ -141,7 +133,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
- <!--Displaying each row of information in the database to the interface-->
 
   <tbody>
     <% @films.each do |film| %>
@@ -181,7 +172,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
- <!--Displaying each row of information in the database to the interface-->
 
   <tbody>
     <% @games.each do |game| %>

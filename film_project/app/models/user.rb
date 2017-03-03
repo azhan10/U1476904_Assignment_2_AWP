@@ -1,5 +1,5 @@
 #Using MongoDB
-
+#Model for user account
 class User
   include Mongoid::Document
   include ActiveModel::Validations
@@ -27,7 +27,6 @@ class User
 end
 
 
-#This is used for exisiting user's interface
 class Olduser < User
      validates_presence_of :email,  presence: true
      validates_presence_of :password, presence: true
