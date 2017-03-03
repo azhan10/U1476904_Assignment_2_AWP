@@ -30,36 +30,37 @@
 
 <!--Here are all the data the administrator can change-->
   <p>
-    <%= f.label :filmtitle %><br>
-    <%= f.text_area :filmtitle, class: 'form-control' %>
+    <%= f.label :filmtitle, value: 'Film Title' %><br>
+    <%= f.text_field :filmtitle, class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.label :filmdescription %><br>
+    <%= f.label :filmdescription, value: 'Film Description' %><br>
     <%= f.text_area :filmdescription, class: 'form-control' %>
   </p>
 
 
   <p>
-    <%= f.label :filmdirector %><br>
-    <%= f.text_area :filmdirector, class: 'form-control' %>
+    <%= f.label :filmdirector, value: 'Film Director' %><br>
+    <%= f.text_field :filmdirector, class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.label :filmrating %><br>
-    <%= f.text_area :filmrating, class: 'form-control' %>
+    <%= f.label :filmrating, value: 'Film Rating' %><br>
+    <%= f.select(:filmrating, ['18', '16', '15', '12', '7', '3', 'U'], {}, { :class => 'form-control' }) %>
+
   </p>
 
   <p>
-    <%= f.label :filmstarname %><br>
-    <%= f.text_area :filmstarname, class: 'form-control' %>
+    <%= f.label :filmstarname, value: 'Film Star Name' %><br>
+    <%= f.text_field :filmstarname, class: 'form-control' %>
   </p>
 
-  
+
   <p>
     <%= f.submit 'Update Film', class: 'btn btn-primary' %>
   </p>
- 
+
 <% end %>
 </div>
 

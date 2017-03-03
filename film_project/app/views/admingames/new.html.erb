@@ -11,7 +11,7 @@
 </div>
 
 <%= form_for @admingame, :url => { :action => :create, :type => @type, :this => @admingame } do |f| %>
- 
+
   <% if @admingame.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -25,36 +25,38 @@
   <% end %>
 
   <p>
-    <%= f.label :gametitle %><br>
-    <%= f.text_area :gametitle, class: 'form-control' %>
+    <%= f.label :gametitle, value: "Game Title" %><br>
+    <%= f.text_field :gametitle, class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.label :gameDescription %><br>
+    <%= f.label :gameDescription, value: "Game Description" %><br>
     <%= f.text_area :gameDescription, class: 'form-control' %>
   </p>
 
 
   <p>
-    <%= f.label :gamerating %><br>
-    <%= f.text_area :gamerating, class: 'form-control' %>
+    <%= f.label :gamerating, value: "Game Rating" %><br>
+    <%= f.select(:gamerating, ['18', '16', '15', '12', '7', '3', 'U'], {}, { :class => 'form-control' }) %>
+
   </p>
 
   <p>
-    <%= f.label :gamegenre %><br>
-    <%= f.text_area :gamegenre, class: 'form-control' %>
+    <%= f.label :gamegenre, value: "Game Genre" %><br>
+    <%= f.select(:gamegenre, ['Action/Adventure', 'Role Player', 'Horror', 'Shooter', 'Fantasy'], {}, { :class => 'form-control' }) %>
+
   </p>
 
   <p>
-    <%= f.label :platform %><br>
-    <%= f.text_area :platform, class: 'form-control' %>
+    <%= f.label :platform, value: "Platform" %><br>
+    <%= f.select(:platform, ['Xbox One', 'PS4', 'PS4 & Xbox One'], {}, { :class => 'form-control' }) %>
   </p>
 
-  
+
   <p>
     <%= f.submit 'Add New Game', class: 'btn btn-success' %>
   </p>
- 
+
 <% end %>
 
 <%= link_to 'Back', '/adminCool', class: 'btn btn-info', style: 'color:white' %>
