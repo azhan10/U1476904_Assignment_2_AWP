@@ -26,7 +26,7 @@
 </div>
 </br></br>
 
-<!--This function is used to add new review of the current film-->
+<!--This function is used to add new review of the current film. It also displays pie charts-->
 <h2>Add a review:</h2>
 <%= render 'gamereviews/form' %>
 
@@ -37,12 +37,24 @@
       <% if flash[:anyReviewAverage]  -%>
         <h3 class="text-right"><%= flash[:anyReviewAverage] %></h3>
       <% end -%>
+      <% if flash[:anyReviewAverage] != 'No Rating' -%>
+      <div class="text-center">
+        <%= pie_chart({"Average Score" => @reviewAverage, "Highest Rating" => 5  }, donut: true) %>
+        </div>
+        <% end -%>
     </div>
     <div class="col-xs-6">
 
     <% if flash[:anyReviews]  -%>
         <h3><%= flash[:anyReviews] %></h3>
       <% end -%>
+
+      <% if flash[:anyReviews] != 'No Reviews' -%>
+        <div class="text-center">
+          <%= pie_chart({"1 Star" => @oneStar.count, "2 Stars" => @twoStar.count, "3 Stars" => @threeStar.count, "4 Stars" => @fourStar.count, "5 Stars" => @fiveStar.count
+            }, donut: true) %>
+        </div>
+          <% end -%>
     </div>
 </div></br>
 

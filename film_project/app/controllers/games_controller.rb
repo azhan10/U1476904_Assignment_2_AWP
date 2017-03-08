@@ -23,6 +23,11 @@ class GamesController < ApplicationController
 		@reviewAmount = Gamereview.where(game_id: @games).count
 		if @reviewAmount != 0
       @reviewAverage = Gamereview.where(game_id: @games).avg('rating').round(2)
+			@oneStar = Gamereview.where(game_id: @games, rating: 1)
+      @twoStar = Gamereview.where(game_id: @games, rating: 2)
+      @threeStar = Gamereview.where(game_id: @games, rating: 3)
+      @fourStar = Gamereview.where(game_id: @games, rating: 4)
+      @fiveStar = Gamereview.where(game_id: @games, rating: 5)
 	  end
     @reviewExist = Gamereview.where(game_id: @games).exists?
 

@@ -22,6 +22,12 @@ class FilmsController < ApplicationController
     @reviewAmount = Filmreview.where(film_id: @film).count
     if(@reviewAmount != 0)
       @reviewAverage = Filmreview.where(film_id: @film).avg('rating').round(2)
+
+      @oneStar = Filmreview.where(film_id: @film, rating: 1)
+      @twoStar = Filmreview.where(film_id: @film, rating: 2)
+      @threeStar = Filmreview.where(film_id: @film, rating: 3)
+      @fourStar = Filmreview.where(film_id: @film, rating: 4)
+      @fiveStar = Filmreview.where(film_id: @film, rating: 5)
     end
     @reviewExist = Filmreview.where(film_id: @film).exists?
 

@@ -17,7 +17,7 @@ class Film
 	validates_presence_of :filmrating,  presence: true
 	validates_presence_of :filmstarname,  presence: true
 
-#Search function using the film name	
+#Search function using the film name
 def self.search(search)
   Film.where(filmtitle: /#{search}/i)
 end
