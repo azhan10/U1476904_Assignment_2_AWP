@@ -1,7 +1,7 @@
 #Model for the game information
 class Game
   include Mongoid::Document
-
+include Mongoid::Search
 
   field :gametitle, type: String
   field :gameDescription, type: String
