@@ -19,7 +19,14 @@ class Film
 
 #Search function using the film name
 def self.search(search)
-  Film.where(filmtitle: /#{search}/i)
+  special = "?<>',?[]}{=-)(*&^%$#`~{}"
+  regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+  if search =~ regex
+    search = "null"
+    Film.where(filmtitle: /#{search}/i)
+  else
+    Film.where(filmtitle: /#{search}/i)
+  end
 end
 
 end

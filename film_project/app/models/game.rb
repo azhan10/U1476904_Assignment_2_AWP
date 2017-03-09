@@ -19,7 +19,14 @@ include Mongoid::Search
 
   #Search engine for searching game titles
 	def self.search(search)
-    Game.where(gametitle: /#{search}/i)
+    special = "?<>',?[]}{=-)(*&^%$#`~{}"
+    regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+    if search =~ regex
+      search = "null"
+      Game.where(gametitle: /#{search}/i)
+    else
+      Game.where(gametitle: /#{search}/i)
+    end
   end
 
 end
