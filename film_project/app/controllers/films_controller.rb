@@ -17,6 +17,7 @@ class FilmsController < ApplicationController
   end
 
   #Show information of a film such as their current reviews
+  #It also contains the feature to export film information to PDF format
   def show
     @film = Film.find(params[:id])
     @reviewAmount = Filmreview.where(film_id: @film).count
