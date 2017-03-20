@@ -18,7 +18,7 @@ class GamesController < ApplicationController
 	end
 
 #The show function is used here to view more information of a game such as the game reviews
-  #It also contains the feature to export film information to PDF format
+  #It also contains the feature to export game information to PDF format
 	def show
 		@games = Game.find(params[:id])
 		@reviewAmount = Gamereview.where(game_id: @games).count
