@@ -26,6 +26,10 @@
 </div>
 </br></br>
 
+<p class="text-center">
+  <%= link_to "Printable Receipt (PDF)", game_path(@games, format: 'pdf'), :class => "btn btn-info" %>
+</p>
+
 <!--This function is used to add new review of the current film. It also displays pie charts-->
 <h2>Add a review:</h2>
 <%= render 'gamereviews/form' %>

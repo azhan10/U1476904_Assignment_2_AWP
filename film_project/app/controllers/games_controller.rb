@@ -38,6 +38,56 @@ class GamesController < ApplicationController
        flash[:anyReviews] = ['Total Reviews: ', @reviewAmount].join()
        flash[:anyReviewAverage] = ['Average Score: ', @reviewAverage].join()
     end
+
+		respond_to do |format|
+		format.html
+		format.pdf do
+			pdf = Prawn::Document.new
+			pdf.text @games.gametitle, :size => 30, :align => :center
+			pdf.text 'Game Title: ' + @games.gametitle
+			pdf.move_down 10
+			pdf.text ['Game Description: ', @games.gameDescription].join();
+			pdf.move_down 10
+			pdf.text ['Game Rating: ', @games.gamerating].join();
+			pdf.move_down 10
+			pdf.text ['Game Genre: ', @games.gamegenre].join();
+			pdf.move_down 10
+			pdf.text ['Game Platform: ', @games.platform].join();
+			pdf.move_down 10
+
+			if @reviewAmount == 0
+				pdf.text 'No Reviews', :align => :center, :size => 20
+
+			else
+				pdf.text ['Number of reviews: ', @reviewAmount].join()
+				pdf.move_down 10
+				pdf.text ['Average Rating: ', @reviewAverage].join()
+				pdf.move_down 10
+				
+				pdf.text "Reviews", :style => :bold, :align => :center, :size => 25
+
+				currentReviews = [["Customer Name", "Film Rating", "Comment", "Review Added"]]
+				currentReviews += @games.gamereviews.map do |s|
+
+					[
+						s.commenter,
+						s.rating,
+						s.body,
+						s.created_at
+					]
+				end
+
+				pdf.table(currentReviews, header: true, width: 400, :row_colors => ["F0f0f0", "ffffcc"]) do
+					row(0).font_style = :bold
+				end
+			end
+
+			send_data pdf.render,
+					filename: "game_#{@games.gametitle}",
+					type: 'application/pdf',
+					disposition: 'inline'
+			end
+		end
 	end
 
 	private
